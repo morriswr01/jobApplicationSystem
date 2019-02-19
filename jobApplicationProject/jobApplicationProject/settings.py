@@ -33,6 +33,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'home',
     'careers',
+    'sass_processor',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -77,16 +78,17 @@ WSGI_APPLICATION = 'jobApplicationProject.wsgi.application'
 
 # AWS MYSQL CONNECTION WILL BE PUT HERE.... -Will
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'jobApplicationProjectDB',
-        'USER': 'morriswr01',
-        'PASSWORD': 'cs261SoftwareEngineering',
-        'HOST': 'jobapplicationprojectdb.cdsve33siynl.us-east-2.rds.amazonaws.com',
-        'PORT': '3306'
-    }
-}
+# UNCOMMENT WHEN YOU WANT TO CONNECT TO THE DATABASE
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'jobApplicationProjectDB',
+#         'USER': 'morriswr01',
+#         'PASSWORD': 'cs261SoftwareEngineering',
+#         'HOST': 'jobapplicationprojectdb.cdsve33siynl.us-east-2.rds.amazonaws.com',
+#         'PORT': '3306'
+#     }
+# }
 
 # DATABASES = {
 #     'default': {
@@ -134,5 +136,9 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'staticfiles'),
+]
+
+SASS_PROCESSOR_INCLUDE_DIRS = [
     os.path.join(BASE_DIR, 'staticfiles'),
 ]
