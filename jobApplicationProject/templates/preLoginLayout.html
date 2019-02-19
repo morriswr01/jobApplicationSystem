@@ -13,8 +13,8 @@
 <body>
     <!-- Navigation Bar -->
     <nav class="nav-container">
-        <div class="grid-item link active"><a href="home.html">Home</a></div>
-        <div class="grid-item link"><a href="careers.html">Careers</a></div>
+        <div class="grid-item link active"><a href="{% url 'home-index' %}">Home</a></div>
+        <div class="grid-item link"><a href="{% url 'careers-index' %}">Careers</a></div>
         <div class="grid-item"></div>
         <div class="grid-item">
             <a id="applicant-login-button" class="button" href="#">Applicant Login</a>
@@ -96,6 +96,7 @@
     </div>
 
     {% block content %}
+    <!-- Body of the document -->
     {% endblock %}
 
 
