@@ -6,4 +6,4 @@ from django.shortcuts import render
 # Create your views here.
 def index (request):
     # return HttpResponse('Hello From Home')
-    return render(request, 'careers/index.html',{'home': 0})
+    return render(request, 'createApplication/index.html', {'home': 0})
