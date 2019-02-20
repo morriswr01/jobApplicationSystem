@@ -7,10 +7,9 @@ verify_ssl = true
 
 [packages]
 django = "*"
-libsass = "*"
-django-compressor = "*"
 django-sass-processor = "*"
 mysqlclient = "*"
+libsass = "*"
 
 [requires]
 python_version = "2.7"
