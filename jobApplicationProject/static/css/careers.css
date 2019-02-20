@@ -24,5 +24,17 @@
     text-align: left;
     font-size: 20px;
     color: rgba(0, 0, 0, 0.87); }
+    .header .jobListAccordion .jobDesc .jobButtons {
+      display: flex;
+      justify-content: space-between;
+      padding-top: 5px; }
+      .header .jobListAccordion .jobDesc .jobButtons .moreInfoBtn {
+        background-color: tomato; }
+        .header .jobListAccordion .jobDesc .jobButtons .moreInfoBtn:hover {
+          background-color: #2185d0; }
+      .header .jobListAccordion .jobDesc .jobButtons .applyBtn {
+        background-color: mediumseagreen; }
+        .header .jobListAccordion .jobDesc .jobButtons .applyBtn:hover {
+          background-color: #2185d0; }
 
 /*# sourceMappingURL=careers.css.map */

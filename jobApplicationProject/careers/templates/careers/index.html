@@ -1,12 +1,12 @@
-{% extends 'preLoginLayout.html' %} 
-{% block additionalCss%} 
+{% extends 'preLoginLayout.html' %}
+{% block additionalCss%}
 {% load sass_tags%}
 <link
   rel="stylesheet"
   href="{% sass_src 'css/careers.scss' %}"
   type="text/css"
 />
-{% endblock %} 
+{% endblock %}
 {% block content %}
 <!-- Careers page content -->
 <div class="header">
@@ -18,10 +18,19 @@
         <span class="jobDeadline">Open until 23/03</span>
       </button>
       <div class="jobDesc">
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quae
-          excepturi quam aliquam magnam blanditiis voluptates alias quas nihil
-          ipsam? Reiciendis veritatis voluptates dolorem quidem odio sit quod
-          possimus qui porro?Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tenetur praesentium, in rem aperiam porro quisquam, voluptatibus voluptas fugiat id, eligendi est? Ab praesentium repellat inventore nam culpa, sequi officia minus.
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quaeexcepturi
+        quam aliquam magnam blanditiis voluptates alias quas nihil ipsam?
+        Reiciendis veritatis voluptates dolorem quidem odio sit quod possimus
+        qui porro?Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+        Tenetur praesentium, in rem aperiam porro quisquam, voluptatibus
+        voluptas fugiat id, eligendi est? Ab praesentium repellat inventore nam
+        culpa, sequi officia minus.
+        <div class="jobButtons">
+          <a href="{% url 'careers-index' %}" class="button moreInfoBtn"
+            >More Information</a
+          >
+          <a href="{% url 'careers-index' %}" class="button applyBtn">Apply</a>
+        </div>
       </div>
     </div>
     <div class="jobBlock">
@@ -30,10 +39,19 @@
         <span class="jobDeadline">Open until 25/04</span>
       </button>
       <div class="jobDesc">
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quae
-          excepturi quam aliquam magnam blanditiis voluptates alias quas nihil
-          ipsam? Reiciendis veritatis voluptates dolorem quidem odio sit quod
-          possimus qui porro?Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tenetur praesentium, in rem aperiam porro quisquam, voluptatibus voluptas fugiat id, eligendi est? Ab praesentium repellat inventore nam culpa, sequi officia minus.
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quaeexcepturi
+        quam aliquam magnam blanditiis voluptates alias quas nihil ipsam?
+        Reiciendis veritatis voluptates dolorem quidem odio sit quod possimus
+        qui porro?Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+        Tenetur praesentium, in rem aperiam porro quisquam, voluptatibus
+        voluptas fugiat id, eligendi est? Ab praesentium repellat inventore nam
+        culpa, sequi officia minus.
+        <div class="jobButtons">
+          <a href="{% url 'careers-index' %}" class="button moreInfoBtn"
+            >More Information</a
+          >
+          <a href="{% url 'careers-index' %}" class="button applyBtn">Apply</a>
+        </div>
       </div>
     </div>
     <div class="jobBlock">
@@ -42,10 +60,19 @@
         <span class="jobDeadline">Open until 25/05</span>
       </button>
       <div class="jobDesc">
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quae
-          excepturi quam aliquam magnam blanditiis voluptates alias quas nihil
-          ipsam? Reiciendis veritatis voluptates dolorem quidem odio sit quod
-          possimus qui porro?Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tenetur praesentium, in rem aperiam porro quisquam, voluptatibus voluptas fugiat id, eligendi est? Ab praesentium repellat inventore nam culpa, sequi officia minus.
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quaeexcepturi
+        quam aliquam magnam blanditiis voluptates alias quas nihil ipsam?
+        Reiciendis veritatis voluptates dolorem quidem odio sit quod possimus
+        qui porro?Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+        Tenetur praesentium, in rem aperiam porro quisquam, voluptatibus
+        voluptas fugiat id, eligendi est? Ab praesentium repellat inventore nam
+        culpa, sequi officia minus.
+        <div class="jobButtons">
+          <a href="{% url 'careers-index' %}" class="button moreInfoBtn"
+            >More Information</a
+          >
+          <a href="{% url 'careers-index' %}" class="button applyBtn">Apply</a>
+        </div>
       </div>
     </div>
   </div>

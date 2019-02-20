@@ -32,11 +32,33 @@
     }
 
     .jobDesc {
-      display: none;
-      padding: 10px;
-      text-align: left;
-      font-size: 20px;
-      color: $text-black;
+	display: none;
+	padding: 10px;
+	text-align: left;
+	font-size: 20px;
+	color: $text-black;
+
+      .jobButtons {
+        display: flex;
+        justify-content: space-between;
+        padding-top: 5px;
+
+        .moreInfoBtn {
+			background-color: tomato;
+			
+			&:hover {
+			background-color: $submit-Button;
+			}
+        }
+
+        .applyBtn {
+			background-color: $green;
+
+			&:hover {
+			background-color: $submit-Button;
+			}
+        }
+      }
     }
   }
 }
