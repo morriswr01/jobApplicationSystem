@@ -6,12 +6,23 @@
     width: 100%;
     text-align: left; }
     .header .jobListAccordion button .jobTitle {
-      color: rgba(0, 0, 0, 0.87); }
+      color: rgba(0, 0, 0, 0.87);
+      font-weight: bold; }
     .header .jobListAccordion button .jobDeadLine {
       color: mediumseagreen;
       float: right;
       margin-top: 10px;
       font-size: 15px;
       letter-spacing: -1px; }
+    .header .jobListAccordion button:hover {
+      background-color: #2185d0; }
+      .header .jobListAccordion button:hover .jobTitle {
+        color: white; }
+  .header .jobListAccordion .jobDesc {
+    display: none;
+    padding: 10px;
+    text-align: left;
+    font-size: 20px;
+    color: rgba(0, 0, 0, 0.87); }
 
 /*# sourceMappingURL=careers.css.map */

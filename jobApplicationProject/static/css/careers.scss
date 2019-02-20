@@ -1,26 +1,42 @@
-@import 'config';
+@import "config";
 
 .header {
-    .jobListAccordion {
-        background-color: rgba(255, 255, 255, 0.87);
-        border-radius: 5px;
-        
-        button {
-            padding: 5px 10px;
-            width: 100%;
-            text-align: left;
+  .jobListAccordion {
+    background-color: $accordion-color;
+    border-radius: 5px;
 
-            .jobTitle {
-                color: rgba(0,0,0, 0.87);
-            }
+    button {
+      padding: 5px 10px;
+      width: 100%;
+      text-align: left;
 
-            .jobDeadLine {
-                color: $green;
-                float: right;
-                margin-top: 10px;
-                font-size: 15px;
-                letter-spacing: -1px;
-            }
+      .jobTitle {
+        color: $text-black;
+        font-weight: bold;
+      }
+
+      .jobDeadLine {
+        color: $green;
+        float: right;
+        margin-top: 10px;
+        font-size: 15px;
+        letter-spacing: -1px;
+      }
+
+      &:hover {
+        background-color: $submit-Button;
+        .jobTitle {
+          color: white;
         }
+      }
     }
+
+    .jobDesc {
+      display: none;
+      padding: 10px;
+      text-align: left;
+      font-size: 20px;
+      color: $text-black;
+    }
+  }
 }
