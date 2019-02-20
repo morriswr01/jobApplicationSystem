@@ -1,0 +1,17 @@
+.header .jobListAccordion {
+  background-color: rgba(255, 255, 255, 0.87);
+  border-radius: 5px; }
+  .header .jobListAccordion button {
+    padding: 5px 10px;
+    width: 100%;
+    text-align: left; }
+    .header .jobListAccordion button .jobTitle {
+      color: rgba(0, 0, 0, 0.87); }
+    .header .jobListAccordion button .jobDeadLine {
+      color: mediumseagreen;
+      float: right;
+      margin-top: 10px;
+      font-size: 15px;
+      letter-spacing: -1px; }
+
+/*# sourceMappingURL=careers.css.map */

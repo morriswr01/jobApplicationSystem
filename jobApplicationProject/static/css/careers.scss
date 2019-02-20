@@ -1,0 +1,26 @@
+@import 'config';
+
+.header {
+    .jobListAccordion {
+        background-color: rgba(255, 255, 255, 0.87);
+        border-radius: 5px;
+        
+        button {
+            padding: 5px 10px;
+            width: 100%;
+            text-align: left;
+
+            .jobTitle {
+                color: rgba(0,0,0, 0.87);
+            }
+
+            .jobDeadLine {
+                color: $green;
+                float: right;
+                margin-top: 10px;
+                font-size: 15px;
+                letter-spacing: -1px;
+            }
+        }
+    }
+}

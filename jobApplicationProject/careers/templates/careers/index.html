@@ -1,5 +1,37 @@
-{% extends 'preLoginLayout.html' %}
+{% extends 'preLoginLayout.html' %} 
+
+{% block additionalCss%} 
+{% load sass_tags %}
+<link
+  rel="stylesheet"
+  href="{% sass_src 'css/careers.scss' %}"
+  type="text/css"
+/>
+{% endblock %} 
 
 {% block content %}
 <!-- Careers page content -->
+<div class="header">
+  <h1>Our Open Positions</h1>
+  <div class="jobListAccordion">
+    <div class="jobBlock">
+      <button>
+        <span class="jobTitle">Engineer - Full Stack</span>
+        <span class="jobDeadline">Open until 23/03</span>
+      </button>
+    </div>
+    <div class="jobBlock">
+      <button>
+        <span class="jobTitle">Engineer - DevOps</span>
+        <span class="jobDeadline">Open until 25/04</span>
+      </button>
+    </div>
+    <div class="jobBlock">
+      <button>
+        <span class="jobTitle">Engineer - Java</span>
+        <span class="jobDeadline">Open until 25/05</span>
+      </button>
+    </div>
+  </div>
+</div>
 {% endblock %}

@@ -14,6 +14,8 @@
       href="{% sass_src 'css/main.scss' %}"
       type="text/css"
     />
+    {% block additionalCss%}
+    {% endblock %}
   </head>
 
   <body>
@@ -26,6 +28,7 @@
       <div class="grid-item link">
         <a href="{% url 'careers-index' %}">Careers</a>
       </div>
+      <div class="grid-item"></div>
       {% else %}
       <div class="grid-item link">
         <a href="{% url 'home-index' %}">Home</a>
@@ -33,8 +36,8 @@
       <div class="grid-item link active">
         <a href="{% url 'careers-index' %}">Careers</a>
       </div>
+      <div class="grid-item"><h1>Bank Of DCS</h1></div>
       {% endif %}
-      <div class="grid-item"></div>
       <div class="grid-item">
         <a id="applicant-login-button" class="button" href="#"
           >Applicant Login</a

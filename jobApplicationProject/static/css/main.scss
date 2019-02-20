@@ -1,5 +1,4 @@
-$global-background-color: #1b1c1d;
-$submit-Button: #2185d0;
+@import 'config';
 
 
 body {
@@ -58,10 +57,10 @@ body {
 .header {
     height: 100%;
     padding: 60px;
-    text-align: center;
     background: $global-background-color;
     color: white;
     font-size: 30px;
+    text-align: center;
 }
 
 // LOGIN MODAL STYLING
@@ -170,7 +169,7 @@ body {
                 margin-left: 10px;
 
                 &:hover {
-                    background-color: mediumseagreen;
+                    background-color: $green;
                 }
             }
         }
