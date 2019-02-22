@@ -1,0 +1,15 @@
+.applicationForm .nextBtn {
+  font-size: 25px;
+  margin-top: 10px;
+  width: 97%; }
+
+.applicationForm .selectBox {
+  margin: 0 auto;
+  font-size: 20px;
+  height: 35px;
+  width: 97%; }
+
+.education {
+  display: none; }
+
+/*# sourceMappingURL=createApplication.css.map */

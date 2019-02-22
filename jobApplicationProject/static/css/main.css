@@ -70,14 +70,6 @@ body {
     animation-name: animatetop;
     animation-duration: 0.4s; }
 
-@keyframes animatetop {
-  from {
-    top: -300px;
-    opacity: 0; }
-  to {
-    top: 0;
-    opacity: 1; } }
-
 .form {
   background: #1b1c1d;
   max-width: 600px;
@@ -123,6 +115,14 @@ body {
         margin-left: 10px; }
         .form-group.no-login .button:hover {
           background-color: mediumseagreen; }
+
+@keyframes animatetop {
+  from {
+    top: -300px;
+    opacity: 0; }
+  to {
+    top: 0;
+    opacity: 1; } }
 
 /* Buttons defined with .button class  */
 .button {

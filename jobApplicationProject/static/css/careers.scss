@@ -1,64 +1,64 @@
 @import "config";
 
 .header {
-  .jobListAccordion {
-    background-color: $accordion-color;
-    border-radius: 5px;
+    .jobListAccordion {
+        background-color: $accordion-color;
+        border-radius: 5px;
 
-    button {
-      padding: 5px 10px;
-      width: 100%;
-      text-align: left;
+        button {
+            padding: 5px 10px;
+            width: 100%;
+            text-align: left;
 
-      .jobTitle {
-        color: $text-black;
-        font-weight: bold;
-      }
+            .jobTitle {
+                color: $text-black;
+                font-weight: bold;
+            }
 
-      .jobDeadLine {
-        color: $green;
-        float: right;
-        margin-top: 10px;
-        font-size: 15px;
-        letter-spacing: -1px;
-      }
+            .jobDeadLine {
+                color: $green;
+                float: right;
+                margin-top: 10px;
+                font-size: 15px;
+                letter-spacing: -1px;
+            }
 
-      &:hover {
-        background-color: $submit-Button;
-        .jobTitle {
-          color: white;
+            &:hover {
+                background-color: $submit-Button;
+                .jobTitle {
+                    color: white;
+                }
+            }
         }
-      }
+
+        .jobDesc {
+            display: none;
+            padding: 10px;
+            text-align: left;
+            font-size: 20px;
+            color: $text-black;
+
+            .jobButtons {
+                display: flex;
+                justify-content: space-between;
+                padding-top: 5px;
+
+                .moreInfoBtn {
+                    background-color: tomato;
+
+                    &:hover {
+                        background-color: $submit-Button;
+                    }
+                }
+
+                .applyBtn {
+                    background-color: $green;
+
+                    &:hover {
+                        background-color: $submit-Button;
+                    }
+                }
+            }
+        }
     }
-
-    .jobDesc {
-	display: none;
-	padding: 10px;
-	text-align: left;
-	font-size: 20px;
-	color: $text-black;
-
-      .jobButtons {
-        display: flex;
-        justify-content: space-between;
-        padding-top: 5px;
-
-        .moreInfoBtn {
-			background-color: tomato;
-			
-			&:hover {
-			background-color: $submit-Button;
-			}
-        }
-
-        .applyBtn {
-			background-color: $green;
-
-			&:hover {
-			background-color: $submit-Button;
-			}
-        }
-      }
-    }
-  }
 }

@@ -94,19 +94,6 @@ body {
         animation-duration: 0.4s;
     }
 }
-
-@keyframes animatetop {
-    from {
-        top: -300px;
-        opacity: 0;
-    }
-
-    to {
-        top: 0;
-        opacity: 1;
-    }
-}
-
 // LOGIN FORM STYLING
 .form {
     background: $global-background-color;
@@ -175,6 +162,19 @@ body {
         }
     }
 }
+
+@keyframes animatetop {
+    from {
+        top: -300px;
+        opacity: 0;
+    }
+
+    to {
+        top: 0;
+        opacity: 1;
+    }
+}
+
 
 // BUTTON STYLING
 /* Buttons defined with .button class  */

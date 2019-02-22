@@ -1,2 +1,5 @@
 dbManualConnection
-.map
+css.map
+*.css.map
+jobApplicationProject/static/css/main.css.map
+jobApplicationProject/static/css/careers.css.map
