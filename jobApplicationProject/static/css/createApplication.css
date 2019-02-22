@@ -1,15 +1,19 @@
+.applicationForm .nameFieldContainer {
+  width: 98%; }
+  .applicationForm .nameFieldContainer .nameField {
+    margin: 0 0 0 11px;
+    padding: 5px;
+    float: left;
+    max-width: 48%; }
+
+.applicationForm select {
+  color: rgba(0, 0, 0, 0.6);
+  font-weight: 500;
+  width: 97%; }
+
 .applicationForm .nextBtn {
   font-size: 25px;
   margin-top: 10px;
   width: 97%; }
-
-.applicationForm .selectBox {
-  margin: 0 auto;
-  font-size: 20px;
-  height: 35px;
-  width: 97%; }
-
-.education {
-  display: none; }
 
 /*# sourceMappingURL=createApplication.css.map */
