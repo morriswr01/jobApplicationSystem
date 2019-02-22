@@ -1,42 +1,30 @@
 @import "config";
 
 .applicationForm {
+
+    .nameFieldContainer {
+        width: 98%;
+
+        .nameField {
+            margin: 0 0 0 11px;
+            padding: 5px;
+            float: left;
+            max-width: 48%;
+        }
+    }
+
+    select {
+        color: rgba(black, 0.60);
+        font-weight: 500;
+        width: 97%;
+    }
+
     .nextBtn {
         font-size: 25px;
         margin-top: 10px;
         width: 97%;
     }
-
-    .selectBox {
-        margin: 0 auto;
-        font-size: 20px;
-        height: 35px;
-        width: 97%
-    }
 }
-
-.education {
-    display: none;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
