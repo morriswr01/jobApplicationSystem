@@ -1,29 +1,37 @@
 @import "config";
 
 .applicationForm {
+    max-width: 600px;
+    margin: 60px auto auto auto;
 
-    .nameFieldContainer {
-        width: 98%;
-
-        .nameField {
-            margin: 0 0 0 11px;
-            padding: 5px;
-            float: left;
-            max-width: 48%;
-        }
+    .form-group {
+        width: 100%;
     }
 
-    select {
-        color: rgba(black, 0.60);
-        font-weight: 500;
-        width: 97%;
-    }
+    input {}
 
-    .nextBtn {
-        font-size: 25px;
-        margin-top: 10px;
-        width: 97%;
-    }
+    // .nameFieldContainer {
+    // width: 100%;
+
+    //     .nameField {
+    //         margin: 0 0 0 11px;
+    //         padding: 5px;
+    //         float: left;
+    //         max-width: 48%;
+    //     }
+    // }
+
+    // select {
+    //     color: rgba(black, 0.60);
+    //     font-weight: 500;
+    //     width: 97%;
+    // }
+
+    // .nextBtn {
+    //     font-size: 25px;
+    //     margin-top: 10px;
+    //     width: 97%;
+    // }
 }
 
 
