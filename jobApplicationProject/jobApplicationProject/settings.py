@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     'home',
     'careers',
     'createApplication',
+    'applicantDashboard',
     'sass_processor',
     'django.contrib.admin',
     'django.contrib.auth',

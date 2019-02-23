@@ -1,0 +1,28 @@
+@import 'config';
+
+.form {
+    .form-header {
+        margin: 0 auto;
+    }
+}
+
+.dash-content {
+    .message {
+        padding: 20px 30px;
+    }
+
+    .blue {
+        color: $submit-Button;
+        font-size: 20px
+    }
+}
+
+.footer {
+    color: white;
+    text-align: center;
+    font-size: 15px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}

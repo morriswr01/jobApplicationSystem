@@ -13,9 +13,16 @@ $(document).ready(function () {
         target.css("display", "block");
     });
 
-    //Close login modals on clicking cross button
+    //Show admin login modal
+    $('#account-settings-button').click(function () {
+        target = $('#account-settings-modal');
+
+        target.css("display", "block");
+    });
+
+    //Close modals on clicking cross button
     $('.close-modal').click(function () {
-        target = $(this).parentsUntil('body').last();
+        target = $(this).parent().parent().parent();
 
         target.css("display", "none");
     });
