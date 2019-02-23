@@ -1,3 +1,5 @@
 dbManualConnection
-*.css.map
+*.css.map 
+*.css
 .vscode
+pipfile
