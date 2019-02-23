@@ -20,5 +20,6 @@ urlpatterns = [
     url('home/', include('home.urls')),
     url('careers/', include('careers.urls')),
     url('createApplication/', include('createApplication.urls')),
+    url('applicantDashboard/', include('applicantDashboard.urls')),
     url('admin/', admin.site.urls),
 ]

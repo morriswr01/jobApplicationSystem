@@ -17,3 +17,7 @@ If you are on windows you have to install mysqlclient manually so do the above t
 ---
 
 To start server run `pipenv shell` to launch a python environment and then `python manage.py runserver` from inside the jobApplicationProject folder.
+
+---
+
+.Scss files contain all the css for the project. Can just use normal css if you don't know what sass is.

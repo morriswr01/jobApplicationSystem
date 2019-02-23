@@ -1,13 +1,10 @@
-{% extends 'preLoginLayout.html' %}
-{% block additionalCss%}
-{% load sass_tags%}
+{% extends 'preLoginLayout.html' %} {% block additionalCss%} {% load sass_tags%}
 <link
     rel="stylesheet"
-    href="{% sass_src 'css/careers.scss' %}"
+    href="{% sass_src 'sass/careers.scss' %}"
     type="text/css"
 />
-{% endblock %} 
-{% block content %}
+{% endblock %} {% block content %}
 <!-- Careers page content -->
 <div class="header">
     <h1>Our Open Positions</h1>
