@@ -1,0 +1,162 @@
+@import "config";
+
+/* NAVIGATION BAR STYLING */
+.nav-container {
+    display: grid;
+    padding: 0 60px;
+    grid-template-columns: 1fr 1fr 5fr 1fr 1fr;
+    background-color: $global-background-color;
+    color: white;
+    height: 100px;
+
+    .grid-item {
+        padding: 20px;
+        margin: auto;
+        font-size: 15px;
+        text-align: center;
+
+        a {
+            color: white;
+            text-decoration: none;
+
+            .nav-logo {
+                font-size: 25px;
+            }
+        }
+    }
+
+    .link:hover a,
+    .link:hover {
+        color: black;
+        background-color: white;
+    }
+
+    .link.active {
+        border-bottom-width: 2px;
+        border-bottom: solid;
+        border-bottom-color: white;
+    }
+
+    .button {
+        max-width: 80px;
+
+        &:hover {
+            color: black;
+            background-color: white;
+        }
+    }
+}
+
+// LOGIN MODAL STYLING
+.modal {
+    /* Hidden by default */
+    display: none;
+    /* Stay in place */
+    position: fixed;
+    /* Sit on top */
+    z-index: 1;
+    /* Location of the box */
+    padding-top: 100px;
+    left: 0;
+    top: 0;
+    /* Full width */
+    width: 100%;
+    /* Full height */
+    height: 100%;
+    /* Enable scroll if needed */
+    overflow: auto;
+    /* Fallback color */
+    background-color: rgb(0, 0, 0);
+    /* Black w/ opacity */
+    background-color: rgba(0, 0, 0, 0.4);
+
+    .modal-content {
+        position: relative;
+        -webkit-animation-name: animatetop;
+        -webkit-animation-duration: 0.4s;
+        animation-name: animatetop;
+        animation-duration: 0.4s;
+    }
+}
+
+// LOGIN FORM STYLING
+.login-form {
+    background: $global-background-color;
+    max-width: 600px;
+    border-radius: 4px;
+    margin: 60px auto auto auto;
+    color: white;
+
+    &-header {
+        width: 100%;
+        text-align: center;
+
+        h1 {
+            display: inline-block;
+        }
+
+        .close-modal {
+            float: right;
+            font-size: 25px;
+            font-weight: bold;
+        }
+
+        .close-modal:hover,
+        .close-modal:focus {
+            color: grey;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    }
+
+    &-group {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        margin: 0 0 5px 0;
+
+        label {
+            display: block;
+            margin: 0 0 10px 10px;
+            font-size: 20px;
+            // line-height: 1;
+        }
+
+        input,
+        select {
+            width: 100%;
+            margin: 0 10px 5px 10px;
+            border: 0;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 20px;
+            padding: 5px;
+            font-weight: 500;
+        }
+
+        &.no-login {
+            justify-content: left;
+            padding: 0 10px 10px 10px;
+
+            .button {
+                margin-left: 10px;
+
+                &:hover {
+                    background-color: $green;
+                }
+            }
+        }
+    }
+}
+
+@keyframes animatetop {
+    from {
+        top: -300px;
+        opacity: 0;
+    }
+
+    to {
+        top: 0;
+        opacity: 1;
+    }
+}
