@@ -1,46 +1,76 @@
 @import "config";
 
-.applicationForm {
+.application-form {
+    text-align: left;
     max-width: 600px;
     margin: 60px auto auto auto;
 
-    .form-group {
-        width: 100%;
+    &-group {
+        label {
+            display: block;
+            margin: 5px 0 10px 10px;
+            font-size: 20px;
+            line-height: 1;
+        }
+
+        select {
+            color: rgba(black, 0.60);
+        }
     }
 
-    input {}
+    input,
+    select {
+        width: 100%;
+        margin: 0 10px 5px 10px;
+        border: 0;
+        border-radius: 4px;
+        font-size: 20px;
+        padding: 5px;
+        font-weight: 500;
+    }
 
-    // .nameFieldContainer {
-    // width: 100%;
+    .twoColumnFields {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-column-gap: 5px;
+    }
 
-    //     .nameField {
-    //         margin: 0 0 0 11px;
-    //         padding: 5px;
-    //         float: left;
-    //         max-width: 48%;
-    //     }
-    // }
+    .threeColumnFields {
+        margin-top: 10px;
+        padding-left: 10px;
+        display: grid;
+        grid-template-columns: 2fr 2fr 1fr;
+        grid-column-gap: 5px;
 
-    // select {
-    //     color: rgba(black, 0.60);
-    //     font-weight: 500;
-    //     width: 97%;
-    // }
+        &.employmentLength {
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
 
-    // .nextBtn {
-    //     font-size: 25px;
-    //     margin-top: 10px;
-    //     width: 97%;
-    // }
+        input,
+        select {
+            margin: 0;
+        }
+
+        .remove,
+        .remove-employment {
+            margin: auto;
+
+            &:hover,
+            &:focus {
+                color: grey;
+                text-decoration: none;
+                cursor: pointer;
+            }
+        }
+
+        .button {
+            margin: 0;
+            padding: 3px 0;
+            font-size: 20px;
+        }
+    }
 }
-
-
-
-
-
-
-
-
 
 // .header {
 //     .progressBarContainer {
