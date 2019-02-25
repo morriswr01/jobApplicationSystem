@@ -1,0 +1,78 @@
+<html lang="en">
+
+<head>
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1920, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Your Dashboard</title>
+    {% load sass_tags %}
+    <link rel="stylesheet" href="{% sass_src 'sass/main.scss' %}" type="text/css" />
+    <link rel="stylesheet" href="{% sass_src 'sass/navbar.scss' %}" type="text/css" />
+    <link rel="stylesheet" href="{% sass_src 'sass/applicantDashboard.scss' %}" type="text/css" />
+</head>
+
+<body>
+    <!-- Navigation Bar -->
+    <nav class="nav-container">
+        <div class="grid-item link active">
+            <a href="{% url 'applicantDashboard-index' %}">Home</a>
+        </div>
+        <div class="grid-item link">
+            <a href="{% url 'reviewApplication-index' %}">Review Application</a>
+        </div>
+        <div class="grid-item">
+            <h1>Bank Of DCS</h1>
+        </div>
+        <div class="grid-item">
+            <a id="account-settings-button" class="button" href="#">Account Settings</a>
+        </div>
+        <div id="signOut" class="grid-item">
+            <a class="button" href="{% url 'home-index' %}">Sign Out</a>
+        </div>
+    </nav>
+
+    <!-- Account Settings Modal -->
+    <div id="account-settings-modal" class="modal">
+        <div class="login-form modal-content">
+            <header class="login-form-header">
+                <i class="close-modal material-icons">close</i>
+                <h1>Account Settings</h1>
+            </header>
+            <div class="login-form-content">
+                <!-- Change Password Form -->
+                <form action="#">
+                    <h2 class="login-form-header">Change Password</h2>
+                    <div class="login-form-group">
+                        <label for="current-password">Current Password</label>
+                        <input type="password" name="password" id="current-password" placeholder="Password" required="required"
+                            \ />
+                        <label for="new-password">New Password</label>
+                        <input type="password" name="new-password" id="new-password" placeholder="Password" required="required" />
+                        <label for="confirm-new-password">Confirm New Password</label>
+                        <input type="password" name="confirm-new-password" id="confirm-new-pas  sword" placeholder="Password"
+                            required="required" />
+                        <button type="submit" class="button submitBtn formSubmit">
+                            Change Password
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    {% block content %}
+    <!-- Body of the document -->
+    {% endblock %}
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>Thank you for your interest in our company</p>
+    </footer>
+
+    {% load static %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+</body>
+
+</html>

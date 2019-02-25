@@ -6,7 +6,10 @@
     }
 }
 
-.dash-content {
+.dash-content,
+.header {
+    font-size: 20px;
+
     .message {
         padding: 20px 30px;
     }
