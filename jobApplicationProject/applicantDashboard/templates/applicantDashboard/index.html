@@ -2,8 +2,7 @@
 {% block additionalCss %}
 {% load sass_tags%}
 <link rel="stylesheet" href="{% sass_src 'sass/applicantDashboard.scss' %}" type="text/css" />
-{% endblock %}
-{% block content %}
+{% endblock %} {% block content %}
 <!-- Navigation Bar -->
 <nav class="nav-container">
     <div class="grid-item link active">
@@ -39,11 +38,10 @@
                     <input type="password" name="password" id="current-password" placeholder="Password" required="required"
                         \ />
                     <label for="new-password">New Password</label>
-                    <input type="password" name="new-password" id="new-password" placeholder="Password" required="required"
-                        \ />
+                    <input type="password" name="new-password" id="new-password" placeholder="Password" required="required" />
                     <label for="confirm-new-password">Confirm New Password</label>
-                    <input type="password" name="confirm-new-password" id="confirm-new-password" placeholder="Password"
-                        required="required" \ />
+                    <input type="password" name="confirm-new-password" id="confirm-new-pas  sword" placeholder="Password"
+                        required="required" />
                     <button type="submit" class="button submitBtn formSubmit">
                         Change Password
                     </button>
