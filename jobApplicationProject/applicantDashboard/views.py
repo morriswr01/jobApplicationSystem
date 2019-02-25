@@ -6,3 +6,6 @@ from django.shortcuts import render
 # Create your views here.
 def index (request):
     return render(request, 'applicantDashboard/index.html')
+
+def reviewApplication (request):
+    return render(request, 'applicantDashboard/reviewApplication.html')
