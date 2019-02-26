@@ -10,7 +10,10 @@ def dashboard(request):
         if user.admin:
             return render(request, 'dashboard/admin.html')
         else:
-            return render(request, 'dashboard/applicant.html')
+            if user.hasApplied:
+                return render(request, 'dashboard/applicant.html')
+            else:
+                return render(request, 'dashboard/createApplication.html')
 
     else: 
         return redirect('home-index')

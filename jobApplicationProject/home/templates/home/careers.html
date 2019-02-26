@@ -1,11 +1,7 @@
 {% extends 'preLoginLayout.html' %}
 {% block additionalCss%}
 {% load sass_tags%}
-<link
-    rel="stylesheet"
-    href="{% sass_src 'sass/careers.scss' %}"
-    type="text/css"
-/>
+<link rel="stylesheet" href="{% sass_src 'sass/careers.scss' %}" type="text/css" />
 {% endblock %}
 {% block content %}
 <!-- Careers page content -->
@@ -27,16 +23,8 @@
                 eligendi est? Ab praesentium repellat inventore nam culpa, sequi
                 officia minus.
                 <div class="jobButtons">
-                    <a
-                        href="{% url 'careers-index' %}"
-                        class="button moreInfoBtn"
-                        >More Information</a
-                    >
-                    <a
-                        href="{% url 'createApplication-index' %}"
-                        class="button applyBtn"
-                        >Apply</a
-                    >
+                    <a href="{% url 'careers-index' %}" class="button moreInfoBtn">More Information</a>
+                    <a href="{% url 'signup' %}" class="button applyBtn">Apply</a>
                 </div>
             </div>
         </div>
@@ -55,16 +43,8 @@
                 eligendi est? Ab praesentium repellat inventore nam culpa, sequi
                 officia minus.
                 <div class="jobButtons">
-                    <a
-                        href="{% url 'careers-index' %}"
-                        class="button moreInfoBtn"
-                        >More Information</a
-                    >
-                    <a
-                        href="{% url 'createApplication-index' %}"
-                        class="button applyBtn"
-                        >Apply</a
-                    >
+                    <a href="{% url 'careers-index' %}" class="button moreInfoBtn">More Information</a>
+                    <a href="{% url 'createApplication-index' %}" class="button applyBtn">Apply</a>
                 </div>
             </div>
         </div>
@@ -83,16 +63,8 @@
                 eligendi est? Ab praesentium repellat inventore nam culpa, sequi
                 officia minus.
                 <div class="jobButtons">
-                    <a
-                        href="{% url 'careers-index' %}"
-                        class="button moreInfoBtn"
-                        >More Information</a
-                    >
-                    <a
-                        href="{% url 'createApplication-index' %}"
-                        class="button applyBtn"
-                        >Apply</a
-                    >
+                    <a href="{% url 'careers-index' %}" class="button moreInfoBtn">More Information</a>
+                    <a href="{% url 'signup' %}" class="button applyBtn">Apply</a>
                 </div>
             </div>
         </div>

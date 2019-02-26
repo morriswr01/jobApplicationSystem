@@ -4,19 +4,19 @@ from django.contrib.auth import login, logout, authenticate
 from django.shortcuts import render, redirect
 from .forms import UserSignUpForm
 
-# def signUp(request):
-#     if request.method == 'POST':
-#         form = UserSignUpForm(request.POST)
-#         if form.is_valid():
-#             form.save()
-#             email = form.cleaned_data.get('email')
-#             raw_password = form.cleaned_data.get('password1')
-#             user = authenticate(email=email, password=raw_password)
-#             login(request, user)
-#             return redirect('dashboard')
-#         else:
-#             return render(request, 'loginApp/signup.html', {'form': form})
-#     return render(request, 'loginApp/signup.html')
+def signUp(request):
+    if request.method == 'POST':
+        form = UserSignUpForm(request.POST)
+        if form.is_valid():
+            form.save()
+            email = form.cleaned_data.get('email')
+            raw_password = form.cleaned_data.get('password1')
+            user = authenticate(email=email, password=raw_password)
+            login(request, user)
+            return redirect('dashboard')
+        else:
+            return render(request, 'models/signUp.html', {'duplicateEmail': True})
+    return render(request, 'models/signup.html')
 
 # Create your views here.
 def loginUser(request):

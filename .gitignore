@@ -4,3 +4,5 @@ dbManualConnection
 *.css
 .vscode
 pipfile
+useless/
+jobApplicationProject/db.sqlite3

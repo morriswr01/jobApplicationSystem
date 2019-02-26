@@ -86,7 +86,7 @@ class Application (models.Model):
 class Position (models.Model):
     positionName = models.CharField(max_length = 20)
     positionDescription = models.CharField(max_length = 50)
-    openDate = models.DateField()
+    positionOpen = models.BooleanField(default=False)
     deadlineDate = models.DateField()
     applicationID = models.ManyToManyField(Application, through = 'Applications_Positions')
 
@@ -97,8 +97,8 @@ class Applications_Positions (models.Model):
     status = models.CharField (max_length = 10)
 
 class ALevel (models.Model):
-    subject = models.CharField(max_length = 30)
     applicationID = models.ManyToManyField(Application,through = 'Applications_ALevel')
+    subject = models.CharField(max_length = 30)
 
 class Applications_ALevel (models.Model):
     applicationID = models.ForeignKey(Application, on_delete = models.CASCADE)
@@ -106,8 +106,8 @@ class Applications_ALevel (models.Model):
     grade = models.IntegerField()
 
 class Language (models.Model):
-    subject = models.CharField(max_length = 30)
     applicationID = models.ManyToManyField(Application, through = 'Applications_Languages')
+    subject = models.CharField(max_length = 30)
 
 class Applications_Languages (models.Model):
     applicationID = models.ForeignKey(Application, on_delete = models.CASCADE)
@@ -151,3 +151,4 @@ class Applications_Hobbies (models.Model):
     applicationID = models.ForeignKey(Application, on_delete = models.CASCADE)
     hobbyID = models.ForeignKey(Hobby, on_delete = models.CASCADE)
     interest = models.IntegerField()
+

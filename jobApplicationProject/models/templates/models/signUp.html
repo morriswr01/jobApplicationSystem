@@ -1,0 +1,53 @@
+{% extends 'preLoginLayout.html' %}
+
+{% block additionalCss %}
+{% load sass_tags%}
+<link rel="stylesheet" href="{% sass_src 'sass/createApplication.scss' %}" type="text/css" />
+{% endblock %}
+
+{% block content %}
+
+<div class="header">
+    <h1>Create Login</h1>
+    <div class="application-form">
+        <form action="{% url 'signup' %}" method="POST">
+            {% csrf_token %}
+            {% if duplicateEmail %}
+            <p>
+                Email is already registered
+            </p>
+            {% endif %}
+            <div class="basicInfo">
+                <!-- Email -->
+                <div class="application-form-group">
+                    <label for="newEmail">Email</label>
+                    <input type="email" name="email" id="newEmail" placeholder="Email" required="required" \ />
+                </div>
+                <!-- Password -->
+                <div class="application-form-group">
+                    <label for="password">Password</label>
+                    <input type="password" name="password1" id="newPassword" placeholder="Password" required="required"
+                        \ />
+                </div>
+                <!-- Repeat Password -->
+                <div class="application-form-group">
+                    <label for="repeatPassword">Repeat Password</label>
+                    <input type="password" name="password2" id="repeatPassword" placeholder="Repeat Password" required="required"
+                        \ />
+                </div>
+                <!-- Full Name -->
+                <div class="application-form-group">
+                    <label>Full Name</label>
+                    <div class="twoColumnFields">
+                        <input type="text" name="fName" id="fName" placeholder="First Name" required="required" />
+                        <input type="text" name="lName" id="lName" placeholder="Last Name" required="required" />
+                    </div>
+                </div>
+                <button type="submit" class="button submitBtn formSubmit">
+                    Next
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

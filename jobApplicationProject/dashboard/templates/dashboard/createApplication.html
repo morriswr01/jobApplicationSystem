@@ -1,4 +1,4 @@
-{% extends 'preLoginLayout.html' %}
+{% extends 'createApplicationTemplate.html' %}
 
 {% block additionalCss %}
 {% load sass_tags%}
@@ -7,7 +7,8 @@
 
 {% block content %}
 <div class="header">
-    <h1>Your Applicaton</h1>
+    <h1>Welcome, {{ user.fName }} {{ user.lName }}</h1>
+    <h2>Please Complete Your Application Applicaton</h2>
     <!-- <div class="progressBarContainer">
         <ul class="progressBar">
             <li class="active">Basic Info</li>
@@ -19,33 +20,9 @@
 
     <!-- Applicants basic information application form -->
     <div class="application-form">
-        <form action="somewhere.html">
+        <form action="" method="POST">
+            {% csrf_token %}
             <div class="basicInfo">
-                <!-- Email -->
-                <div class="application-form-group">
-                    <label for="newEmail">Email</label>
-                    <input type="email" name="newEmail" id="newEmail" placeholder="Email" required="required" \ />
-                </div>
-                <!-- Password -->
-                <div class="application-form-group">
-                    <label for="password">Password</label>
-                    <input type="password" name="password" id="password" placeholder="Password" required="required" \ />
-                </div>
-                <!-- Repeat Password -->
-                <div class="application-form-group">
-                    <label for="repeatPassword">Repeat Password</label>
-                    <input type="password" name="repeatPassword" id="repeatPassword" placeholder="Repeat Password"
-                        required="required" \ />
-                </div>
-                <!-- Full Name -->
-                <div class="application-form-group">
-                    <label for="name[]">Full Name</label>
-                    <div class="twoColumnFields">
-                        <input type="text" name="name[first]" id="fName" placeholder="First Name" required="required" />
-                        <input type="text" name="name[last]" id="lName" placeholder="Last Name" required="required" />
-                    </div>
-                </div>
-                <!-- Degree -->
                 <div class="application-form-group">
                     <label for="degreeType">Degree</label>
                     <select name="degreeType" id="degreeType" class="selectBox">
@@ -66,14 +43,14 @@
                     </select>
                 </div>
                 <!-- Uni Attended -->
-                <div class="application-form-group">
+                <!-- <div class="application-form-group">
                     <label for="universityAttended">University Attended</label>
                     <select name="universityAttended" id="universityAttended" class="selectBox">
                         <option default value="">Select University Attended</option>
                     </select>
-                </div>
+                </div> -->
                 <!-- A levels -->
-                <div class="application-form-group">
+                <!-- <div class="application-form-group">
                     <label>A-Levels</label>
                     <div id="a-levels">
                     </div>
@@ -113,9 +90,9 @@
                         </select>
                         <a class="add-input button submitBtn">Add</a>
                     </div>
-                </div>
+                </div> -->
                 <!-- Previous Employment -->
-                <div class="application-form-group">
+                <!-- <div class="application-form-group">
                     <label for="previousEmployment[]">Previous Employment</label>
                     <div class="prevEmploymentDetails">
                     </div>
@@ -126,7 +103,6 @@
                     <div class="threeColumnFields employmentLength">
                         <select name="previousEmployment[lengthYears]" id="years">
                             <option default value="">Length(Years)</option>
-                            <!-- populated by main.js -->
                         </select>
                         <select name="previousEmployment[lengthMonths]" id="months">
                             <option default value="">Length(Months)</option>
@@ -145,9 +121,9 @@
                         </select>
                         <a class="add-prev-employment button submitBtn">Add</a>
                     </div>
-                </div>
+                </div> -->
                 <!-- Programming Languages -->
-                <div class="application-form-group">
+                <!-- <div class="application-form-group">
                     <label>Programming Languages</label>
                     <div id="progLanguages">
                     </div>
@@ -170,9 +146,9 @@
                         </select>
                         <a class="add-input button submitBtn">Add</a>
                     </div>
-                </div>
+                </div> -->
                 <!-- Skills -->
-                <div class="application-form-group">
+                <!-- <div class="application-form-group">
                     <label for="skills[]">Skills</label>
                     <div id="skills">
 
@@ -194,9 +170,9 @@
                         </select>
                         <a class="add-input button submitBtn">Add</a>
                     </div>
-                </div>
+                </div> -->
                 <!-- Hobbies -->
-                <div class="application-form-group">
+                <!-- <div class="application-form-group">
                     <label for="hobbies[]">Hobbies</label>
                     <div id="hobbies">
                     </div>
@@ -217,9 +193,9 @@
                         </select>
                         <a class="add-input button submitBtn">Add</a>
                     </div>
-                </div>
+                </div> -->
                 <button type="submit" class="button submitBtn formSubmit">
-                    Next
+                    Complete
                 </button>
             </div>
         </form>
