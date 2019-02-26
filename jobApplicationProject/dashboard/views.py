@@ -1,0 +1,16 @@
+# -*- coding: utf-8 -*-
+from __future__ import unicode_literals
+
+from django.shortcuts import render, redirect
+
+# Create your views here.
+def dashboard(request):
+    user = request.user
+    if user.is_authenticated:
+        if user.admin:
+            return render(request, 'dashboard/admin.html')
+        else:
+            return render(request, 'dashboard/applicant.html')
+
+    else: 
+        return redirect('home-index')

@@ -52,15 +52,21 @@
             </header>
             <div class="login-form-content">
                 <!-- Login form inputs -->
-                <form action="{% url 'applicantDashboard-index' %}">
+                <form action="{% url 'login' %}" method="POST">
+                    {% csrf_token %}
+                    {% if errors %}
+                    <p>
+                        Email or Password Incorrect
+                    </p>
+                    {% endif %}
                     <div class="login-form-group">
                         <label for="email">Email</label>
-                        <input type="email" name="email" id="email" placeholder="Email" required="required" \ />
+                        <input type="email" name="email" id="applicantEmail" placeholder="Email" required="required" \ />
                     </div>
                     <div class="login-form-group">
                         <label for="applicantPassword">Password</label>
-                        <input type="password" name="applicantPassword" id="applicantPassword" placeholder="Password"
-                            required="required" \ />
+                        <input type="password" name="password" id="applicantPassword" placeholder="Password" required="required"
+                            \ />
                     </div>
                     <!-- Login Button -->
                     <div class="login-form-group">
@@ -86,16 +92,22 @@
                 <h1>Admin Login</h1>
             </header>
             <div class="login-form-content">
-                <form action="#">
+                <form action="{% url 'login' %}" method="POST">
+                    {% csrf_token %}
+                    {% if errors %}
+                    <p>
+                        Email or Password Incorrect
+                    </p>
+                    {% endif %}
                     <!-- Login Form inputs -->
                     <div class="login-form-group">
                         <label for="employeeEmail">Employee Email</label>
-                        <input type="email" name="employeeEmail" id="employeeEmail" placeholder="Employee Email"
-                            required="required" \ />
+                        <input type="email" name="email" id="employeeEmail" placeholder="Employee Email" required="required"
+                            \ />
                     </div>
                     <div class="login-form-group">
                         <label for="adminPassword">Password</label>
-                        <input type="password" name="adminPassword" id="adminPassword" placeholder="Password" required="required"
+                        <input type="password" name="password" id="adminPassword" placeholder="Password" required="required"
                             \ />
                     </div>
                     <!-- Login button -->
@@ -107,7 +119,7 @@
                     <!-- User not applied before -->
                     <div class="login-form-group no-login">
                         <p>Are you a DB Employee but don't have a login?</p>
-                        <a href="#careers" class="button">Request Access</a>
+                        <a href="" class="button">Request Access</a>
                     </div>
                 </form>
             </div>

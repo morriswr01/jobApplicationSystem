@@ -1,0 +1,18 @@
+<!-- templates/home.html-->
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<h1>General Dashboard</h1>
+{% if user.is_authenticated %}
+
+Hi {{ user.fName }}!
+
+{% if user.admin %}
+You are an admin!!!!
+{% endif %}
+<!-- dashboards -->
+<p><a href="{% url 'logout' %}">logout</a></p>
+{% endif %}
+{% endblock %}

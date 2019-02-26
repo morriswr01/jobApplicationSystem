@@ -18,8 +18,10 @@ from django.contrib import admin
 
 urlpatterns = [
     url('home/', include('home.urls')),
-    url('careers/', include('careers.urls')),
     url('createApplication/', include('createApplication.urls')),
-    url('applicantDashboard/', include('applicantDashboard.urls')),
     url('admin/', admin.site.urls),
+    url('dashboard/', include('dashboard.urls')),
+    url('', include('models.urls')),
+    # url('applicantDashboard/', include('applicantDashboard.urls')),
+    # url('careers/', include('careers.urls')),
 ]
