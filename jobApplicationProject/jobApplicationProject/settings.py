@@ -34,7 +34,7 @@ INSTALLED_APPS = [
     'home',
     'createApplication',
     'dashboard',
-    'models',
+    'controller',
     'sass_processor',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -81,23 +81,23 @@ WSGI_APPLICATION = 'jobApplicationProject.wsgi.application'
 # AWS MYSQL CONNECTION WILL BE PUT HERE.... -Will
 
 # UNCOMMENT WHEN YOU WANT TO CONNECT TO THE DATABASE
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'jobApplicationProjectDB',
-        'USER': 'morriswr01',
-        'PASSWORD': 'cs261SoftwareEngineering',
-        'HOST': 'jobapplicationprojectdb.cdsve33siynl.us-east-2.rds.amazonaws.com',
-        'PORT': '3306'
-    }
-}
-
 # DATABASES = {
 #     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'jobApplicationProjectDB',
+#         'USER': 'morriswr01',
+#         'PASSWORD': 'cs261SoftwareEngineering',
+#         'HOST': 'jobapplicationprojectdb.cdsve33siynl.us-east-2.rds.amazonaws.com',
+#         'PORT': '3306'
 #     }
 # }
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    }
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
@@ -117,7 +117,7 @@ AUTH_PASSWORD_VALIDATORS = [
     # },
 ]
 
-AUTH_USER_MODEL = 'models.User'
+AUTH_USER_MODEL = 'controller.User'
 
 
 # Internationalization

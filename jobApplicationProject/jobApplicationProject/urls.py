@@ -21,7 +21,5 @@ urlpatterns = [
     url('createApplication/', include('createApplication.urls')),
     url('admin/', admin.site.urls),
     url('dashboard/', include('dashboard.urls')),
-    url('', include('models.urls')),
-    # url('applicantDashboard/', include('applicantDashboard.urls')),
-    # url('careers/', include('careers.urls')),
+    url('', include('controller.urls')),
 ]

@@ -15,8 +15,8 @@ def signUp(request):
             login(request, user)
             return redirect('dashboard')
         else:
-            return render(request, 'models/signUp.html', {'duplicateEmail': True})
-    return render(request, 'models/signup.html')
+            return render(request, 'controller/signUp.html', {'duplicateEmail': True})
+    return render(request, 'controller/signup.html')
 
 # Create your views here.
 def loginUser(request):

@@ -5,69 +5,25 @@
 {% endblock %}
 {% block content %}
 <!-- Careers page content -->
+
 <div class="header">
     <h1>Our Open Positions</h1>
     <div class="jobListAccordion">
+        {% for position in openPositions %}
         <div class="jobBlock">
             <button class="selectJob">
-                <span class="jobTitle">Engineer - Full Stack</span>
-                <span class="jobDeadline">Open until 23/03</span>
+                <span class="jobTitle">{{ position.fields.positionName }}</span>
+                <span class="jobDeadline">Open Until: {{ position.fields.deadlineDate }}</span>
             </button>
             <div class="jobDesc">
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                Quaeexcepturi quam aliquam magnam blanditiis voluptates alias
-                quas nihil ipsam? Reiciendis veritatis voluptates dolorem quidem
-                odio sit quod possimus qui porro?Lorem ipsum dolor, sit amet
-                consectetur adipisicing elit. Tenetur praesentium, in rem
-                aperiam porro quisquam, voluptatibus voluptas fugiat id,
-                eligendi est? Ab praesentium repellat inventore nam culpa, sequi
-                officia minus.
+                {{ position.fields.positionDescription }}
                 <div class="jobButtons">
-                    <a href="{% url 'careers-index' %}" class="button moreInfoBtn">More Information</a>
+                    <!-- <a href="{% url 'careers-index' %}" class="button moreInfoBtn">More Information</a> -->
                     <a href="{% url 'signup' %}" class="button applyBtn">Apply</a>
                 </div>
             </div>
         </div>
-        <div class="jobBlock">
-            <button class="selectJob">
-                <span class="jobTitle">Engineer - DevOps</span>
-                <span class="jobDeadline">Open until 25/04</span>
-            </button>
-            <div class="jobDesc">
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                Quaeexcepturi quam aliquam magnam blanditiis voluptates alias
-                quas nihil ipsam? Reiciendis veritatis voluptates dolorem quidem
-                odio sit quod possimus qui porro?Lorem ipsum dolor, sit amet
-                consectetur adipisicing elit. Tenetur praesentium, in rem
-                aperiam porro quisquam, voluptatibus voluptas fugiat id,
-                eligendi est? Ab praesentium repellat inventore nam culpa, sequi
-                officia minus.
-                <div class="jobButtons">
-                    <a href="{% url 'careers-index' %}" class="button moreInfoBtn">More Information</a>
-                    <a href="{% url 'createApplication-index' %}" class="button applyBtn">Apply</a>
-                </div>
-            </div>
-        </div>
-        <div class="jobBlock">
-            <button class="selectJob">
-                <span class="jobTitle">Engineer - Java</span>
-                <span class="jobDeadline">Open until 25/05</span>
-            </button>
-            <div class="jobDesc">
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                Quaeexcepturi quam aliquam magnam blanditiis voluptates alias
-                quas nihil ipsam? Reiciendis veritatis voluptates dolorem quidem
-                odio sit quod possimus qui porro?Lorem ipsum dolor, sit amet
-                consectetur adipisicing elit. Tenetur praesentium, in rem
-                aperiam porro quisquam, voluptatibus voluptas fugiat id,
-                eligendi est? Ab praesentium repellat inventore nam culpa, sequi
-                officia minus.
-                <div class="jobButtons">
-                    <a href="{% url 'careers-index' %}" class="button moreInfoBtn">More Information</a>
-                    <a href="{% url 'signup' %}" class="button applyBtn">Apply</a>
-                </div>
-            </div>
-        </div>
+        {% endfor %}
     </div>
 </div>
 {% endblock %}
