@@ -78,77 +78,64 @@ class User(AbstractBaseUser, PermissionsMixin):
     def get_short_name(self):
         return self.email
 
-class Application (models.Model):
-    completed =  models.BooleanField()
-    dateSubmitted = models.DateField(auto_now_add= True)
-    userID = models.ForeignKey(User, on_delete = models.CASCADE)
-
-class Position (models.Model):
+class Positions (models.Model):
     positionName = models.CharField(max_length = 20)
-    positionDescription = models.CharField(max_length = 50)
+    positionDescription = models.TextField()
     positionOpen = models.BooleanField(default=False)
     deadlineDate = models.DateField()
-    applicationID = models.ManyToManyField(Application, through = 'Applications_Positions')
 
-class Applications_Positions (models.Model):
-    applicationID = models.ForeignKey(Application, on_delete = models.CASCADE)
-    positionID = models.ForeignKey(Position, on_delete = models.CASCADE)
+
+class Application(models.Model):
+    completed =  models.BooleanField()
+    dateSubmitted = models.DateField(auto_now_add= True)
+    submitted = 'submitted'
+    interview = 'interview'
+    rejected = 'rejected'
+    accepted = 'accepted'
+    statusChoices = (
+        (submitted, 'Submitted'),
+        (interview, 'Interview'),
+        (rejected, 'Rejected'),
+        (accepted, 'Accepted')
+    )
+    status = models.CharField(
+        max_length = 10,
+        choices = statusChoices,
+        default = 'submitted',   
+    )
     feedback = models.CharField(max_length = 50)
-    status = models.CharField (max_length = 10)
+    userID = models.OneToOneField(User, on_delete = models.DO_NOTHING)
+    positionID = models.OneToOneField(Positions, on_delete = models.DO_NOTHING)
 
-class ALevel (models.Model):
-    applicationID = models.ManyToManyField(Application,through = 'Applications_ALevel')
+class PreviousEmployment(models.Model):
+    companyName = models.CharField(max_length = 30)
+    jobTitle = models.CharField(max_length = 30)
+    lengthOfEmployment = models.DurationField()
+    applicationID = models.ForeignKey(Application, on_delete = models.DO_NOTHING)
+
+class Degree(models.Model):
+    degreeTitle = models.CharField(max_length = 50)
+    degreeGrade = models.CharField(max_length = 50)
+    degreeType = models.CharField(max_length = 50)
+    universityName = models.CharField(max_length = 50)
+    applicationID = models.ForeignKey(Application, on_delete = models.DO_NOTHING)
+
+class ALevels(models.Model):
     subject = models.CharField(max_length = 30)
+    grade = models.CharField(max_length = 2)
+    applicationID = models.ForeignKey(Application, on_delete = models.DO_NOTHING)
 
-class Applications_ALevel (models.Model):
-    applicationID = models.ForeignKey(Application, on_delete = models.CASCADE)
-    alevelID = models.ForeignKey(ALevel, on_delete = models.CASCADE)
-    grade = models.IntegerField()
-
-class Language (models.Model):
-    applicationID = models.ManyToManyField(Application, through = 'Applications_Languages')
-    subject = models.CharField(max_length = 30)
-
-class Applications_Languages (models.Model):
-    applicationID = models.ForeignKey(Application, on_delete = models.CASCADE)
-    languageID = models.ForeignKey(Language, on_delete = models.CASCADE)
-    expertise = models.IntegerField()
-
-class Company (models.Model):
-    companyName = models.CharField (max_length = 30)
-    applicationID = models.ManyToManyField(Application,through = 'Applications_Employment')
-
-class Applications_Employment (models.Model):
-    applicationID = models.ForeignKey(Application, on_delete = models.CASCADE)
-    companyID = models.ForeignKey(Company, on_delete = models.CASCADE)
-    position = models.CharField (max_length = 30)
-    lengthOfEmployment = models.CharField (max_length = 30)
-
-class University (models.Model):
-    name = models.CharField(max_length = 50)
-    applicationID = models.ManyToManyField(Application,through = 'Applications_Universities')
-
-class Applications_Universities (models.Model):
-    applicationID = models.ForeignKey(Application, on_delete = models.CASCADE)
-    universityID = models.ForeignKey(University, on_delete = models.CASCADE)
-    qualification = models.CharField(max_length = 30)
-    level = models.CharField(max_length = 30)
-
-class Skill (models.Model):
-    skillName = models.CharField(max_length = 30)
-    applicationID = models.ManyToManyField (Application, through = 'Applications_Skills')
-
-class Applications_Skills (models.Model):
-    applicationID = models.ForeignKey(Application, on_delete = models.CASCADE)
-    skillID = models.ForeignKey(Skill, on_delete = models.CASCADE)
-    expertise = models.IntegerField()
-
-class Hobby (models.Model):
+class ProgrammingLanguages(models.Model):
     name = models.CharField(max_length = 30)
-    applicationID = models.ManyToManyField(Application,through = 'Applications_Hobbies')
+    proficiency = models.IntegerField()
+    applicationID = models.ForeignKey(Application, on_delete = models.DO_NOTHING)
 
-class Applications_Hobbies (models.Model):
-    applicationID = models.ForeignKey(Application, on_delete = models.CASCADE)
-    hobbyID = models.ForeignKey(Hobby, on_delete = models.CASCADE)
-    interest = models.IntegerField()
+class Skills(models.Model):
+    name = models.CharField(max_length = 30)
+    expertise = models.IntegerField()
+    applicationID = models.ForeignKey(Application, on_delete = models.DO_NOTHING)
 
+class Hobbies(models.Model):
+    name = models.CharField(max_length = 30)
+    expertise = models.IntegerField()
+    applicationID = models.ForeignKey(Application, on_delete = models.DO_NOTHING)
