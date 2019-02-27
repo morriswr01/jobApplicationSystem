@@ -84,7 +84,6 @@ class Positions (models.Model):
     positionOpen = models.BooleanField(default=False)
     deadlineDate = models.DateField()
 
-
 class Application(models.Model):
     completed =  models.BooleanField()
     dateSubmitted = models.DateField(auto_now_add= True)
