@@ -32,7 +32,6 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'home',
-    'createApplication',
     'dashboard',
     'controller',
     'sass_processor',
