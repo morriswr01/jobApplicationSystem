@@ -76,7 +76,7 @@ $(document).ready(function () {
 
         if (nameInput.val() != "" && gradeOrProficiency.val() != "") {
             $(appendDiv).append('<div class="threeColumnFields"><input type="text" name="' + fieldName + '[name]" value="' + nameInput.val() + '" readonly="readonly" /><input type="text" name="' + fieldName + '[proficiency]" value="' + gradeOrProficiency.val() + '" readonly="readonly" /><i class="remove material-icons">close</i></div>');
-            $('select').prop('selectedIndex', 0);
+            $('.resetSelect').prop('selectedIndex', 0);
             nameInput.val("");
             gradeOrProficiency.val("");
         }
@@ -94,7 +94,7 @@ $(document).ready(function () {
             console.log('these are not empty');
             $('.prevEmploymentDetails').append('<div class="company"><input type="text" name="previousEmployment[companyName]" readonly="readonly" value="' + nameInput.val() + '" /><input type="text" name="previousEmployment[postName]" readonly="readonly" value="' + postName.val() + '" /> <div class="threeColumnFields employmentLength"> <input type="text" name="previousEmployment[lengthYears]" readonly="readonly" value="' + lengthYears.val() + '" /><input type="text" name="previousEmployment[lengthMonths]" readonly="readonly" value="' + lengthMonths.val() + '" /><i class="remove-employment material-icons">close</i></div>');
 
-            $('select').prop('selectedIndex', 0);
+            $('.resetSelect').prop('selectedIndex', 0);
             nameInput.val("");
             postName.val("");
         }

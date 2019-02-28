@@ -15,6 +15,7 @@
         <form action="" method="POST">
             {% csrf_token %}
             <div class="basicInfo">
+                <!-- Degree -->
                 <div class="application-form-group">
                     <label for="degreeType">Degree</label>
                     <select name="degreeType" id="degreeType" class="selectBox">
@@ -44,7 +45,7 @@
                     <div id="a-levels">
                     </div>
                     <div class="threeColumnFields">
-                        <select name="aLevelSubject" id="aLevelSubject">
+                        <select class="resetSelect" name="aLevelSubject" id="aLevelSubject">
                             <option default value="">Subject</option>
                             <option value="Art">Art</option>
                             <option value="Accounting">Accounting</option>
@@ -67,7 +68,7 @@
                             <option value="Politics">Politics</option>
                             <option value="Spanish">Spanish</option>
                         </select>
-                        <select name="aLevelGrade" id="aLevelGrade">
+                        <select class="resetSelect" name="aLevelGrade" id="aLevelGrade">
                             <option default value="">Grade</option>
                             <option value="A*">A*</option>
                             <option value="A">A</option>
@@ -90,10 +91,10 @@
                     <input type="text" name="previousEmployment[postName]" id="postName" placeholder="Post Name"
                         required="required" />
                     <div class="threeColumnFields employmentLength">
-                        <select name="previousEmployment[lengthYears]" id="years">
+                        <select class="resetSelect" name="previousEmployment[lengthYears]" id="years">
                             <option default value="">Length(Years)</option>
                         </select>
-                        <select name="previousEmployment[lengthMonths]" id="months">
+                        <select class="resetSelect" name="previousEmployment[lengthMonths]" id="months">
                             <option default value="">Length(Months)</option>
                             <option value="0">0 months</option>
                             <option value="1">1 months</option>
@@ -117,10 +118,10 @@
                     <div id="progLanguages">
                     </div>
                     <div class="threeColumnFields">
-                        <select name="progLangName" id="progLangName">
+                        <select class="resetSelect" name="progLangName" id="progLangName">
                             <option default value="">Programming Language</option>
                         </select>
-                        <select name="proficiency" class="progLangProficiency">
+                        <select class="resetSelect" name="proficiency" class="progLangProficiency">
                             <option default value="">Proficiency</option>
                             <option value="1">1</option>
                             <option value="2">2</option>
@@ -143,8 +144,8 @@
 
                     </div>
                     <div class="threeColumnFields">
-                        <input type="text" name="skills[]" id="skillName" placeholder="Skill" />
-                        <select name="skillProficiency" class="skillProficiency">
+                        <input class="resetSelect" type="text" name="skills[]" id="skillName" placeholder="Skill" />
+                        <select class="resetSelect" name="skillProficiency" class="skillProficiency">
                             <option default value="">Proficiency</option>
                             <option value="1">1</option>
                             <option value="2">2</option>
@@ -166,8 +167,8 @@
                     <div id="hobbies">
                     </div>
                     <div class="threeColumnFields">
-                        <input type="text" name="hobbies[]" id="hobbyName" placeholder="Hobby" />
-                        <select name="hobbyProficiency" class="hobbyProficiency">
+                        <input  type="text" name="hobbies[]" id="hobbyName" placeholder="Hobby" />
+                        <select class="resetSelect" name="hobbyProficiency" class="hobbyProficiency">
                             <option default value="">Proficiency</option>
                             <option value="1">1</option>
                             <option value="2">2</option>
