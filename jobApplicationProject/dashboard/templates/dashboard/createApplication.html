@@ -12,7 +12,7 @@
 
     <!-- Applicants basic information application form -->
     <div class="application-form">
-        <form action="" method="POST">
+        <form action="{% url 'submitApp' %}" method="POST">
             {% csrf_token %}
             <div class="basicInfo">
                 <!-- Degree -->
@@ -86,15 +86,15 @@
                     <label for="previousEmployment[]">Previous Employment</label>
                     <div class="prevEmploymentDetails">
                     </div>
-                    <input type="text" name="previousEmployment[companyName]" id="companyName" placeholder="Company Name"
-                        required="required" />
-                    <input type="text" name="previousEmployment[postName]" id="postName" placeholder="Post Name"
-                        required="required" />
+                    <input type="text" name="previousEmployment[]" id="companyName" placeholder="Company Name"
+                         />
+                    <input type="text" name="previousEmployment[]" id="postName" placeholder="Post Name"
+                         />
                     <div class="threeColumnFields employmentLength">
-                        <select class="resetSelect" name="previousEmployment[lengthYears]" id="years">
+                        <select class="resetSelect" name="previousEmployment[]" id="years">
                             <option default value="">Length(Years)</option>
                         </select>
-                        <select class="resetSelect" name="previousEmployment[lengthMonths]" id="months">
+                        <select class="resetSelect" name="previousEmployment[]" id="months">
                             <option default value="">Length(Months)</option>
                             <option value="0">0 months</option>
                             <option value="1">1 months</option>
