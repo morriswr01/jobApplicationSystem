@@ -36,11 +36,13 @@ def logoutUser(request):
     logout(request)
     return redirect('home-index')
 
-# def changePassword(request):
+def changePassword(request):
+    return
 #     currentPassword = request.POST['password']
 #     newPassword = request.POST['new-password']
 #     confirmPassword = request.POST['confirm-new-password']
 #     if newPassword == confirmPassword and
+
 def submitApp(request):
     user = request.user
     degreeType = request.POST['degreeType']
