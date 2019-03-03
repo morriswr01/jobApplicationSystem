@@ -72,7 +72,8 @@ def submitApp(request):
     applicationObj.save()
     applicationID = applicationObj.id
     user = User.objects.get(id = request.user.id)
-    user(hasApplied = True)
+    user.hasApplied = True
+    user.save()
     ############### DEGREE AND UNIVERSITIES ATTENDED ##############
     addUniDetails (applicationObj,applicationID,universityAttended,degreeTitle,degreeGrade)
     ############### A LEVELS ##############
