@@ -36,11 +36,16 @@ def logoutUser(request):
     logout(request)
     return redirect('home-index')
 
-# def changePassword(request):
-#     currentPassword = request.POST['password']
-#     newPassword = request.POST['new-password']
-#     confirmPassword = request.POST['confirm-new-password']
-#     if newPassword == confirmPassword and
+def changePassword(request):
+    currentPassword = request.POST['password']
+    newPassword = request.POST['new-password']
+    confirmPassword = request.POST['confirm-new-password']
+    if newPassword == confirmPassword and request.user.check_password(currentPassword):
+        user = User.objects.get(id = request.user.id)
+        user.set_password(newPassword)
+        user.save()
+        return redirect('dashboard')
+    return redirect('home')
 def submitApp(request):
     user = request.user
     degreeType = request.POST['degreeType']
@@ -59,24 +64,29 @@ def submitApp(request):
     skillProficiency = request.POST.getlist('skills[proficiency]')
     hobbiesName = request.POST.getlist('hobbies[name]')
     hobbyProficiency = request.POST.getlist('hobbies[proficiency]')
-    applicationObj = Application.objects.create(completed = 1,feedback = '',users = user)
+    print("PIZDA MASII")
+    positionID = request.GET.get('pid')
+    print(positionID)
+    position = Positions.objects.get(id = positionID)
+    applicationObj = Application.objects.create(completed = 1,feedback = '',users = user,position = position)
     applicationObj.save()
     applicationID = applicationObj.id
-    print(universityAttended)
+    user = User.objects.get(id = request.user.id)
+    user(hasApplied = True)
     ############### DEGREE AND UNIVERSITIES ATTENDED ##############
     addUniDetails (applicationObj,applicationID,universityAttended,degreeTitle,degreeGrade)
-    # ############### A LEVELS ##############
-    # addALevelDetails (applicationObj,applicationID,alevelsName,alevelsProficiency)
-    # ############### PREVIOUS EMPLOYMENT ##############
-    # addpreviousEmploymentDetails (applicationObj,applicationID,companyName,postName,yearsLength,monthsLength)
-    # ################ PROGRAMMING LANGUAGES ############
-    # addProgrammingLanguagesDetails (applicationObj,applicationID,progLangName,progLangproficiency)
-    # ################  SKILLS  ##############
-    # addSkillsDetails(applicationObj,applicationID,skillsName,skillProficiency)
-    #
-    # ################ HOBBIES ###############
-    # addHobbiesDetails (applicationObj,applicationID,hobbiesName,hobbyProficiency)
-    #
+    ############### A LEVELS ##############
+    addALevelDetails (applicationObj,applicationID,alevelsName,alevelsProficiency)
+    ############### PREVIOUS EMPLOYMENT ##############
+    addpreviousEmploymentDetails (applicationObj,applicationID,companyName,postName,yearsLength,monthsLength)
+    ################ PROGRAMMING LANGUAGES ############
+    addProgrammingLanguagesDetails (applicationObj,applicationID,progLangName,progLangproficiency)
+    ################  SKILLS  ##############
+    addSkillsDetails(applicationObj,applicationID,skillsName,skillProficiency)
+
+    ################ HOBBIES ###############
+    addHobbiesDetails (applicationObj,applicationID,hobbiesName,hobbyProficiency)
+
 
 
     return redirect('dashboard')

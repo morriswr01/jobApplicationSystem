@@ -77,6 +77,11 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     def get_short_name(self):
         return self.email
+class Positions (models.Model):
+    positionName = models.CharField(max_length = 20)
+    positionDescription = models.TextField()
+    positionOpen = models.BooleanField(default=False)
+    deadlineDate = models.DateField()
 
 class Application (models.Model):
     completed =  models.BooleanField()
@@ -98,6 +103,7 @@ class Application (models.Model):
     )
     feedback = models.CharField(max_length = 50)
     users = models.ForeignKey(User,on_delete = models.CASCADE)
+    position = models.ForeignKey(Positions,on_delete = models.CASCADE)
 
 class Hobbies (models.Model):
     name = models.CharField(max_length = 30)
@@ -108,19 +114,6 @@ class Applications_Hobbies (models.Model):
     hobbyID = models.ForeignKey(Hobbies, on_delete = models.CASCADE)
     interest = models.IntegerField()
 
-
-
-class Positions (models.Model):
-    positionName = models.CharField(max_length = 20)
-    positionDescription = models.TextField()
-    positionOpen = models.BooleanField(default=False)
-    deadlineDate = models.DateField()
-    applicationID = models.ManyToManyField(Application, through = 'Applications_Positions')
-
-class Applications_Positions (models.Model):
-    applicationID = models.ForeignKey(Application, on_delete = models.CASCADE)
-    positionID = models.ForeignKey(Positions, on_delete = models.CASCADE)
-    status = models.CharField (max_length = 10)
 
 class ALevels (models.Model):
     subject = models.CharField(max_length = 30)

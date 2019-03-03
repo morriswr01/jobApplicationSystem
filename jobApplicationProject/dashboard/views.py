@@ -1,11 +1,14 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
-
+from django.core import serializers
 from django.shortcuts import render, redirect
+from controller.models import Positions
 
 # Create your views here.
 def dashboard(request):
     user = request.user
+    positionID = request.GET.get('pid')
+    print(positionID)
     if user.is_authenticated:
         if user.admin:
             return render(request, 'dashboard/admin.html')
@@ -13,7 +16,11 @@ def dashboard(request):
             if user.hasApplied:
                 return render(request, 'dashboard/applicant.html')
             else:
-                return render(request, 'dashboard/createApplication.html')
+                if positionID is not None:
+                    return render(request, 'dashboard/createApplication.html')
+                else:
+                        openPositions = serializers.serialize( "python", Positions.objects.filter(positionOpen = True) )
+                        return render(request, 'home/careers.html', {'openPositions': openPositions})
 
-    else: 
+    else:
         return redirect('home-index')

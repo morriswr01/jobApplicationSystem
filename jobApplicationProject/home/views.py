@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.core import serializers
 from controller.models import Positions
 
@@ -11,4 +11,5 @@ def home (request):
 
 def careers (request):
     openPositions = serializers.serialize( "python", Positions.objects.filter(positionOpen = True) )
+    return redirect('dashboard')
     return render(request, 'home/careers.html', {'openPositions': openPositions})

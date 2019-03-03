@@ -12,7 +12,7 @@
 
     <!-- Applicants basic information application form -->
     <div class="application-form">
-        <form action="{% url 'submitApp' %}" method="POST">
+        <form action="{% url 'submitApp' %}?pid={{request.GET.pid}}" method="POST">
             {% csrf_token %}
             <div class="basicInfo">
                 <!-- Degree -->

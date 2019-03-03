@@ -19,7 +19,7 @@
                 {{ position.fields.positionDescription }}
                 <div class="jobButtons">
                     <!-- <a href="{% url 'careers-index' %}" class="button moreInfoBtn">More Information</a> -->
-                    <a href="{% url 'signup' %}" class="button applyBtn">Apply</a>
+                    <a href="{% url 'dashboard'%}?pid={{position.pk}}" class="button applyBtn">Apply</a>
                 </div>
             </div>
         </div>
