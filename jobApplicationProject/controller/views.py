@@ -65,24 +65,24 @@ def submitApp(request):
     applicationObj.save()
     applicationID = applicationObj.id
     print(universityAttended)
-    ############### DEGREE AND UNIVERSITIES ATTENDED ##############
+    # DEGREE AND UNIVERSITIES ATTENDED
     addUniDetails (applicationObj,applicationID,universityAttended,degreeTitle,degreeGrade)
-    # ############### A LEVELS ##############
-    # addALevelDetails (applicationObj,applicationID,alevelsName,alevelsProficiency)
-    # ############### PREVIOUS EMPLOYMENT ##############
-    # addpreviousEmploymentDetails (applicationObj,applicationID,companyName,postName,yearsLength,monthsLength)
-    # ################ PROGRAMMING LANGUAGES ############
-    # addProgrammingLanguagesDetails (applicationObj,applicationID,progLangName,progLangproficiency)
-    # ################  SKILLS  ##############
-    # addSkillsDetails(applicationObj,applicationID,skillsName,skillProficiency)
-    #
-    # ################ HOBBIES ###############
-    # addHobbiesDetails (applicationObj,applicationID,hobbiesName,hobbyProficiency)
-    #
+    # A LEVELS
+    addALevelDetails (applicationObj,applicationID,alevelsName,alevelsProficiency)
+    # PREVIOUS EMPLOYMENT
+    addpreviousEmploymentDetails (applicationObj,applicationID,companyName,postName,yearsLength,monthsLength)
+    # PROGRAMMING LANGUAGES
+    addProgrammingLanguagesDetails (applicationObj,applicationID,progLangName,progLangproficiency)
+    # SKILLS
+    addSkillsDetails(applicationObj,applicationID,skillsName,skillProficiency)
+    # HOBBIES
+    addHobbiesDetails (applicationObj,applicationID,hobbiesName,hobbyProficiency)
 
-
+    user.hasApplied = True
+    user.save()
     return redirect('dashboard')
 
+# Helper functions for application creation
 def addALevelDetails (applicationObj,applicationID,alevelsName,alevelsProficiency):
     for i in range(len(alevelsName)):
         ALevelObj,created = ALevels.objects.get_or_create(subject = alevelsName[i])

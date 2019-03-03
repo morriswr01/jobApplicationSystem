@@ -108,8 +108,6 @@ class Applications_Hobbies (models.Model):
     hobbyID = models.ForeignKey(Hobbies, on_delete = models.CASCADE)
     interest = models.IntegerField()
 
-
-
 class Positions (models.Model):
     positionName = models.CharField(max_length = 20)
     positionDescription = models.TextField()
@@ -131,7 +129,6 @@ class Applications_ALevels (models.Model):
     alevelID = models.ForeignKey(ALevels, on_delete = models.CASCADE)
     grade = models.CharField(max_length = 2)
 
-
 class Languages (models.Model):
     subject = models.CharField(max_length = 30)
     applicationID = models.ManyToManyField(Application, through = 'Applications_Languages')
@@ -151,7 +148,6 @@ class Applications_Employments (models.Model):
     position = models.CharField (max_length = 30)
     lengthOfEmploymentYears = models.IntegerField()
     lengthOfEmploymentMonths = models.IntegerField()
-
 
 class Universities (models.Model):
     name = models.CharField(max_length = 50)
