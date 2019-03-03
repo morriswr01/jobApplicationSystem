@@ -78,8 +78,8 @@ def submitApp(request):
     # HOBBIES
     addHobbiesDetails (applicationObj,applicationID,hobbiesName,hobbyProficiency)
 
-    user.hasApplied = True
-    user.save()
+#     user.hasApplied = True
+#     user.save()
     return redirect('dashboard')
 
 # Helper functions for application creation

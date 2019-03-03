@@ -43,13 +43,11 @@
                     <h2 class="login-form-header">Change Password</h2>
                     <div class="login-form-group">
                         <label for="current-password">Current Password</label>
-                        <input type="password" name="password" id="current-password" placeholder="Password" required="required"
-                            \ />
+                        <input type="password" name="password" id="current-password" placeholder="Password" required="required" />
                         <label for="new-password">New Password</label>
                         <input type="password" name="new-password" id="new-password" placeholder="Password" required="required" />
                         <label for="confirm-new-password">Confirm New Password</label>
-                        <input type="password" name="confirm-new-password" id="confirm-new-pas  sword" placeholder="Password"
-                            required="required" />
+                        <input type="password" name="confirm-new-password" id="confirm-new-password" placeholder="Password" required="required" />
                         <button type="submit" class="button submitBtn formSubmit">
                             Change Password
                         </button>
@@ -59,14 +57,16 @@
         </div>
     </div>
 
-    {% block content %}
-    <!-- Body of the document -->
-    {% endblock %}
+    <div class="header">
+        {% block application %}
+        <!-- Body of the document -->
+        {% endblock %}
+        
+        {% block testing %}
+        <!-- Body of the document -->
+        {% endblock %}
+    </div>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <p>Thank you for your interest in our company</p>
-    </footer>
 
     {% load static %}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
