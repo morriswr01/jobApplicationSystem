@@ -47,7 +47,8 @@
                         <label for="new-password">New Password</label>
                         <input type="password" name="new-password" id="new-password" placeholder="Password" required="required" />
                         <label for="confirm-new-password">Confirm New Password</label>
-                        <input type="password" name="confirm-new-password" id="confirm-new-password" placeholder="Password" required="required" />
+                        <input type="password" name="confirm-new-password" id="confirm-new-password" placeholder="Password"
+                            required="required" />
                         <button type="submit" class="button submitBtn formSubmit">
                             Change Password
                         </button>
@@ -57,16 +58,22 @@
         </div>
     </div>
 
-    <div class="header">
-        {% block application %}
-        <!-- Body of the document -->
-        {% endblock %}
-        
-        {% block testing %}
-        <!-- Body of the document -->
-        {% endblock %}
-    </div>
 
+    <div class="header">
+        <h1>Welcome, {{ user.fName }} {{ user.lName }}</h1>
+        <h4>Please Complete Your Applicaton</h4>
+        <div class="application-form">
+            {% block application %}
+            <!-- Body of the document -->
+            {% endblock %}
+        </div>
+
+        <div class="application-testing">
+            {% block testing %}
+            <!-- Body of the document -->
+            {% endblock %}
+        </div>
+    </div>
 
     {% load static %}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
