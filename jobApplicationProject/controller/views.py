@@ -37,11 +37,15 @@ def logoutUser(request):
     return redirect('home-index')
 
 def changePassword(request):
-    return
-#     currentPassword = request.POST['password']
-#     newPassword = request.POST['new-password']
-#     confirmPassword = request.POST['confirm-new-password']
-#     if newPassword == confirmPassword and
+    currentPassword = request.POST['password']
+    newPassword = request.POST['new-password']
+    confirmPassword = request.POST['confirm-new-password']
+    if newPassword == confirmPassword and request.user.check_password(currentPassword):
+        user = User.objects.get(id = request.user.id)
+        user.set_password(newPassword)
+        user.save()
+        return redirect('dashboard')
+    return redirect('home')
 
 def submitApp(request):
     user = request.user
