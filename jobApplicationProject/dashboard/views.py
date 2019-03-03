@@ -14,6 +14,8 @@ def dashboard(request):
                 return render(request, 'dashboard/applicant.html')
             else:
                 return render(request, 'dashboard/createApplication.html')
-
     else: 
         return redirect('home-index')
+
+def viewApplication(request):
+    return render(request, 'dashboard/viewApplication.html')
