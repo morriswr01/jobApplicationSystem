@@ -31,7 +31,7 @@ def dashboard(request):
 
 def adminPositions(request):
     positions = serializers.serialize( "python", Positions.objects.all())
-    return render(request, 'dashboard/admin/editPositions.html',{'positions': positions})
+    return render(request, 'dashboard/admin/editPositions.html', {'positions': positions})
 
 def adminFeedback(request):
     return render(request, 'dashboard/admin/feedback.html')

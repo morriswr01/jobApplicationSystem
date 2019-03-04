@@ -17,13 +17,11 @@
         <button class="selectJob">
             <span class="jobTitle">{{ position.fields.positionName }}</span>
             <span class="jobDeadline">Open Until: {{ position.fields.deadlineDate }}</span>
-            <span class="jobStatus {% if position.fields.positionOpen %}open{%else%}closed{%endif%}">{{position.fields.positionOpen}}</span>
+            <span class="jobStatus {% if position.fields.positionOpen %}open{%else%}closed{%endif%}">{% if position.fields.positionOpen %}Positon Open{%else%}Position Closed{%endif%}</span>
         </button>
         <div class="jobDesc">
             {{ position.fields.positionDescription }}
             <div class="jobButtons">
-                <!-- <a href="{% url 'careers-index' %}" class="button moreInfoBtn">More Information</a> -->
-                <!-- <a href="{% url 'dashboard'%}?pid={{position.pk}}" class="button applyBtn">Apply</a> -->
                 <a href="" class="button editBtn">Edit</a>
                 <a href="" class="button applyBtn">Re-Open Position</a>
                 <a href="" class="button deleteBtn">Delete</a>
