@@ -1,0 +1,110 @@
+@import "config";
+
+// CSS for feedback.html
+
+.positionsHeading {
+    min-height: 80px;
+
+    .title {
+        display: inline;
+    }
+
+    .newJobBtn {
+        // display: inline;
+        background-color: $submit-Button;
+        max-width: 100px;
+        padding: 5px;
+        float: right;
+
+        font-size: 20px;
+
+        &:hover {
+            color: black;
+            background-color: white;
+        }
+    }
+}
+
+.jobListAccordion {
+    background-color: $accordion-color;
+    border-radius: 5px;
+
+    button {
+        padding: 5px 10px;
+        width: 100%;
+        text-align: left;
+
+        .jobTitle {
+            color: $text-black;
+            font-weight: bold;
+        }
+
+        .jobDeadLine {
+            color: $green;
+            float: right;
+            margin-top: 10px;
+            font-size: 15px;
+            letter-spacing: -1px;
+        }
+
+        .jobStatus {
+            color: $text-black;
+            float: right;
+            margin-right: 10%;
+
+            &.open {
+                color: $green
+            }
+
+            &.closed {
+                color: $red
+            }
+        }
+
+        &:hover {
+            background-color: $submit-Button;
+
+            .jobTitle {
+                color: white;
+            }
+        }
+    }
+
+    .jobDesc {
+        display: none;
+        padding: 10px;
+        text-align: left;
+        font-size: 20px;
+        color: $text-black;
+
+        .jobButtons {
+            display: flex;
+            justify-content: space-between;
+            padding-top: 5px;
+
+            .deleteBtn,
+            .applyBtn {
+                &:hover {
+                    background-color: $submit-Button;
+                }
+            }
+
+
+            .deleteBtn {
+                background-color: $red;
+            }
+
+            .applyBtn {
+                background-color: $green;
+            }
+
+            .editBtn {
+                background-color: $submit-Button;
+
+                &:hover {
+                    background-color: $green;
+                }
+            }
+        }
+    }
+}

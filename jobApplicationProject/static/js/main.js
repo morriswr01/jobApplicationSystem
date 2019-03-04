@@ -25,12 +25,20 @@ $(document).ready(function () {
         target.css("display", "block");
     });
 
-    //Show admin login modal
+    //Show show account settings modal
     $('#account-settings-button').click(function () {
         target = $('#account-settings-modal');
 
         target.css("display", "block");
     });
+
+    $('#new-job-button').click(function () {
+        target = $('#add-new-job-modal');
+
+        target.css("display", "block");
+    });
+
+
 
     //Close modals on clicking cross button
     $('.close-modal').click(function () {

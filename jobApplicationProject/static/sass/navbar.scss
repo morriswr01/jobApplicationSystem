@@ -92,7 +92,8 @@
 }
 
 // LOGIN FORM STYLING
-.login-form {
+.login-form,
+.job-modal {
     background: $global-background-color;
     max-width: 600px;
     border-radius: 4px;
@@ -103,9 +104,11 @@
         width: 100%;
         text-align: center;
 
-        h1 {
+        h1,
+        h3 {
             display: inline-block;
         }
+
 
         .close-modal {
             float: right;
@@ -135,7 +138,8 @@
         }
 
         input,
-        select {
+        select,
+        textarea {
             width: 100%;
             margin: 0 10px 5px 10px;
             border: 0;
