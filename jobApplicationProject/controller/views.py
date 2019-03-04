@@ -14,7 +14,7 @@ def signUp(request):
             raw_password = form.cleaned_data.get('password1')
             user = authenticate(email=email, password=raw_password)
             login(request, user)
-            return redirect('dashboard')
+            return render(request, 'dashboard/createApplication.html')
         else:
             return render(request, 'controller/signUp.html', {'duplicateEmail': True})
     return render(request, 'controller/signup.html')
@@ -67,6 +67,7 @@ def submitApp(request):
     hobbyProficiency = request.POST.getlist('hobbies[proficiency]')
     positionID = request.GET.get('pid')
     position = Positions.objects.get(id = positionID)
+
     applicationObj = Application.objects.create(completed = 1, feedback = '', users = user, position = position)
     applicationObj.save()
     applicationID = applicationObj.id
