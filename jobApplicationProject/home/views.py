@@ -13,8 +13,6 @@ def home (request):
         return render(request, 'home/home.html', {'home': 1})
 
 def careers (request):
-    if request.user.is_authenticated:
-        return redirect('dashboard')
-    else:    
-        openPositions = serializers.serialize( "python", Positions.objects.filter(positionOpen = True) )
-        return render(request, 'home/careers.html', {'openPositions': openPositions})
+    openPositions = serializers.serialize( "python", Positions.objects.filter(positionOpen = True) )
+    return redirect('dashboard')
+    # return render(request, 'home/careers.html', {'openPositions': openPositions})

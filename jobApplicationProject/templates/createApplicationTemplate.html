@@ -39,8 +39,8 @@
             </header>
             <div class="login-form-content">
                 <!-- Change Password Form -->
-                <form action="{% url 'changePassword' %}">
-                    {% csrf_token %}
+                <form action="{% url 'changePassword'%}" method = "POST">
+                    {%csrf_token%}
                     <h2 class="login-form-header">Change Password</h2>
                     <div class="login-form-group">
                         <label for="current-password">Current Password</label>

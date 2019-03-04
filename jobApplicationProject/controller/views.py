@@ -65,11 +65,12 @@ def submitApp(request):
     skillProficiency = request.POST.getlist('skills[proficiency]')
     hobbiesName = request.POST.getlist('hobbies[name]')
     hobbyProficiency = request.POST.getlist('hobbies[proficiency]')
-    applicationObj = Application.objects.create(completed = 1,feedback = '',users = user)
+    positionID = request.GET.get('pid')
+    position = Positions.objects.get(id = positionID)
+    applicationObj = Application.objects.create(completed = 1, feedback = '', users = user, position = position)
     applicationObj.save()
     applicationID = applicationObj.id
-    print(universityAttended)
-    # DEGREE AND UNIVERSITIES ATTENDED
+    # DEGREE AND UNIVERSITIES ATTENDE
     addUniDetails (applicationObj,applicationID,universityAttended,degreeTitle,degreeGrade)
     # A LEVELS
     addALevelDetails (applicationObj,applicationID,alevelsName,alevelsProficiency)
@@ -82,8 +83,9 @@ def submitApp(request):
     # HOBBIES
     addHobbiesDetails (applicationObj,applicationID,hobbiesName,hobbyProficiency)
 
-#     user.hasApplied = True
-#     user.save()
+    user = User.objects.get(id = request.user.id)
+    user.hasApplied = True
+    user.save()
     return redirect('dashboard')
 
 # Helper functions for application creation
