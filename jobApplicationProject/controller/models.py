@@ -101,7 +101,7 @@ class Application (models.Model):
         choices = statusChoices,
         default = 'Submitted',
     )
-    feedback = models.CharField(max_length = 50)
+    feedback = models.CharField(max_length = 50,default="No feedback available")
     users = models.ForeignKey(User,on_delete = models.CASCADE)
     position = models.ForeignKey(Positions,on_delete = models.CASCADE)
 
