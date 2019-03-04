@@ -81,10 +81,10 @@ class User(AbstractBaseUser, PermissionsMixin):
 class Application (models.Model):
     completed =  models.BooleanField()
     dateSubmitted = models.DateField(auto_now_add= True)
-    submitted = 'submitted'
-    interview = 'interview'
-    rejected = 'rejected'
-    accepted = 'accepted'
+    submitted = 'Submitted'
+    interview = 'Interview'
+    rejected = 'Rejected'
+    accepted = 'Accepted'
     statusChoices = (
         (submitted, 'Submitted'),
         (interview, 'Interview'),
