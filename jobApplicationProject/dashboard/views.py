@@ -30,4 +30,11 @@ def dashboard(request):
             return render(request, 'home/careers.html', {'openPositions': openPositions})
 
 def viewApplication(request):
-    return render(request, 'dashboard/viewApplication.html')
+    applicationObject = Application.objects.get(users=request.user)
+    hobbiesObject = Applications_Hobbies.objects.filter(applicationID = applicationObject)
+    skillsObject = Applications_Skills.objects.filter(applicationID = applicationObject)
+    alevelsObject = Applications_ALevels.objects.filter(applicationID = applicationObject)
+    employmentsObject = Applications_Employments.objects.filter(applicationID = applicationObject)
+    universitiesObject = Applications_Universities.objects.filter(applicationID = applicationObject)
+    languagesObject = Applications_Languages.objects.filter(applicationID = applicationObject)
+    return render(request, 'dashboard/viewApplication.html',{'applicationObject':applicationObject,'skillsObject':skillsObject,'hobbiesObject':hobbiesObject,'aLevelsObject':alevelsObject,'employmentsObject':employmentsObject,'universitiesObject':universitiesObject,'languagesObject':languagesObject})
