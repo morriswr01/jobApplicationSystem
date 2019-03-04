@@ -14,8 +14,8 @@ def dashboard(request):
         else:
             if user.hasApplied:
                 applicationStatus = Application.objects.get(users=user).status
-                positionData = Application.objects.get(users = user).position
-                return render(request, 'dashboard/applicant.html',{'applicationStatus' : applicationStatus,'positionName':positionData.positionName})
+                position = Application.objects.get(users = user).position
+                return render(request, 'dashboard/applicant.html', {'applicationStatus' : applicationStatus, 'positionName':position.positionName})
             else:
                 if positionID is not None:
                     return render(request, 'dashboard/createApplication.html')
@@ -27,6 +27,4 @@ def dashboard(request):
         return redirect('home-index')
 
 def viewApplication(request):
-    # applicationObject = Application.objects.get(users=request.user)
-    # hobbiesObject =
     return render(request, 'dashboard/viewApplication.html')
