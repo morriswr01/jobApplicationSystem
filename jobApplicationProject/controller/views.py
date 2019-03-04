@@ -14,7 +14,7 @@ def signUp(request):
             raw_password = form.cleaned_data.get('password1')
             user = authenticate(email=email, password=raw_password)
             login(request, user)
-            return render(request, 'dashboard/createApplication.html')
+            return render(request, 'dashboard/applicant/createApplication.html')
         else:
             return render(request, 'controller/signUp.html', {'duplicateEmail': True})
     return render(request, 'controller/signup.html')
