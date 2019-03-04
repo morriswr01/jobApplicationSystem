@@ -6,7 +6,7 @@
 {% endblock %}
 {% block application %}
 <!-- Applicants basic information application form -->
-<form action="{% url 'submitApp' %}" method="POST">
+<form action="{% url 'submitApp' %}?pid={{positionID}}" method="POST">
     {% csrf_token %}
     <div class="basicInfo">
         <!-- Degree -->
