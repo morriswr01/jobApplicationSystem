@@ -29,6 +29,12 @@ def dashboard(request):
             openPositions = serializers.serialize( "python", Positions.objects.filter(positionOpen = True) )
             return render(request, 'home/careers.html', {'openPositions': openPositions})
 
+def adminPositions(request):
+    return render(request, 'dashboard/admin/editPositions.html')
+
+def adminFeedback(request):
+    return render(request, 'dashboard/admin/feedback.html')
+
 def viewApplication(request):
     applicationObject = Application.objects.get(users=request.user)
     hobbiesObject = Applications_Hobbies.objects.filter(applicationID = applicationObject)

@@ -9,6 +9,8 @@
     color: white;
     height: 100px;
 
+
+
     .grid-item {
         padding: 20px;
         margin: auto;
@@ -35,6 +37,16 @@
         border-bottom-width: 2px;
         border-bottom: solid;
         border-bottom-color: white;
+    }
+
+    &.admin {
+        grid-template-columns: 1fr 1fr 1fr 4fr 1fr 1fr;
+
+        .grid-item {
+            &.nav-logo {
+                margin-left: 25%;
+            }
+        }
     }
 
     .button {

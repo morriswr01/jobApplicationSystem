@@ -3,5 +3,7 @@ from . import views
 
 urlpatterns = [
     url('application', views.viewApplication, name="viewApplication"),
+    url('positions', views.adminPositions, name="adminPositions"),
+    url('feedback', views.adminFeedback, name="adminFeedback"),
     url('', views.dashboard, name="dashboard"),
 ]

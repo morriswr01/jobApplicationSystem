@@ -1,4 +1,4 @@
-{% extends 'dashboardTemplate.html'%}
+{% extends 'applicantTemplate.html'%}
 
 {% block content %}
 <div class="header">
@@ -57,11 +57,13 @@
                 <div class="user-details"><a>{{university.qualification}}</a></div>
                 <div class="user-details"><a>{{university.level}}</a></div>
                 {%endfor%}
-                <div class="user-details"><a>Skills: {%for skill in skillsObject%}{{skill.skillID.skillName}}{%if not forloop.last%}, {%endif%}{%endfor%}</a></div>
+                <div class="user-details"><a>Skills: {%for skill in skillsObject%}{{skill.skillID.skillName}}{%if not
+                        forloop.last%}, {%endif%}{%endfor%}</a></div>
             </div>
             <div class="in-line">
                 <a>Languages</a>
-                <div class="user-details"><a>{%for language in languagesObject%}{{language.languageID.subject}}{%if not forloop.last%}, {%endif%}{%endfor%}</a></div>
+                <div class="user-details"><a>{%for language in languagesObject%}{{language.languageID.subject}}{%if not
+                        forloop.last%}, {%endif%}{%endfor%}</a></div>
             </div>
         </div>
     </div>
@@ -79,7 +81,8 @@
             </div>
             <div class="in-line">
                 <a>Length of Employment</a>
-                <div class="user-details"><a>{{company.lengthOfEmploymentYears}} years, {{company.lengthOfEmploymentMonths}} months</a></div>
+                <div class="user-details"><a>{{company.lengthOfEmploymentYears}} years,
+                        {{company.lengthOfEmploymentMonths}} months</a></div>
             </div>
             {%endfor%}
         </div>
@@ -88,7 +91,8 @@
         <div class="blue"><a>Hobbies</a></div>
         <div class="blue-small">
             <div class="in-line">
-                <div class="user-details"><a>{%for hobby in hobbiesObject%}{{hobby.hobbyID.name}}{%if not forloop.last%}, {%endif%} {%endfor%}</a></div>
+                <div class="user-details"><a>{%for hobby in hobbiesObject%}{{hobby.hobbyID.name}}{%if not
+                        forloop.last%}, {%endif%} {%endfor%}</a></div>
             </div>
         </div>
     </div>
