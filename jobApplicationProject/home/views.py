@@ -7,12 +7,9 @@ from controller.models import Positions
 
 # Create your views here.
 def home (request):
-    if request.user.is_authenticated:
-        return redirect('dashboard')
-    else:
-        return render(request, 'home/home.html', {'home': 1})
+    return render(request, 'home/home.html', {'home': 1})
 
 def careers (request):
     openPositions = serializers.serialize( "python", Positions.objects.filter(positionOpen = True) )
-    return redirect('dashboard')
-    # return render(request, 'home/careers.html', {'openPositions': openPositions})
+    # return redirect('dashboard')
+    return render(request, 'home/careers.html', {'openPositions': openPositions})

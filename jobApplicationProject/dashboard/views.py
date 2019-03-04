@@ -18,13 +18,16 @@ def dashboard(request):
                 return render(request, 'dashboard/applicant.html', {'applicationStatus' : applicationStatus, 'positionName':position.positionName})
             else:
                 if positionID is not None:
-                    return render(request, 'dashboard/createApplication.html')
+                    return render(request, 'dashboard/createApplication.html', {'positionID': positionID})
                 else:
                     openPositions = serializers.serialize( "python", Positions.objects.filter(positionOpen = True) )
                     return render(request, 'home/careers.html', {'openPositions': openPositions})
-
     else:
-        return redirect('home-index')
+        if positionID is not None:
+            return render(request, 'controller/signUp.html', {'positionID': positionID})
+        else:
+            openPositions = serializers.serialize( "python", Positions.objects.filter(positionOpen = True) )
+            return render(request, 'home/careers.html', {'openPositions': openPositions})
 
 def viewApplication(request):
     return render(request, 'dashboard/viewApplication.html')
