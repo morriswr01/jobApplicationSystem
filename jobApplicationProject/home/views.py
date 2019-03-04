@@ -14,5 +14,5 @@ def home (request):
 
 def careers (request):
     openPositions = serializers.serialize( "python", Positions.objects.filter(positionOpen = True) )
-    return redirect('dashboard')
-    # return render(request, 'home/careers.html', {'openPositions': openPositions})
+    # return redirect('dashboard')
+    return render(request, 'home/careers.html', {'openPositions': openPositions})
