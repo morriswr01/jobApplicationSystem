@@ -1,25 +1,32 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
-
+from django.core import serializers
 from django.shortcuts import render, redirect
-from controller.models import Application
+from controller.models import *
 
 # Create your views here.
 def dashboard(request):
     user = request.user
+    positionID = request.GET.get('pid')
     if user.is_authenticated:
         if user.admin:
             return render(request, 'dashboard/admin.html')
         else:
             if user.hasApplied:
-                application = Application.objects.get(users = user)
-                return render(request, 'dashboard/applicant.html', {'application': application})
+                applicationStatus = Application.objects.get(users=user).status
+                positionData = Application.objects.get(users = user).position
+                return render(request, 'dashboard/applicant.html',{'applicationStatus' : applicationStatus,'positionName':positionData.positionName})
             else:
-                return render(request, 'dashboard/createApplication.html')
-    else: 
+                if positionID is not None:
+                    return render(request, 'dashboard/createApplication.html')
+                else:
+                    openPositions = serializers.serialize( "python", Positions.objects.filter(positionOpen = True) )
+                    return render(request, 'home/careers.html', {'openPositions': openPositions})
+
+    else:
         return redirect('home-index')
 
 def viewApplication(request):
-    user = request.user
-    application = Application.objects.get(users = user)
-    return render(request, 'dashboard/viewApplication.html', {'application': application})
+    # applicationObject = Application.objects.get(users=request.user)
+    # hobbiesObject =
+    return render(request, 'dashboard/viewApplication.html')
