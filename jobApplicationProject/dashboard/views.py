@@ -8,7 +8,6 @@ from controller.models import *
 def dashboard(request):
     user = request.user
     positionID = request.GET.get('pid')
-
     if user.is_authenticated:
         if user.admin:
             return render(request, 'dashboard/admin.html')
@@ -16,7 +15,6 @@ def dashboard(request):
             if user.hasApplied:
                 applicationStatus = Application.objects.get(users=user).status
                 positionData = Application.objects.get(users = user).position
-                print (positionData.positionName)
                 return render(request, 'dashboard/applicant.html',{'applicationStatus' : applicationStatus,'positionName':positionData.positionName})
             else:
                 if positionID is not None:
@@ -27,3 +25,8 @@ def dashboard(request):
 
     else:
         return redirect('home-index')
+
+def viewApplication(request):
+    # applicationObject = Application.objects.get(users=request.user)
+    # hobbiesObject =
+    return render(request, 'dashboard/viewApplication.html')
