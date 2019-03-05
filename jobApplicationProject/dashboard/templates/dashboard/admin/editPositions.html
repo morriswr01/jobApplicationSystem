@@ -30,14 +30,14 @@
             </button>
             <div class="jobDesc">
                 {{ position.fields.positionDescription }}
-                <div class="jobButtons">
-                    <a href="" class="button editBtn">Edit</a>
+                <div class="jobButtons" id={{position.pk}}>
+                    <button class="button editBtn">Edit</button>
                     {% if position.fields.positionOpen %}
-                    <a href="" class="button applyBtn">Close Position</a>
+                    <button class="button applyBtn">Close Position</button>
                     {% else %}
-                    <a href="" class="button applyBtn">Re-Open Position</a>
+                    <button class="button applyBtn">Re-Open Position</button>
                     {% endif %}
-                    <a href="" class="button deleteBtn">Delete</a>
+                    <button class="button deleteBtn">Delete</button>
                 </div>
             </div>
         </div>
@@ -52,7 +52,7 @@
             </header>
             <div>
                 <!-- New Job Form -->
-                <form method="POST" action = "{% url 'addNewPosition'%}">
+                <form method="POST" action="{% url 'addNewPosition'%}">
                     {% csrf_token %}
                     <div class="job-modal-group">
                         <label for="jobTitle">Job Title</label>
