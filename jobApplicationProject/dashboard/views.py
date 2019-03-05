@@ -38,7 +38,11 @@ def adminPositions(request):
     return render(request, 'dashboard/admin/editPositions.html', {'positions': positions})
 
 def adminFeedback(request):
-    return render(request, 'dashboard/admin/feedback.html')
+    applicationsInterviewed = Application.objects.filter(Q(status = "Interviewed"))
+    applicationsInterviewRequest = Application.objects.filter(Q(status = "Requested Interview"))
+    applicationsAccepted = Application.objects.filter(Q(status = "Accepted"))
+    return render(request, 'dashboard/admin/feedback.html', {'applicationsInterviewRequest':applicationsInterviewRequest, 'applicationsInterviewed': applicationsInterviewed, 'applicationsAccepted': applicationsAccepted })
+
 def addNewPosition(request):
     jobTitle = request.POST.get('jobTitle')
     deadlineDate = request.POST.get('deadline')
@@ -53,6 +57,26 @@ def deletePosition(request):
     Positions.objects.filter(id=positionID).delete()
     return JsonResponse(data)
 
+@csrf_exempt
+def rejectWithFeedback(request):
+        data = dict()
+        applicationID = request.POST.get('appId')
+        feedback = request.POST.get('feedback')
+        application = Application.objects.get(id = applicationID)
+        application.status = Application.rejected
+        application.feedback = feedback
+        application.save()
+        return redirect('adminFeedback')
+        
+@csrf_exempt
+def hireApplicant(request):
+        data = dict()
+        applicationID = request.GET.get('appId')
+        application = Application.objects.get(id = applicationID)
+        application.status = Application.accepted
+        application.save()
+        return redirect('adminFeedback')
+
 def viewApplication(request):
     applicationObject = Application.objects.get(users=request.user)
     hobbiesObject = Applications_Hobbies.objects.filter(applicationID = applicationObject)
@@ -62,6 +86,7 @@ def viewApplication(request):
     universitiesObject = Applications_Universities.objects.filter(applicationID = applicationObject)
     languagesObject = Applications_Languages.objects.filter(applicationID = applicationObject)
     return render(request, 'dashboard/applicant/viewApplication.html',{'applicationObject':applicationObject,'skillsObject':skillsObject,'hobbiesObject':hobbiesObject,'aLevelsObject':alevelsObject,'employmentsObject':employmentsObject,'universitiesObject':universitiesObject,'languagesObject':languagesObject})
+
 @csrf_exempt
 def adminAction(request):
     data = dict()
@@ -71,8 +96,7 @@ def adminAction(request):
     if action == "requestInterview":
         application.status = Application.interviewRequest
         application.save()
-    elif action =="rejectApplicant":
+    elif action == "rejectApplicant":
         application.status = Application.rejected
         application.save()
-
     return JsonResponse(data)

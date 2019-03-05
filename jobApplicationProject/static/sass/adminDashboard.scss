@@ -119,11 +119,12 @@
 // CSS for admin.html
 
 .reportHeading {
-    h3{
+    h3 {
         margin-bottom: 0;
     }
+
     p {
-        font-size: 16px;
+        font-size: 18px;
     }
 
 }
@@ -137,26 +138,27 @@
         padding: 5px 10px;
         width: 100%;
         text-align: left;
-        
+
         .applicantInfo {
             display: grid;
             grid-template-columns: 5fr 1fr 1fr 1fr;
             color: $text-black;
         }
-        
+
         .name {
             font-weight: bold;
         }
-        
-        .applicationId{
+
+        .applicationId {
             font-size: 16px;
             margin: auto 0;
         }
+
         .role {
             font-size: 16px;
             margin: auto 0;
         }
-        
+
         .dateApplied {
             margin: auto 10%;
             font-size: 16px;
@@ -182,15 +184,17 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             grid-column-gap: 5px;
-            
+
             .applicantActionBtn {
                 padding: 5px 10px;
 
-                &.reqInterview {
+                &.reqInterview,
+                &.hireApplicant {
                     background-color: $green;
                 }
 
-                &.rejectApplicant {
+                &.rejectApplicant,
+                &.rejectWithFeedback {
                     background-color: $red;
                 }
             }
@@ -207,7 +211,7 @@
                 border-radius: 5px;
                 padding: 10px;
 
-                h4{
+                h4 {
                     margin: 10px 0
                 }
 
@@ -220,8 +224,3 @@
         }
     }
 }
-
-
-
-
-
