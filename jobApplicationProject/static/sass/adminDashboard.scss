@@ -195,6 +195,29 @@
                 }
             }
         }
+
+        .applicationData {
+            display: grid;
+            grid-row-gap: 5px;
+            padding-top: 5px;
+
+            .dataPanel {
+                color: $accordion-color;
+                background-color: darken($accordion-color, 60%);
+                border-radius: 5px;
+                padding: 10px;
+
+                h4{
+                    margin: 10px 0
+                }
+
+                .data {
+                    display: grid;
+                    grid-template-columns: 1fr 1fr;
+                }
+
+            }
+        }
     }
 }
 

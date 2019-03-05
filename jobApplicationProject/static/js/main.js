@@ -52,6 +52,7 @@ $(document).ready(function () {
         target = $(this).next().first();
 
         $('.jobDesc').not(target).hide();
+        $('.application').not(target).hide();
 
         $(target).toggle('fast');
     });
