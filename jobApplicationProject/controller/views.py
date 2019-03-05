@@ -4,6 +4,7 @@ from django.contrib.auth import login, logout, authenticate
 from django.shortcuts import render, redirect
 from .forms import UserSignUpForm
 from controller.models import *
+from django.core import serializers
 
 def signUp(request):
     if request.method == 'POST':
@@ -14,7 +15,12 @@ def signUp(request):
             raw_password = form.cleaned_data.get('password1')
             user = authenticate(email=email, password=raw_password)
             login(request, user)
-            return render(request, 'dashboard/applicant/createApplication.html')
+            positionID = request.GET.get('pid')
+            if positionID is not None:
+                return render(request, 'dashboard/applicant/createApplication.html', {'positionID': positionID})
+            else:
+                openPositions = serializers.serialize( "python", Positions.objects.filter(positionOpen = True) )
+                return render(request, 'home/careers.html', {'openPositions': openPositions})
         else:
             return render(request, 'controller/signUp.html', {'duplicateEmail': True})
     return render(request, 'controller/signup.html')
