@@ -5,28 +5,36 @@
 {% endblock %}
 <!-- Contains code for displaying reports -->
 {% block content %}
-<div>
-    <h3 class="title">Eligible Applicants</h3>
-    <p class="pageDescription">These are the applicants whom have automatically been screened by the system and are
-        eligible to progress to the interview round</p>
-</div>
+<div class="header">
 
-<div class="jobListAccordion">
-    <!-- for each applicant in selected applicants -->
-    <div class="jobBlock">
-        <button class="selectJob">
-            <div class="">
-                <span class="">Will Morris</span>
-                <span class="">For Role: Engineer - UI</span>
-                <span class="">Request Interview</span>
-                <span class="">Reject</span>
-            </div>
-        </button>
-        <div class="jobDesc">
-            <div class="jobButtons">
-                Application Data
+    <div class="reportHeading">
+        <h3 class="title">Eligible Applicants</h3>
+        <p class="pageDescription">These are the applicants whom have automatically been screened by the system and are
+            eligible to progress to the interview round.</p>
+    </div>
+    
+    <div class="applicantListAccordion">
+        <!-- for each applicant in selected applicants -->
+        <div class="applicantBlock">
+            <button class="selectApplicantBtn selectJob">
+                <div class="applicantInfo">
+                    <span class="name">Will Morris</span>
+                    <span class="applicationId">AppID: 15 </span>
+                    <span class="role">For Role: Engineer - UI</span>
+                    <span class="dateApplied">Sept. 23, 2019</span>
+                </div>
+            </button>
+            <div class="application">
+                <div class="applicantAction">
+                    <button class="button applicantActionBtn reqInterview">Request Interview</button>
+                    <button class="button applicantActionBtn rejectApplicant">Reject</button>
+                </div>
+                <div class="applicationData">
+                    
+                </div>
             </div>
         </div>
     </div>
 </div>
+
 {% endblock %}

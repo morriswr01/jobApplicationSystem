@@ -6,67 +6,71 @@
 
 {% block content %}
 
-<div class="positionsHeading">
-    <h3 class="title">All Positions</h3>
-    <button type="button" class="button newJobBtn" id="new-job-button">Add New Job</button>
-</div>
+<div class="header">
 
-<div class="jobListAccordion">
-    {% for position in positions %}
-    <div class="jobBlock">
-        <button class="selectJob">
-            <div class="jobInfo">
-                <span class="jobTitle">{{ position.fields.positionName }}</span>
-                {% if position.fields.positionOpen %}
-                <span class="jobStatus open">Position Open</span>
-                <span class="jobDeadline open">Open Until: {{ position.fields.deadlineDate }}</span>
-                {%else%}
-                <span class="jobStatus closed">Position Closed</span>
-                <span class="jobDeadline closed">N/A</span>
-                {%endif%}
+    <div class="positionsHeading">
+        <h3 class="title">All Positions</h3>
+        <button type="button" class="button newJobBtn" id="new-job-button">Add New Job</button>
+    </div>
+    
+    <div class="jobListAccordion">
+        {% for position in positions %}
+        <div class="jobBlock">
+            <button class="selectJobBtn selectJob">
+                <div class="jobInfo">
+                    <span class="jobTitle">{{ position.fields.positionName }}</span>
+                    {% if position.fields.positionOpen %}
+                    <span class="jobStatus open">Position Open</span>
+                    <span class="jobDeadline open">Open Until: {{ position.fields.deadlineDate }}</span>
+                    {%else%}
+                    <span class="jobStatus closed">Position Closed</span>
+                    <span class="jobDeadline closed">N/A</span>
+                    {%endif%}
+                </div>
+            </button>
+            <div class="jobDesc">
+                {{ position.fields.positionDescription }}
+                <div class="jobButtons">
+                    <a href="" class="button editBtn">Edit</a>
+                    <a href="" class="button applyBtn">Re-Open Position</a>
+                    <a href="" class="button deleteBtn">Delete</a>
+                </div>
             </div>
-        </button>
-        <div class="jobDesc">
-            {{ position.fields.positionDescription }}
-            <div class="jobButtons">
-                <a href="" class="button editBtn">Edit</a>
-                <a href="" class="button applyBtn">Re-Open Position</a>
-                <a href="" class="button deleteBtn">Delete</a>
+        </div>
+        {% endfor %}
+    </div>
+    
+    <div id="add-new-job-modal" class="modal">
+        <div class="modal-content job-modal">
+            <header class="job-modal-header">
+                <i class="close-modal material-icons">close</i>
+                <h3>Add New Job</h3>
+            </header>
+            <div>
+                <!-- New Job Form -->
+                <form method="POST">
+                    {% csrf_token %}
+                    <div class="job-modal-group">
+                        <label for="jobTitle">Job Title</label>
+                        <input type="text" name="jobTitle" id="jobTitle" placeholder="Job Title" required="required" />
+                    </div>
+                    <div class="job-modal-group">
+                        <label for="deadline">Deadline</label>
+                        <input type="date" name="deadline" id="deadline" placeholder="Deadline" required="required" />
+                    </div>
+                    <div class="job-modal-group">
+                        <label for="">Description</label>
+                        <textarea name="jobDescription" id="jobDescription"></textarea>
+                    </div>
+                    <div class="job-modal-group">
+                        <button type="submit" class="button submitBtn formSubmit">
+                            Add New Job
+                        </button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
-    {% endfor %}
 </div>
 
-<div id="add-new-job-modal" class="modal">
-    <div class="modal-content job-modal">
-        <header class="job-modal-header">
-            <i class="close-modal material-icons">close</i>
-            <h3>Add New Job</h3>
-        </header>
-        <div>
-            <!-- New Job Form -->
-            <form method="POST">
-                {% csrf_token %}
-                <div class="job-modal-group">
-                    <label for="jobTitle">Job Title</label>
-                    <input type="text" name="jobTitle" id="jobTitle" placeholder="Job Title" required="required" />
-                </div>
-                <div class="job-modal-group">
-                    <label for="deadline">Deadline</label>
-                    <input type="date" name="deadline" id="deadline" placeholder="Deadline" required="required" />
-                </div>
-                <div class="job-modal-group">
-                    <label for="">Description</label>
-                    <textarea name="jobDescription" id="jobDescription"></textarea>
-                </div>
-                <div class="job-modal-group">
-                    <button type="submit" class="button submitBtn formSubmit">
-                        Add New Job
-                    </button>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
 {% endblock %}
