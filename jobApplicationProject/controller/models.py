@@ -81,7 +81,7 @@ class User(AbstractBaseUser, PermissionsMixin):
 class Positions (models.Model):
     positionName = models.CharField(max_length = 20)
     positionDescription = models.TextField()
-    positionOpen = models.BooleanField(default=False)
+    positionOpen = models.BooleanField(default=True)
     deadlineDate = models.DateField()
 
 class Application (models.Model):
