@@ -88,17 +88,21 @@ class Application (models.Model):
     completed =  models.BooleanField()
     dateSubmitted = models.DateField(auto_now_add= True)
     submitted = 'Submitted'
-    interview = 'Interview'
+    reviewed = 'Being Reviewed'
+    interviewRequest = 'Requested Interview'
+    interviewed = 'Interviewed'
     rejected = 'Rejected'
     accepted = 'Accepted'
     statusChoices = (
         (submitted, 'Submitted'),
-        (interview, 'Interview'),
+        (reviewed, 'Being Reviewed'),
+        (interviewRequest, 'Requested Interview'),
+        (interviewed, 'Interview'),
         (rejected, 'Rejected'),
         (accepted, 'Accepted')
     )
     status = models.CharField(
-        max_length = 10,
+        max_length = 20,
         choices = statusChoices,
         default = 'Submitted',
     )
