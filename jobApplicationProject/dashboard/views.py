@@ -46,6 +46,13 @@ def addNewPosition(request):
     newJob = Positions(positionName = jobTitle, positionDescription = jobDescription,deadlineDate= deadlineDate)
     newJob.save()
     return redirect('adminPositions')
+
+def deletePosition(request):
+    positionID=request.POST.get('positionID')
+    data = dict()
+    Positions.objects.filter(id=positionID).delete()
+    return JsonResponse(data)
+
 def viewApplication(request):
     applicationObject = Application.objects.get(users=request.user)
     hobbiesObject = Applications_Hobbies.objects.filter(applicationID = applicationObject)

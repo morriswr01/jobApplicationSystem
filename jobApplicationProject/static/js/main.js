@@ -149,5 +149,23 @@ $(document).ready(function () {
   );
   $(this).parent().parent().parent().fadeOut();
 });
+  var csrftoken = $("[name=csrfmiddlewaretoken]").val();
+  $('body').on('click','.deleteBtn',function(){
+    $.ajax({
+      type:'POST',
+      headers:{
+        "X-CSRFToken": csrftoken
+      },
+      url:'deletePosition/',
+      data:
+    {
+      positionID:$(this).parent().attr("id"),
+    },
+    success:function(){
 
-});
+    }
+  }
+  );
+  $(this).parent().parent().parent().fadeOut();
+  });
+  });
