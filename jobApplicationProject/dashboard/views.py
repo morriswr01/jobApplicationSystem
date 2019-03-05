@@ -3,6 +3,7 @@ from __future__ import unicode_literals
 from django.core import serializers
 from django.shortcuts import render, redirect
 from controller.models import *
+from django.db.models import Q
 
 # Create your views here.
 def dashboard(request):
@@ -10,7 +11,9 @@ def dashboard(request):
     positionID = request.GET.get('pid')
     if user.is_authenticated:
         if user.admin:
-            return render(request, 'dashboard/admin/admin.html')
+            applications = Application.objects.filter(Q(status = "Submitted")|Q(status = "Being Reviewed"))
+
+            return render(request, 'dashboard/admin/admin.html',{'applications':applications})
         else:
             if user.hasApplied:
                 applicationStatus = Application.objects.get(users=user).status

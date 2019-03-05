@@ -12,16 +12,18 @@
         <p class="pageDescription">These are the applicants whom have automatically been screened by the system and are
             eligible to progress to the interview round.</p>
     </div>
-    
+
     <div class="applicantListAccordion">
         <!-- for each applicant in selected applicants -->
+        {%for applicant in applications%}
         <div class="applicantBlock">
             <button class="selectApplicantBtn selectJob">
                 <div class="applicantInfo">
-                    <span class="name">Will Morris</span>
-                    <span class="applicationId">AppID: 15 </span>
-                    <span class="role">For Role: Engineer - UI</span>
-                    <span class="dateApplied">Sept. 23, 2019</span>
+                  <!-- submitted, being reviewed, -->
+                    <span class="name">{{applicant.users.fName}} {{applicant.users.lName}}</span>
+                    <span class="applicationId">AppID: {{applicant.id}} </span>
+                    <span class="role">For Role: {{applicant.position.positionName}}</span>
+                    <span class="dateApplied">{{applicant.dateSubmitted}}</span>
                 </div>
             </button>
             <div class="application">
@@ -30,10 +32,11 @@
                     <button class="button applicantActionBtn rejectApplicant">Reject</button>
                 </div>
                 <div class="applicationData">
-                    
+
                 </div>
             </div>
         </div>
+        {%endfor%}
     </div>
 </div>
 
