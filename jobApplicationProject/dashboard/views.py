@@ -39,7 +39,13 @@ def adminPositions(request):
 
 def adminFeedback(request):
     return render(request, 'dashboard/admin/feedback.html')
-
+def addNewPosition(request):
+    jobTitle = request.POST.get('jobTitle')
+    deadlineDate = request.POST.get('deadline')
+    jobDescription = request.POST.get('jobDescription')
+    newJob = Positions(positionName = jobTitle, positionDescription = jobDescription,deadlineDate= deadlineDate)
+    newJob.save()
+    return redirect('adminPositions')
 def viewApplication(request):
     applicationObject = Application.objects.get(users=request.user)
     hobbiesObject = Applications_Hobbies.objects.filter(applicationID = applicationObject)

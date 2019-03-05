@@ -12,7 +12,7 @@
         <h3 class="title">All Positions</h3>
         <button type="button" class="button newJobBtn" id="new-job-button">Add New Job</button>
     </div>
-    
+
     <div class="jobListAccordion">
         {% for position in positions %}
         <div class="jobBlock">
@@ -39,7 +39,7 @@
         </div>
         {% endfor %}
     </div>
-    
+
     <div id="add-new-job-modal" class="modal">
         <div class="modal-content job-modal">
             <header class="job-modal-header">
@@ -48,7 +48,7 @@
             </header>
             <div>
                 <!-- New Job Form -->
-                <form method="POST">
+                <form method="POST" action = "{% url 'addNewPosition'%}">
                     {% csrf_token %}
                     <div class="job-modal-group">
                         <label for="jobTitle">Job Title</label>
