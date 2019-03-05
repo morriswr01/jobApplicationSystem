@@ -45,8 +45,6 @@ def updateApplicationStatus(applicationID, newStatus):
     application.status = newStatus
     application.save()
 
-Skills, Hobbies
-
 #Returns a dictionary with key=applicationID, value=tuple of (ALevel Name, ALevel Grade)
 def getSubmittedALevels():
     ALevelsDict = dict()
