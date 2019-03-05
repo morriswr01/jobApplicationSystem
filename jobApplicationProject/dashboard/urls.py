@@ -5,5 +5,6 @@ urlpatterns = [
     url('application', views.viewApplication, name="viewApplication"),
     url('positions', views.adminPositions, name="adminPositions"),
     url('feedback', views.adminFeedback, name="adminFeedback"),
+    url('adminAction', views.adminAction, name= "adminAction"),
     url('', views.dashboard, name="dashboard"),
 ]

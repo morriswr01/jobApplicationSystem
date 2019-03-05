@@ -4,7 +4,8 @@ from django.core import serializers
 from django.shortcuts import render, redirect
 from controller.models import *
 from django.db.models import Q
-
+from django.views.decorators.csrf import csrf_exempt
+from django.http import JsonResponse
 # Create your views here.
 def dashboard(request):
     user = request.user
@@ -48,3 +49,17 @@ def viewApplication(request):
     universitiesObject = Applications_Universities.objects.filter(applicationID = applicationObject)
     languagesObject = Applications_Languages.objects.filter(applicationID = applicationObject)
     return render(request, 'dashboard/applicant/viewApplication.html',{'applicationObject':applicationObject,'skillsObject':skillsObject,'hobbiesObject':hobbiesObject,'aLevelsObject':alevelsObject,'employmentsObject':employmentsObject,'universitiesObject':universitiesObject,'languagesObject':languagesObject})
+@csrf_exempt
+def adminAction(request):
+    data = dict()
+    applicationID = request.POST.get('applicationID')
+    action = request.POST.get('action')
+    application = Application.objects.get(id = applicationID)
+    if action == "requestInterview":
+        application.status = Application.interviewRequest
+        application.save()
+    elif action =="rejectApplicant":
+        application.status = Application.rejected
+        application.save()
+
+    return JsonResponse(data)
