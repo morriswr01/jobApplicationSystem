@@ -32,7 +32,11 @@
                 {{ position.fields.positionDescription }}
                 <div class="jobButtons">
                     <a href="" class="button editBtn">Edit</a>
+                    {% if position.fields.positionOpen %}
+                    <a href="" class="button applyBtn">Close Position</a>
+                    {% else %}
                     <a href="" class="button applyBtn">Re-Open Position</a>
+                    {% endif %}
                     <a href="" class="button deleteBtn">Delete</a>
                 </div>
             </div>
