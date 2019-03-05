@@ -118,6 +118,37 @@ $(document).ready(function () {
     $('body').on('click', '.remove-employment', function (e) {
         $(this).parent().parent().remove();
     });
+    $('body').on('click','.reqInterview',function(){
+      $.ajax({
+        type:'POST',
+        url:'adminAction/',
+        data:
+      {
+        applicationID:$(this).attr("id"),
+        action: "requestInterview"
+      },
+      success:function(){
+        //
+      }
+    }
+    );
+    $(this).parent().parent().parent().fadeOut();
+  });
+  $('body').on('click','.rejectApplicant',function(){
+    $.ajax({
+      type:'POST',
+      url:'adminAction/',
+      data:
+    {
+      applicationID:$(this).attr("id"),
+      action: "rejectApplicant"
+    },
+    success:function(){
 
+    }
+  }
+  );
+  $(this).parent().parent().parent().fadeOut();
+});
 
 });

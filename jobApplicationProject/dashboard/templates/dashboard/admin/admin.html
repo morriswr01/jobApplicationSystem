@@ -28,8 +28,9 @@
             </button>
             <div class="application">
                 <div class="applicantAction">
-                    <button class="button applicantActionBtn reqInterview">Request Interview</button>
-                    <button class="button applicantActionBtn rejectApplicant">Reject</button>
+                  {%csrf_token%}
+                    <button class="button applicantActionBtn reqInterview" id = {{applicant.id}}>Request Interview</button>
+                    <button class="button applicantActionBtn rejectApplicant" id = {{applicant.id}}>Reject</button>
                 </div>
                 <div class="applicationData">
                     <div class="dataPanel">
