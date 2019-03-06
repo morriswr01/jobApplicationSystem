@@ -46,8 +46,8 @@
     padding-top: 5px;
 
     .dataPanel {
-        color: $accordion-color;
-        background-color: darken($accordion-color, 60%);
+        color: $text-black;
+        background-color: $accordion-color;
         border-radius: 5px;
         padding: 10px;
 

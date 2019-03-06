@@ -85,7 +85,7 @@ def viewApplication(request):
     employments = Applications_Employments.objects.filter(applicationID = applicationObject)
     university = Applications_Universities.objects.get(applicationID = applicationObject)
     languages = Applications_Languages.objects.filter(applicationID = applicationObject)
-    return render(request, 'dashboard/applicant/viewApplication.html',{'applicationObject':applicationObject,'skills':skills,'hobbies':hobbies,'aLevels':alevels,'employments':employments,'university':university,'languages':languages})
+    return render(request, 'dashboard/applicant/viewApplication.html',{'applicationObject':applicationObject,'skills':skills,'hobbies':hobbies,'aLevels':alevels,'employments':employments,'university':university,'languages':languages, 'home': 1})
 
 @csrf_exempt
 def adminAction(request):

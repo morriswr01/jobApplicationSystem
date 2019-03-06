@@ -5,7 +5,7 @@
     <h1>Your Application</h1>
     <div class="applicationData">
         <div class="dataPanel">
-            <h3>Personal Details</h3>
+            <h4>Personal Details</h4>
             <div class="data">
                 <div>Name</div>
                 <div>{{applicationObject.users.fName}} {{applicationObject.users.lName}}</div>
@@ -20,14 +20,15 @@
         <div class="dataPanel">
             <h4>Degree</h4>
             <div class="data">
-                <div>University:</div>
+                <div>University</div>
                 <div>{{ university.universityID.name }}</div>
-                <div>Degree Title:</div>
+                <div>Degree Title</div>
                 <div>{{ university.qualification }}</div>
-                <div>Grade Attained:</div>
+                <div>Grade Attained</div>
                 <div>{{ university.level }}</div>
             </div>
         </div>
+
         <div class="dataPanel">
             <h4>A-Levels</h4>
             <div class="data">
@@ -38,11 +39,33 @@
             </div>
         </div>
         <div class="dataPanel">
+            <h4>Previous Employment</h4>
+            <div class="data">
+                {% for employment in employments %}
+                <div class="employment">
+                    <div>{{ employment.position }}</div>
+                    <div>{{ employment.companyID.companyName}}</div>
+                    <div>{{ employment.lengthOfEmploymentYears }} years, {{employment.lengthOfEmploymentMonths}}
+                        months</div>
+                </div>
+                {%endfor%}
+            </div>
+        </div>
+        <div class="dataPanel">
             <h4>Hobbies</h4>
             <div class="data">
                 {% for hobby in hobbies %}
                 <div>{{ hobby.hobbyID.name }}</div>
                 <div>{{ hobby.interest }}</div>
+                {%endfor%}
+            </div>
+        </div>
+        <div class="dataPanel">
+            <h4>Programming Languages</h4>
+            <div class="data">
+                {% for language in languages %}
+                <div>{{ language.languageID.subject }}</div>
+                <div>{{ language.expertise }}</div>
                 {%endfor%}
             </div>
         </div>
