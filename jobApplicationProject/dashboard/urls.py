@@ -5,6 +5,7 @@ urlpatterns = [
     url('application/', views.viewApplication, name="viewApplication"),
     url('positions/addNewPosition',views.addNewPosition,name="addNewPosition"),
     url('positions/deletePosition',views.deletePosition,name="deletePosition"),
+    url('positions/openClosePosition',views.openClosePosition,name="openClosePosition"),
     url('positions/', views.adminPositions, name="adminPositions"),
     url('feedback/', views.adminFeedback, name="adminFeedback"),
     url('adminAction/', views.adminAction, name= "adminAction"),

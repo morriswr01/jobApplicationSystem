@@ -168,4 +168,38 @@ $(document).ready(function () {
   );
   $(this).parent().parent().parent().fadeOut();
   });
+    $('body').on('click','.applyBtn',function(){
+      $.ajax({
+        type:'POST',
+        headers:{
+          "X-CSRFToken": csrftoken
+        },
+        url:'openClosePosition/',
+        data:
+      {
+        positionID:$(this).parent().attr("id"),
+        current:$(this).html()
+      },
+      success:function(){
+
+      }
+    }
+    );
+    var openUntil = $('input[name=openUntil]');
+    if ($(this).html() == "Re-Open Position"){
+      $(this).parent().parent().parent().find('.jobStatus').html("Position Open");
+      $(this).parent().parent().parent().find('.jobStatus').addClass('open').removeClass('closed');
+      $(this).parent().parent().parent().find('.jobDeadline').addClass('open').removeClass('closed');
+      $(this).parent().parent().parent().find('.jobDeadline').html("Open Until: " + openUntil.val());
+      $(this).html("Close Position");
+
+    }
+    else{
+      $(this).parent().parent().parent().find('.jobStatus').html("Position Closed");
+      $(this).parent().parent().parent().find('.jobStatus').addClass('closed').removeClass('open');
+      $(this).parent().parent().parent().find('.jobDeadline').addClass('closed').removeClass('open');
+      $(this).parent().parent().parent().find('.jobDeadline').html("N/A");
+      $(this).html("Re-Open Position");
+    }
+    });
   });
