@@ -100,3 +100,20 @@ def adminAction(request):
         application.status = Application.rejected
         application.save()
     return JsonResponse(data)
+
+@csrf_exempt
+def rejectInterview(request):
+    applicationID = request.GET.get('appId')
+    application = Application.objects.get(id = applicationID)
+    application.status = Application.rejected
+    application.save()
+    return redirect('dashboard')
+
+
+@csrf_exempt
+def acceptInterview(request):
+    applicationID = request.GET.get('appId')
+    application = Application.objects.get(id = applicationID)
+    application.status = Application.interviewed
+    application.save()
+    return redirect('dashboard')

@@ -23,19 +23,23 @@
         <div class="blue">{{application.status}}</div>
         <p>Your application has been reviewed and an interview has been requested.</p>
         <div class="btnContainer">
-            <button class="button applicantActionBtn rejectInterview" id={{applicant.id}}>Accept</button>
-            <button class="button applicantActionBtn acceptInterview" id={{applicant.id}}>Reject</button>
+            <a href="{% url 'acceptInterview'%}?appId={{application.id}}" class="button applicantActionBtn acceptInterview">Accept</a>
+            <a href="{% url 'rejectInterview'%}?appId={{application.id}}" class="button applicantActionBtn rejectInterview">Reject</a>
         </div>
 
         {% elif application.status == "Interviewed" %}
         <div class="blue">{{application.status}}</div>
-        <p>You have been interviewed and a final decision will be made soon.</p>
+        <p>You have an interview or have been interviewed and a final decision will be made soon.</p>
 
         {% elif application.status == "Rejected" %}
         <div class="blue">{{application.status}}</div>
+        {%if application.feedback != "" %}
         <p>We regret to inform you that your application was rejected.</p>
         <h3>Feedback:</h3>
         <p>{{application.feedback}}</p>
+        {% else %}
+        <p>You rejected the interview.</p>
+        {%endif%}
 
         {% elif application.status == "Accepted" %}
         <div class="blue">{{application.status}}</div>

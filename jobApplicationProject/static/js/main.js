@@ -165,4 +165,30 @@ $(document).ready(function () {
 		$(this).parent().parent().parent().fadeOut();
 	});
 
+	// $('body').on('click', '.rejectInterview', function () {
+	// 	$.ajax({
+	// 		type: 'POST',
+	// 		headers: {
+	// 			"X-CSRFToken": csrftoken
+	// 		},
+	// 		url: 'rejectInterview/',
+	// 		data: {
+	// 			appId: $(this).attr("id")
+	// 		}
+	// 	});
+	// });
+
+	// $('body').on('click', '.rejectInterview', function () {
+	// 	$.ajax({
+	// 		type: 'POST',
+	// 		headers: {
+	// 			"X-CSRFToken": csrftoken
+	// 		},
+	// 		url: 'acceptInterview/',
+	// 		data: {
+	// 			appId: $(this).attr("id")
+	// 		}
+	// 	});
+	// });
+
 });

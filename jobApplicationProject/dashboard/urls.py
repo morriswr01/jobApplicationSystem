@@ -10,5 +10,7 @@ urlpatterns = [
     url('positions/', views.adminPositions, name="adminPositions"),
     url('feedback/', views.adminFeedback, name="adminFeedback"),
     url('adminAction/', views.adminAction, name= "adminAction"),
+    url('rejectInterview/', views.rejectInterview, name= "rejectInterview"),
+    url('acceptInterview/', views.acceptInterview, name= "acceptInterview"),
     url('', views.dashboard, name="dashboard"),
 ]
