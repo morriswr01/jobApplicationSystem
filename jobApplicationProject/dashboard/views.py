@@ -43,20 +43,7 @@ def getApplicants():
         university = Applications_Universities.objects.get(applicationID = applicant)
         languages = Applications_Languages.objects.filter(applicationID = applicant)
         applicationDataObject.append({'applicant':applicant,'skills':skills,'hobbies':hobbies,'aLevels':alevels,'employments':employments,'university':university,'languages':languages})
-
     return applicationDataObject
-
-
-    return render(request, 'dashboard/applicant/viewApplication.html', {'applicants': applicantDataObject})
-    # hobbies = Applications_Hobbies.objects.filter(applicationID = application)
-    # skills = Applications_Skills.objects.filter(applicationID = application)
-    # alevels = Applications_ALevels.objects.filter(applicationID = application)
-    # employments = Applications_Employments.objects.filter(applicationID = application)
-    # university = Applications_Universities.objects.get(applicationID = application)
-    # languages = Applications_Languages.objects.filter(applicationID = application)
-    # {'application':application,'skills':skills,'hobbies':hobbies,'aLevels':alevels,'employments':employments,'university':university,'languages':languages}
-
-    
 
 def adminPositions(request):
     positions = serializers.serialize( "python", Positions.objects.all())
@@ -74,6 +61,18 @@ def addNewPosition(request):
     jobDescription = request.POST.get('jobDescription')
     newJob = Positions(positionName = jobTitle, positionDescription = jobDescription,deadlineDate= deadlineDate)
     newJob.save()
+    return redirect('adminPositions')
+
+def editPosition(request):
+    positionID = request.POST.get('positionID')
+    position = Positions.objects.get(id = positionID)
+    jobTitle = request.POST.get('newJobTitle')
+    deadlineDate = request.POST.get('newDeadline')
+    jobDescription = request.POST.get('newJobDescription')
+    position.positionName = jobTitle
+    position.deadlineDate = deadlineDate
+    position.positionDescription = jobDescription
+    position.save()
     return redirect('adminPositions')
 
 def deletePosition(request):

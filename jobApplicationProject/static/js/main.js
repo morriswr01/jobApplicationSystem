@@ -38,6 +38,23 @@ $(document).ready(function () {
 		target.css("display", "block");
 	});
 
+	$('.editBtn').click(function () {
+		target = $('#edit-job-modal');
+		positionID = $(this).parent().attr('id');
+		jobTitle = $('.' + positionID).get(0).innerHTML;
+		description = $('.' + positionID).get(1).innerHTML;
+
+		console.log(positionID);
+		console.log(jobTitle.innerHTML);
+		console.log(description.innerHTML);
+
+		$('#editJobForm #positionID').val(positionID);
+		$('#editJobForm #newJobTitle').val(jobTitle);
+		$('#editJobForm #newJobDescription').val(description);
+
+		target.css("display", "block");
+	});
+
 
 	$('.rejectWithFeedback').click(function () {
 		target = $('#feedback-modal');
@@ -164,31 +181,5 @@ $(document).ready(function () {
 		});
 		$(this).parent().parent().parent().fadeOut();
 	});
-
-	// $('body').on('click', '.rejectInterview', function () {
-	// 	$.ajax({
-	// 		type: 'POST',
-	// 		headers: {
-	// 			"X-CSRFToken": csrftoken
-	// 		},
-	// 		url: 'rejectInterview/',
-	// 		data: {
-	// 			appId: $(this).attr("id")
-	// 		}
-	// 	});
-	// });
-
-	// $('body').on('click', '.rejectInterview', function () {
-	// 	$.ajax({
-	// 		type: 'POST',
-	// 		headers: {
-	// 			"X-CSRFToken": csrftoken
-	// 		},
-	// 		url: 'acceptInterview/',
-	// 		data: {
-	// 			appId: $(this).attr("id")
-	// 		}
-	// 	});
-	// });
 
 });

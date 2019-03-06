@@ -108,7 +108,7 @@ class Application (models.Model):
     )
     feedback = models.CharField(max_length = 50,default="No feedback available")
     users = models.ForeignKey(User,on_delete = models.CASCADE)
-    position = models.ForeignKey(Positions, on_delete = models.CASCADE)
+    position = models.ForeignKey(Positions, on_delete = models.DO_NOTHING)
 
 class Hobbies (models.Model):
     name = models.CharField(max_length = 30)

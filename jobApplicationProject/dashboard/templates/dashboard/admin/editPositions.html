@@ -18,7 +18,7 @@
         <div class="jobBlock">
             <button class="selectJobBtn selectJob">
                 <div class="jobInfo">
-                    <span class="jobTitle">{{ position.fields.positionName }}</span>
+                    <span class="jobTitle {{position.pk}}">{{ position.fields.positionName }}</span>
                     {% if position.fields.positionOpen %}
                     <span class="jobStatus open">Position Open</span>
                     <span class="jobDeadline open">Open Until: {{ position.fields.deadlineDate }}</span>
@@ -29,7 +29,7 @@
                 </div>
             </button>
             <div class="jobDesc">
-                {{ position.fields.positionDescription }}
+                <p class="{{position.pk}}">{{ position.fields.positionDescription }}</p>
                 <div class="jobButtons" id={{position.pk}}>
                     <button class="button editBtn">Edit</button>
                     {% if position.fields.positionOpen %}
@@ -65,6 +65,39 @@
                     <div class="job-modal-group">
                         <label for="">Description</label>
                         <textarea name="jobDescription" id="jobDescription"></textarea>
+                    </div>
+                    <div class="job-modal-group">
+                        <button type="submit" class="button submitBtn formSubmit">
+                            Add New Job
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div id="edit-job-modal" class="modal">
+        <div class="modal-content job-modal">
+            <header class="job-modal-header">
+                <i class="close-modal material-icons">close</i>
+                <h3 id="jobTitle">Edit Job</h3>
+            </header>
+            <div>
+                <!-- New Job Form -->
+                <form id="editJobForm" method="POST" action="{% url 'editPosition' %}">
+                    {% csrf_token %}
+                    <input type="hidden" name="positionID" id="positionID">
+                    <div class="job-modal-group">
+                        <label for="jobTitle">Job Title</label>
+                        <input type="text" name="newJobTitle" id="newJobTitle" placeholder="Job Title" required="required" />
+                    </div>
+                    <div class="job-modal-group">
+                        <label for="deadline">Deadline</label>
+                        <input type="date" name="newDeadline" id="newDeadline" placeholder="Deadline" required="required" />
+                    </div>
+                    <div class="job-modal-group">
+                        <label for="">Description</label>
+                        <textarea name="newJobDescription" id="newJobDescription"></textarea>
                     </div>
                     <div class="job-modal-group">
                         <button type="submit" class="button submitBtn formSubmit">

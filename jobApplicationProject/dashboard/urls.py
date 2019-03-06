@@ -4,6 +4,7 @@ from . import views
 urlpatterns = [
     url('application/', views.viewApplication, name="viewApplication"),
     url('positions/addNewPosition',views.addNewPosition,name="addNewPosition"),
+    url('positions/editPosition',views.editPosition,name="editPosition"),
     url('positions/deletePosition',views.deletePosition,name="deletePosition"),
     url('feedback/rejectWithFeedback',views.rejectWithFeedback,name="rejectWithFeedback"),
     url('feedback/hire',views.hireApplicant ,name="hire"),
