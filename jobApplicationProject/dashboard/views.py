@@ -12,8 +12,7 @@ def dashboard(request):
     positionID = request.GET.get('pid')
     if user.is_authenticated:
         if user.admin:
-            applications = Application.objects.filter(Q(status = "Submitted")|Q(status = "Being Reviewed"))
-
+            applications = getApplicants();
             return render(request, 'dashboard/admin/admin.html',{'applications':applications})
         else:
             if user.hasApplied:
@@ -32,6 +31,32 @@ def dashboard(request):
         else:
             openPositions = serializers.serialize( "python", Positions.objects.filter(positionOpen = True) )
             return render(request, 'home/careers.html', {'openPositions': openPositions})
+
+def getApplicants():
+    applicationDataObject = []
+    applications = Application.objects.filter(Q(status = "Submitted")|Q(status = "Being Reviewed"))
+    for applicant in applications:
+        hobbies = Applications_Hobbies.objects.filter(applicationID = applicant)
+        skills = Applications_Skills.objects.filter(applicationID = applicant)
+        alevels = Applications_ALevels.objects.filter(applicationID = applicant)
+        employments = Applications_Employments.objects.filter(applicationID = applicant)
+        university = Applications_Universities.objects.get(applicationID = applicant)
+        languages = Applications_Languages.objects.filter(applicationID = applicant)
+        applicationDataObject.append({'applicant':applicant,'skills':skills,'hobbies':hobbies,'aLevels':alevels,'employments':employments,'university':university,'languages':languages})
+
+    return applicationDataObject
+
+
+    return render(request, 'dashboard/applicant/viewApplication.html', {'applicants': applicantDataObject})
+    # hobbies = Applications_Hobbies.objects.filter(applicationID = application)
+    # skills = Applications_Skills.objects.filter(applicationID = application)
+    # alevels = Applications_ALevels.objects.filter(applicationID = application)
+    # employments = Applications_Employments.objects.filter(applicationID = application)
+    # university = Applications_Universities.objects.get(applicationID = application)
+    # languages = Applications_Languages.objects.filter(applicationID = application)
+    # {'application':application,'skills':skills,'hobbies':hobbies,'aLevels':alevels,'employments':employments,'university':university,'languages':languages}
+
+    
 
 def adminPositions(request):
     positions = serializers.serialize( "python", Positions.objects.all())
@@ -78,14 +103,14 @@ def hireApplicant(request):
         return redirect('adminFeedback')
 
 def viewApplication(request):
-    applicationObject = Application.objects.get(users=request.user)
-    hobbies = Applications_Hobbies.objects.filter(applicationID = applicationObject)
-    skills = Applications_Skills.objects.filter(applicationID = applicationObject)
-    alevels = Applications_ALevels.objects.filter(applicationID = applicationObject)
-    employments = Applications_Employments.objects.filter(applicationID = applicationObject)
-    university = Applications_Universities.objects.get(applicationID = applicationObject)
-    languages = Applications_Languages.objects.filter(applicationID = applicationObject)
-    return render(request, 'dashboard/applicant/viewApplication.html',{'applicationObject':applicationObject,'skills':skills,'hobbies':hobbies,'aLevels':alevels,'employments':employments,'university':university,'languages':languages, 'home': 1})
+    application = Application.objects.get(users=request.user)
+    hobbies = Applications_Hobbies.objects.filter(applicationID = application)
+    skills = Applications_Skills.objects.filter(applicationID = application)
+    alevels = Applications_ALevels.objects.filter(applicationID = application)
+    employments = Applications_Employments.objects.filter(applicationID = application)
+    university = Applications_Universities.objects.get(applicationID = application)
+    languages = Applications_Languages.objects.filter(applicationID = application)
+    return render(request, 'dashboard/applicant/viewApplication.html',{'application':application,'skills':skills,'hobbies':hobbies,'aLevels':alevels,'employments':employments,'university':university,'languages':languages, 'home': 1})
 
 @csrf_exempt
 def adminAction(request):
