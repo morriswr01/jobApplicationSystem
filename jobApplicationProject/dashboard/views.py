@@ -125,6 +125,20 @@ def adminAction(request):
         application.save()
     return JsonResponse(data)
 
+
+def openClosePosition(request):
+    positionID=request.POST.get('positionID')
+    current = request.POST.get('current')
+    data = dict()
+    position=Positions.objects.get(id=positionID)
+    print(position.positionOpen)
+    if position.positionOpen == True:
+        position.positionOpen = False
+    else:
+        position.positionOpen = True
+    position.save()
+    return JsonResponse(data)
+
 @csrf_exempt
 def rejectInterview(request):
     applicationID = request.GET.get('appId')

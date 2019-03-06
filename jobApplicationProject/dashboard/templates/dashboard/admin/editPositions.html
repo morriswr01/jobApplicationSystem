@@ -26,6 +26,7 @@
                     <span class="jobStatus closed">Position Closed</span>
                     <span class="jobDeadline closed">N/A</span>
                     {%endif%}
+                    <input type ='hidden' value = "{{position.fields.deadlineDate}}" name = "openUntil">
                 </div>
             </button>
             <div class="jobDesc">
