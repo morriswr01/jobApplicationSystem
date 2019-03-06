@@ -17,9 +17,9 @@ def dashboard(request):
             return render(request, 'dashboard/admin/admin.html',{'applications':applications})
         else:
             if user.hasApplied:
-                applicationStatus = Application.objects.get(users=user).status
+                application = Application.objects.get(users = user)
                 position = Application.objects.get(users = user).position
-                return render(request, 'dashboard/applicant/applicant.html', {'applicationStatus' : applicationStatus, 'positionName':position.positionName})
+                return render(request, 'dashboard/applicant/applicant.html', {'application' : application, 'positionName':position.positionName})
             else:
                 if positionID is not None:
                     return render(request, 'dashboard/applicant/createApplication.html', {'positionID': positionID})
