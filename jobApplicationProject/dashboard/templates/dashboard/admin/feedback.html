@@ -1,7 +1,212 @@
 {% extends 'adminTemplate.html' %}
 
-{% comment %} Navbar {% endcomment %}
 {% block navbar %}
 {% include 'adminNav.html' with screen=3 %}
 {% endblock %}
 
+{% block content %}
+
+<div class="header">
+    <div class="reportHeading">
+        <h3 class="title">Interview Applicants</h3>
+        <p>These applicants have been interviewed and can be hired or rejected. If they are rejected you should provide
+            feedback.</p>
+        <!-- Applicants who have been interviewed -->
+    </div>
+    <div class="applicantListAccordion">
+        <!-- for each applicant in selected applicants -->
+        {% for applicant in applicationsInterviewed %}
+        <div class="applicantBlock">
+            <button class="selectApplicantBtn selectJob">
+                <div class="applicantInfo">
+                    <!-- submitted, being reviewed, -->
+                    <span class="name">{{applicant.users.fName}} {{applicant.users.lName}}</span>
+                    <span class="applicationId">AppID: {{applicant.id}} </span>
+                    <span class="role">For Role: {{applicant.position.positionName}}</span>
+                    <span class="dateApplied">{{applicant.dateSubmitted}}</span>
+                </div>
+            </button>
+            <div class="application">
+                <div class="applicantAction">
+                    {%csrf_token%}
+                    <a href="{% url 'hire' %}?appId={{applicant.id}}" class="button applicantActionBtn hireApplicant">Hire</a>
+                    <button class="button applicantActionBtn rejectWithFeedback" id={{applicant.id}}>Reject and Give
+                        Feedback</button>
+                </div>
+                <div class="applicationData">
+                    <div class="dataPanel">
+                        <h4>Degree</h4>
+                        <div class="data">
+                            <div>University:</div>
+                            <div>University Of Warwick</div>
+                            <div>Degree Title:</div>
+                            <div>Computer Science</div>
+                            <div>Grade Attained:</div>
+                            <div>2:1</div>
+                        </div>
+                    </div>
+                    <div class="dataPanel">
+                        <h4>A-Levels</h4>
+                        <div class="data">
+                            <div>Maths</div>
+                            <div>A*</div>
+                            <div>Computer Science</div>
+                            <div>D</div>
+                            <div>English</div>
+                            <div>C</div>
+                        </div>
+                    </div>
+                    <div class="dataPanel">
+                        <h4>Previous Employment</h4>
+                        <div class="data">
+                            <div class="employment">
+                                <div>Front End Engineer</div>
+                                <div>Google</div>
+                                <div>5 years, 6 Months</div>
+                            </div>
+                            <div class="employment">
+                                <div>Shop Floor Assistant</div>
+                                <div>Asda</div>
+                                <div>3 years, 4 Months</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="dataPanel">
+                        <h4>Programming Languages</h4>
+                        <div class="data">
+                            <div>Python</div>
+                            <div>9</div>
+                            <div>C#</div>
+                            <div>3</div>
+                            <div>JavaScript</div>
+                            <div>6</div>
+                            <div>Haskell</div>
+                            <div>1</div>
+                        </div>
+                    </div>
+                    <div class="dataPanel">
+                        <h4>Skills</h4>
+                        <div class="data">
+                            <div>Excel</div>
+                            <div>7</div>
+                            <div>Word</div>
+                            <div>8</div>
+                            <div>Latex</div>
+                            <div>4</div>
+                        </div>
+                    </div>
+                    <div class="dataPanel">
+                        <h4>Hobbies</h4>
+                        <div class="data">
+                            <div>Piano</div>
+                            <div>5</div>
+                        </div>
+                    </div>
+                    <div class="dataPanel">
+                        <h4>Contact</h4>
+                        <div class="data">
+                            <div>Email</div>
+                            <div>morriswr01@gmail.com</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {%endfor%}
+    </div>
+
+    <!-- Interviews requested -->
+    <div class="reportHeading">
+        <h3 class="title">Interview Requests Pending</h3>
+        <p>You have requested an interview with these applicants.</p>
+        <!-- Applicants who have not replied to interview request -->
+    </div>
+    <div class="applicantListAccordion">
+        <!-- for each applicant in selected applicants -->
+        {% for applicant in applicationsInterviewRequest %}
+        <div class="applicantBlock">
+            <button class="selectApplicantBtn selectJob">
+                <div class="applicantInfo">
+                    <span class="name">{{applicant.users.fName}} {{applicant.users.lName}}</span>
+                    <span class="applicationId">AppID: {{applicant.id}} </span>
+                    <span class="role">For Role: {{applicant.position.positionName}}</span>
+                    <span class="dateApplied">{{applicant.dateSubmitted}}</span>
+                </div>
+            </button>
+            <div class="application">
+                <div class="applicationData">
+                    <div class="dataPanel">
+                        <h4>Contact</h4>
+                        <div class="data">
+                            <div>Email</div>
+                            <div>{{ user.email }}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {%endfor%}
+    </div>
+
+    <!-- Accepted applications -->
+    <div class="reportHeading">
+        <h3 class="title">Accepted Applicants</h3>
+        <p>These applicants have been hired and should be contacted with their contact info below.</p>
+        <!-- Display contact info so admin can get in contact -->
+    </div>
+    <div class="applicantListAccordion">
+        <!-- for each applicant in selected applicants -->
+        {% for applicant in applicationsAccepted %}
+        <div class="applicantBlock">
+            <button class="selectApplicantBtn selectJob">
+                <div class="applicantInfo">
+                    <span class="name">{{applicant.users.fName}} {{applicant.users.lName}}</span>
+                    <span class="applicationId">AppID: {{applicant.id}} </span>
+                    <span class="role">For Role: {{applicant.position.positionName}}</span>
+                    <span class="dateApplied">{{applicant.dateSubmitted}}</span>
+                </div>
+            </button>
+            <div class="application">
+                <div class="applicationData">
+                    <div class="dataPanel">
+                        <h4>Contact</h4>
+                        <div class="data">
+                            <div>Email</div>
+                            <div>{{ user.email }}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {%endfor%}
+    </div>
+
+
+</div>
+
+<div id="feedback-modal" class="modal">
+    <div class="modal-content job-modal">
+        <header class="job-modal-header">
+            <i class="close-modal material-icons">close</i>
+            <h3>Feedback Form</h3>
+        </header>
+        <div>
+            <!-- New Job Form -->
+            <form action="{% url 'rejectWithFeedback' %}" class="feedback-form" method="POST">
+                {% csrf_token %}
+                <input type="hidden" id="appId" name="appId" value="">
+                <div class="job-modal-group">
+                    <label for="feedback">Feedback</label>
+                    <textarea name="feedback" id="feedback"></textarea>
+                </div>
+                <div class="job-modal-group">
+                    <button type="submit" class="button submitBtn formSubmit">
+                        Return feedback and reject
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

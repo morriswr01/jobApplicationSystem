@@ -1,14 +1,14 @@
 <!-- Navigation Bar -->
 <nav class="nav-container admin">
-        <div class="grid-item link {% if screen == 1 %}active{%endif%}">
-            <a href="{% url 'dashboard' %}">Report</a>
-        </div>
-        <div class="grid-item link {% if screen == 2 %}active{%endif%}">
-            <a href="{% url 'adminPositions' %}">Current Positions</a>
-        </div>
-        <div class="grid-item link {% if screen == 3 %}active{%endif%}">
-            <a href="{% url 'adminFeedback' %}">Feedback</a>
-        </div>
+    <div class="grid-item link {% if screen == 1 %}active{%endif%}">
+        <a href="{% url 'dashboard' %}">Applicant Report</a>
+    </div>
+    <div class="grid-item link {% if screen == 2 %}active{%endif%}">
+        <a href="{% url 'adminPositions' %}">Current Positions</a>
+    </div>
+    <div class="grid-item link {% if screen == 3 %}active{%endif%}">
+        <a href="{% url 'adminFeedback' %}">Manage Interviews</a>
+    </div>
     <div class="grid-item nav-logo">
         <h1>Bank Of DCS</h1>
     </div>

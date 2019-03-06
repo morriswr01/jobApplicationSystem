@@ -15,12 +15,21 @@
 <body>
     <!-- Navigation Bar -->
     <nav class="nav-container">
+        {% if home == 1 %}
+        <div class="grid-item link">
+            <a href="{% url 'dashboard' %}">Home</a>
+        </div>
+        <div class="grid-item link active">
+            <a href="{% url 'viewApplication' %}">Review Application</a>
+        </div>
+        {%else%}
         <div class="grid-item link active">
             <a href="{% url 'dashboard' %}">Home</a>
         </div>
         <div class="grid-item link">
             <a href="{% url 'viewApplication' %}">Review Application</a>
         </div>
+        {%endif%}
         <div class="grid-item">
             <h1>Bank Of DCS</h1>
         </div>

@@ -90,6 +90,19 @@ $(document).ready(function () {
         }
     });
 
+    $('.editBtn').click(function () {
+		target = $('#edit-job-modal');
+		positionID = $(this).parent().attr('id');
+		jobTitle = $('.' + positionID).get(0).innerHTML;
+		description = $('.' + positionID).get(1).innerHTML;
+  
+		$('#editJobForm #positionID').val(positionID);
+		$('#editJobForm #newJobTitle').val(jobTitle);
+		$('#editJobForm #newJobDescription').val(description);
+  
+      	target.css("display", "block");
+    });
+
     //Add employment on clicking add
     $('.add-prev-employment').click(function (e) {
         e.preventDefault();

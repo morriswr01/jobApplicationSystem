@@ -15,25 +15,94 @@
 
     <div class="applicantListAccordion">
         <!-- for each applicant in selected applicants -->
-        {%for applicant in applications%}
+        {%for singleApplicant in applications %}
         <div class="applicantBlock">
             <button class="selectApplicantBtn selectJob">
                 <div class="applicantInfo">
-                  <!-- submitted, being reviewed, -->
-                    <span class="name">{{applicant.users.fName}} {{applicant.users.lName}}</span>
-                    <span class="applicationId">AppID: {{applicant.id}} </span>
-                    <span class="role">For Role: {{applicant.position.positionName}}</span>
-                    <span class="dateApplied">{{applicant.dateSubmitted}}</span>
+                    <!-- submitted, being reviewed, -->
+                    <span class="name">{{singleApplicant.applicant.users.fName}}
+                        {{singleApplicant.applicant.users.lName}}</span>
+                    <span class="applicationId">AppID: {{singleApplicant.applicant.id}} </span>
+                    <span class="role">For Role: {{singleApplicant.applicant.position.positionName}}</span>
+                    <span class="dateApplied">{{singleApplicant.applicant.dateSubmitted}}</span>
                 </div>
             </button>
             <div class="application">
                 <div class="applicantAction">
-                  {%csrf_token%}
-                    <button class="button applicantActionBtn reqInterview" id = {{applicant.id}}>Request Interview</button>
-                    <button class="button applicantActionBtn rejectApplicant" id = {{applicant.id}}>Reject</button>
+                    {%csrf_token%}
+                    <button class="button applicantActionBtn reqInterview" id={{singleApplicant.applicant.id}}>Request
+                        Interview</button>
+                    <button class="button applicantActionBtn rejectApplicant" id={{singleApplicant.applicant.id}}>Reject</button>
                 </div>
                 <div class="applicationData">
-
+                    <div class="dataPanel">
+                        <h4>Degree</h4>
+                        <div class="data">
+                            <div>University</div>
+                            <div>{{ singleApplicant.university.universityID.name }}</div>
+                            <div>Degree Title</div>
+                            <div>{{ singleApplicant.university.qualification }}</div>
+                            <div>Grade Attained</div>
+                            <div>{{ singleApplicant.university.level }}</div>
+                        </div>
+                    </div>
+                    <div class="dataPanel">
+                        <h4>A-Levels</h4>
+                        <div class="data">
+                            {% for aLevel in singleApplicant.aLevels %}
+                            <div>{{ aLevel.alevelID.subject }}</div>
+                            <div>{{ aLevel.grade }}</div>
+                            {%endfor%}
+                        </div>
+                    </div>
+                    <div class="dataPanel">
+                        <h4>Previous Employment</h4>
+                        <div class="data">
+                            {% for employment in singleApplicant.employments %}
+                            <div class="employment">
+                                <div>{{ employment.position }}</div>
+                                <div>{{ employment.companyID.companyName}}</div>
+                                <div>{{ employment.lengthOfEmploymentYears }} years,
+                                    {{employment.lengthOfEmploymentMonths}}
+                                    months</div>
+                            </div>
+                            {%endfor%}
+                        </div>
+                    </div>
+                    <div class="dataPanel">
+                        <h4>Programming Languages</h4>
+                        <div class="data">
+                            {% for language in singleApplicant.languages %}
+                            <div>{{ language.languageID.subject }}</div>
+                            <div>{{ language.expertise }}</div>
+                            {%endfor%}
+                        </div>
+                    </div>
+                    <div class="dataPanel">
+                        <h4>Skills</h4>
+                        <div class="data">
+                            {% for skill in singleApplicant.skills %}
+                            <div>{{ skill.skillID.skillName }}</div>
+                            <div>{{ skill.expertise }}</div>
+                            {%endfor%}
+                        </div>
+                    </div>
+                    <div class="dataPanel">
+                        <h4>Hobbies</h4>
+                        <div class="data">
+                            {% for hobby in singleApplicant.hobbies %}
+                            <div>{{ hobby.hobbyID.name }}</div>
+                            <div>{{ hobby.interest }}</div>
+                            {%endfor%}
+                        </div>
+                    </div>
+                    <div class="dataPanel">
+                        <h4>Contact</h4>
+                        <div class="data">
+                            <div>Email</div>
+                            <div>{{ singleApplicant.applicant.users.email }}</div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

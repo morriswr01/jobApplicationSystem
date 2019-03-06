@@ -3,14 +3,49 @@
 {% block content %}
 <!-- Dashboard content -->
 <div class="header">
-    <h4>Welcome back, {{ user.fName }} {{ user.lName }}</h4>
+    <h2>Welcome back, {{ user.fName }} {{ user.lName }}</h2>
     <div class="dash-content">
-        <div class="message">
+        <h3>
             You have submitted an application for the position:
-        </div>
+        </h3>
         <div class="blue">{{positionName}}</div>
-        <div class="message">The current status of your application is:</div>
-        <div class="blue">{{applicationStatus}}</div>
+        <h3>The current status of your application is:</h3>
+
+        {% if application.status == "Submitted" %}
+        <div class="blue">{{application.status}}</div>
+        <p>Your application has been submitted and will be reviewed soon.</p>
+
+        {% elif application.status == "Being Reviewed" %}
+        <div class="blue">{{application.status}}</div>
+        <p>Your application has been seen and is being reviewed.</p>
+
+        {% elif application.status == "Requested Interview" %}
+        <div class="blue">{{application.status}}</div>
+        <p>Your application has been reviewed and an interview has been requested.</p>
+        <div class="btnContainer">
+            <a href="{% url 'acceptInterview'%}?appId={{application.id}}" class="button applicantActionBtn acceptInterview">Accept</a>
+            <a href="{% url 'rejectInterview'%}?appId={{application.id}}" class="button applicantActionBtn rejectInterview">Reject</a>
+        </div>
+
+        {% elif application.status == "Interviewed" %}
+        <div class="blue">{{application.status}}</div>
+        <p>You have an interview or have been interviewed and a final decision will be made soon.</p>
+
+        {% elif application.status == "Rejected" %}
+        <div class="blue">{{application.status}}</div>
+        {%if application.feedback != "" %}
+        <p>We regret to inform you that your application was rejected.</p>
+        <h3>Feedback:</h3>
+        <p>{{application.feedback}}</p>
+        {% else %}
+        <p>You rejected the interview.</p>
+        {%endif%}
+
+        {% elif application.status == "Accepted" %}
+        <div class="blue">{{application.status}}</div>
+        <p>Congratulations! Your application has been accepted. We will contact you by email soon for next steps.</p>
+
+        {% endif %}
     </div>
 </div>
 {% endblock %}
