@@ -1,13 +1,21 @@
 
+# Check the versions of libraries
+
+# Python version
 import sys
+# scipy
 import scipy
+# numpy
 import numpy
+# matplotlib
 import matplotlib
+# pandas
 import pandas
+# scikit-learn
 import random
 import pickle
 
-
+# Load libraries
 from sklearn import model_selection
 from sklearn import preprocessing
 from sklearn.metrics import classification_report
@@ -16,18 +24,29 @@ from sklearn.naive_bayes import GaussianNB
 from sklearn.model_selection import train_test_split
 from sklearn import linear_model
 
+#A-Level Qualifications - Subject
+#Languages Known - Language
+#Previous Employment - Position
+#Skills - Skill
+#Hobbies - Name
+
+
+
+#print(csw_dataset.groupby('University Attended').size())
+
 def makeInitialModels():
     pandas.options.mode.chained_assignment = None
     # Load dataset
     csw_url = "cvDataset.json"
     csw_dataset = pandas.read_json(csw_url, orient='columns')
+    csw_dataset = csw_dataset.head(100000)
 
     # create the Labelencoder object
 
     #Create an additional column for if the application was successful or not.
-    StatusArray = [0 for x in range(100000)]
-    Status = pandas.Series(StatusArray)
-    csw_dataset = csw_dataset.assign(Status=Status.values)
+    acceptedArray = [0 for x in range(100000)]
+    Accepted = pandas.Series(acceptedArray)
+    csw_dataset = csw_dataset.assign(Accepted=Accepted.values)
 
     jobs = ['Devops', 'FullStack', 'Hadoop', 'Java', 'QA', 'UI']
     Devops = GaussianNB()
@@ -43,13 +62,13 @@ def makeInitialModels():
     for x in range(6):
 
         for y in range(csw_dataset.shape[0]):
-            csw_dataset.set_value(y, 'Status', 0)
+            csw_dataset.set_value(y, 'Accepted', 0)
         data = simulate(csw_dataset, jobs[x])
         model = models[x]
         data = preprocess(data)
         cols = [col for col in data.columns if col in ['University Attended', 'Degree Qualification', 'Degree Level']]
         learn_data = data[cols]
-        target = data['Status']
+        target = data['Accepted']
         data_train, data_test, target_train, target_test = train_test_split(learn_data,target, test_size = 0.20, random_state = 1)
         model.fit(data_train, target_train)
         pred = model.predict(data_test)
@@ -78,7 +97,7 @@ def simulate(data, model):
             if data.iloc[x]['Degree Level'] == "1st":
                 points += 5
             if points > 12:
-                data.set_value(x, 'Status', 1)
+                data.set_value(x, 'Accepted', 1)
 
         elif model == 'FullStack':
             degrees_list = ["Computer Science", "Engineering", "Economics", "Business", "Mathematics"]
@@ -94,7 +113,7 @@ def simulate(data, model):
                 points += 5
             #points += 5*len(p_employment)
             if points > 12:
-                data.set_value(x, 'Status', 1)
+                data.set_value(x, 'Accepted', 1)
 
         elif model == 'Hadoop':
             degrees_list = ["Computer Science", "Engineering", "Economics", "Business", "Mathematics"]
@@ -110,7 +129,7 @@ def simulate(data, model):
                 points += 5
             #points += 5*len(p_employment)
             if points > 12:
-                data.set_value(x, 'Status', 1)
+                data.set_value(x, 'Accepted', 1)
 
         elif model == 'Java':
             degrees_list = ["Computer Science", "Engineering", "Economics", "Business", "Mathematics"]
@@ -126,7 +145,7 @@ def simulate(data, model):
                 points += 3
             #points += 5*len(p_employment)
             if points > 12:
-                data.set_value(x, 'Status', 1)
+                data.set_value(x, 'Accepted', 1)
 
         elif model == 'QA':
             degrees_list = ["Computer Science", "Engineering", "Economics", "Business", "Mathematics"]
@@ -142,7 +161,7 @@ def simulate(data, model):
                 points += 5
             #points += 5*len(p_employment)
             if points > 12:
-                data.set_value(x, 'Status', 1)
+                data.set_value(x, 'Accepted', 1)
 
         elif model == 'UI':
             degrees_list = ["Computer Science", "Engineering", "Economics", "Business", "Mathematics"]
@@ -158,7 +177,7 @@ def simulate(data, model):
                 points += 5
             #points += 5*len(p_employment)
             if points > 12:
-                data.set_value(x, 'Status', 1)
+                data.set_value(x, 'Accepted', 1)
 
     return data
 
