@@ -3,97 +3,58 @@
 {% block content %}
 <div class="header">
     <h1>Your Application</h1>
-    <div class="display">
-        <div class="blue"><a>Personal Details</a></div>
-        <div class="blue-small">
-            <div class="in-line">
-                <a>First Name</a>
-                <div class="user-details"><a>{{user.fName}}</a></div>
-            </div>
-            <div class="in-line">
-                <a>Last Name</a>
-                <div class="user-details"><a>{{user.lName}}</a></div>
-            </div>
-            <div class="in-line">
-                <a>Email</a>
-                <div class="user-details"><a>{{user.email}}</a></div>
+    <div class="applicationData">
+        <div class="dataPanel">
+            <h3>Personal Details</h3>
+            <div class="data">
+                <div>Name</div>
+                <div>{{applicationObject.users.fName}} {{applicationObject.users.lName}}</div>
+                <div>Applicant ID</div>
+                <div>{{applicationObject.id}}</div>
+                <div>For Role</div>
+                <div>{{applicationObject.position.positionName}}</div>
+                <div>Date Submitted</div>
+                <div>{{applicationObject.dateSubmitted}}</div>
             </div>
         </div>
-    </div>
-    <div class="display">
-        <div class="blue"><a>Application Details</a></div>
-        <div class="blue-small">
-            <div class="in-line">
-                <a>Date Submitted</a>
-                <div class="user-details"><a>{{applicationObject.dateSubmitted}}</a></div>
-            </div>
-            <div class="in-line">
-                <a>Position</a>
-                <div class="user-details"><a>{{applicationObject.position.positionName}}</a></div>
-            </div>
-            <div class="in-line">
-                <a>Current Status</a>
-                <div class="user-details"><a>{{applicationObject.status}}</a></div>
-            </div>
-            <div class="in-line">
-                <a>Feedback</a>
-                <div class="user-details"><a>{{applicationObject.feedback}}</a></div>
+        <div class="dataPanel">
+            <h4>Degree</h4>
+            <div class="data">
+                <div>University:</div>
+                <div>{{ university.universityID.name }}</div>
+                <div>Degree Title:</div>
+                <div>{{ university.qualification }}</div>
+                <div>Grade Attained:</div>
+                <div>{{ university.level }}</div>
             </div>
         </div>
-    </div>
-    <div class="display">
-        <div class="blue"><a>Education</a></div>
-        <div class="blue-small">
-            <div class="in-line">
-                <a>A Level Grades</a>
-                {% for aLevel in aLevelsObject %}
-                <div class="user-details"><a>{{aLevel.alevelID.subject}}: {{aLevel.grade}}</a></div>
+        <div class="dataPanel">
+            <h4>A-Levels</h4>
+            <div class="data">
+                {% for aLevel in aLevels %}
+                <div>{{ aLevel.alevelID.subject }}</div>
+                <div>{{ aLevel.grade }}</div>
                 {%endfor%}
             </div>
-            <div class="in-line">
-                <a>University</a>
-                {% for university in universitiesObject%}
-                <div class="user-details"><a>{{university.universityID.name}}</a></div>
-                <div class="user-details"><a>{{university.qualification}}</a></div>
-                <div class="user-details"><a>{{university.level}}</a></div>
+        </div>
+        <div class="dataPanel">
+            <h4>Hobbies</h4>
+            <div class="data">
+                {% for hobby in hobbies %}
+                <div>{{ hobby.hobbyID.name }}</div>
+                <div>{{ hobby.interest }}</div>
                 {%endfor%}
-                <div class="user-details"><a>Skills: {%for skill in skillsObject%}{{skill.skillID.skillName}}{%if not forloop.last%}, {%endif%}{%endfor%}</a></div>
             </div>
-            <div class="in-line">
-                <a>Languages</a>
-                <div class="user-details"><a>{%for language in languagesObject%}
-                {{language.languageID.subject}}
-                {%if not forloop.last%}, {%endif%} {%endfor%}</a></div>
+        </div>
+        <div class="dataPanel">
+            <h4>Skills</h4>
+            <div class="data">
+                {% for skill in skills %}
+                <div>{{ skill.skillID.skillName }}</div>
+                <div>{{ skill.expertise }}</div>
+                {%endfor%}
             </div>
         </div>
     </div>
-    <div class="display">
-        <div class="blue"><a>Previous Employment</a></div>
-        <div class="blue-small">
-            {%for company in employmentsObject%}
-            <div class="in-line">
-                <a>Company Name</a>
-                <div class="user-details"><a>{{company.companyID.companyName}}</a></div>
-            </div>
-            <div class="in-line">
-                <a>Position</a>
-                <div class="user-details"><a>{{company.position}}</a></div>
-            </div>
-            <div class="in-line">
-                <a>Length of Employment</a>
-                <div class="user-details"><a>{{company.lengthOfEmploymentYears}} years, {{company.lengthOfEmploymentMonths}} months</a></div>
-            </div>
-            {%endfor%}
-        </div>
-    </div>
-    <div class="display">
-        <div class="blue"><a>Hobbies</a></div>
-        <div class="blue-small">
-            <div class="in-line">
-                <div class="user-details"><a>{%for hobby in hobbiesObject%}{{hobby.hobbyID.name}}{%if not forloop.last%}, {%endif%} {%endfor%}</a></div>
-            </div>
-        </div>
-    </div>
-</div>
 
-{% endblock %}
+    {% endblock %}

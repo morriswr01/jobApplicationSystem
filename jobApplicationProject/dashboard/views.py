@@ -79,13 +79,13 @@ def hireApplicant(request):
 
 def viewApplication(request):
     applicationObject = Application.objects.get(users=request.user)
-    hobbiesObject = Applications_Hobbies.objects.filter(applicationID = applicationObject)
-    skillsObject = Applications_Skills.objects.filter(applicationID = applicationObject)
-    alevelsObject = Applications_ALevels.objects.filter(applicationID = applicationObject)
-    employmentsObject = Applications_Employments.objects.filter(applicationID = applicationObject)
-    universitiesObject = Applications_Universities.objects.filter(applicationID = applicationObject)
-    languagesObject = Applications_Languages.objects.filter(applicationID = applicationObject)
-    return render(request, 'dashboard/applicant/viewApplication.html',{'applicationObject':applicationObject,'skillsObject':skillsObject,'hobbiesObject':hobbiesObject,'aLevelsObject':alevelsObject,'employmentsObject':employmentsObject,'universitiesObject':universitiesObject,'languagesObject':languagesObject})
+    hobbies = Applications_Hobbies.objects.filter(applicationID = applicationObject)
+    skills = Applications_Skills.objects.filter(applicationID = applicationObject)
+    alevels = Applications_ALevels.objects.filter(applicationID = applicationObject)
+    employments = Applications_Employments.objects.filter(applicationID = applicationObject)
+    university = Applications_Universities.objects.get(applicationID = applicationObject)
+    languages = Applications_Languages.objects.filter(applicationID = applicationObject)
+    return render(request, 'dashboard/applicant/viewApplication.html',{'applicationObject':applicationObject,'skills':skills,'hobbies':hobbies,'aLevels':alevels,'employments':employments,'university':university,'languages':languages})
 
 @csrf_exempt
 def adminAction(request):
