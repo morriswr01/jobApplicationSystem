@@ -77,6 +77,7 @@ def makeInitialModels():
 
 def simulate(data, model):
     for x in range(data.shape[0]):
+        print(x)
         points = 0
         degree = data.iloc[x]['Degree Qualification']
         #p_languages = data.iloc[x]['Languages Known']
@@ -185,5 +186,6 @@ def preprocess(data):
     data['Degree Qualification'] = le.fit_transform(data['Degree Qualification'])
     data['Degree Level'] = le.fit_transform(data['Degree Level'])
     data['University Attended'] = le.fit_transform(data['University Attended'])
+    return data
 
 makeInitialModels()
