@@ -6,6 +6,11 @@ from controller.models import *
 from django.db.models import Q
 from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse
+from jobApplicationProject import settings
+from . import MachineLearning
+import pandas as pd
+import json
+import os
 # Create your views here.
 def dashboard(request):
     user = request.user
@@ -36,11 +41,14 @@ def getApplicants():
     applicationDataObject = []
     applications = Application.objects.filter(Q(status = "Submitted")|Q(status = "Being Reviewed"))
     for applicant in applications:
+        university = Applications_Universities.objects.get(applicationID = applicant)
+        # modelPath = os.path.join(settings.BASE_DIR, "dashboard/model")
+        # displayApplicant = MachineLearning.analyseApplication(modelPath, [{'University Attended': university.universityID.name, 'Degree Qualification': university.qualification, 'Degree Level': university.level}])
+        # if displayApplicant:
         hobbies = Applications_Hobbies.objects.filter(applicationID = applicant)
         skills = Applications_Skills.objects.filter(applicationID = applicant)
         alevels = Applications_ALevels.objects.filter(applicationID = applicant)
         employments = Applications_Employments.objects.filter(applicationID = applicant)
-        university = Applications_Universities.objects.get(applicationID = applicant)
         languages = Applications_Languages.objects.filter(applicationID = applicant)
         applicationDataObject.append({'applicant':applicant,'skills':skills,'hobbies':hobbies,'aLevels':alevels,'employments':employments,'university':university,'languages':languages})
     return applicationDataObject
