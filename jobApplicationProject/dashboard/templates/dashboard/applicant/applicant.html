@@ -33,12 +33,12 @@
 
         {% elif application.status == "Rejected" %}
         <div class="blue">{{application.status}}</div>
-        {%if application.feedback != "" %}
+        {%if application.feedback == "" %}
+        <p>You rejected the interview.</p>
+        {% else %}
         <p>We regret to inform you that your application was rejected.</p>
         <h3>Feedback:</h3>
         <p>{{application.feedback}}</p>
-        {% else %}
-        <p>You rejected the interview.</p>
         {%endif%}
 
         {% elif application.status == "Accepted" %}

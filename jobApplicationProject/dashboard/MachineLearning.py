@@ -32,7 +32,7 @@ def analyseApplication(modelName, data):
     #This function works similar to the previous one. However, it only analyses one application and
     # returns True or False if the application has been accepted or rejected respectively.
     model = pickle.load(open(modelName, 'rb'))
-    apl = pandas.read_json(data, orient='columns')
+    apl = pandas.read_json(data, orient='columns', index=[0])
     data = masterML.preprocess(data)
     pred = model.predict(apl)
     if pred[0] == 1:

@@ -209,4 +209,12 @@ $(document).ready(function () {
     $('#appForm').submit();
   });
 
+  $('.rejectWithFeedback').click(function () {
+		target = $('#feedback-modal');
+		appId = $('#appId');
+		appId.val($(this).attr('id'));
+
+		target.css("display", "block");
+	});
+
 });

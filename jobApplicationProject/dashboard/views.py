@@ -41,7 +41,7 @@ def getApplicants():
     applicationDataObject = []
     applications = Application.objects.filter(Q(status = "Submitted")|Q(status = "Being Reviewed"))
     for applicant in applications:
-        university = Applications_Universities.objects.get(applicationID = applicant)
+        university = Applications_Universities.objects.filter(applicationID = applicant)
         # modelPath = os.path.join(settings.BASE_DIR, "dashboard/model")
         # displayApplicant = MachineLearning.analyseApplication(modelPath, [{'University Attended': university.universityID.name, 'Degree Qualification': university.qualification, 'Degree Level': university.level}])
         # if displayApplicant:
