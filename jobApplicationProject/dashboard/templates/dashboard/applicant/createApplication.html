@@ -8,357 +8,374 @@
 <!-- Applicants basic information application form -->
 <form action="{% url 'submitApp' %}?pid={{positionID}}" method="POST">
     {% csrf_token %}
-    <div class="basicInfo">
-        <!-- Degree -->
-        <div class="application-form-group">
-            <label for="degreeType">Degree</label>
-            <select name="degreeType" id="degreeType" class="selectBox">
-                <option default value="">Select Degree Type</option>
-                <option value="associates">Associate's</option>
-                <option value="bachelors">Bachelor's</option>
-                <option value="masters">Master's</option>
-                <option value="doctoral">Doctoral</option>
-                <option value="diploma">Diploma</option>
-            </select>
-            <input type="text" name="degreeTitle" id="degreeTitle" placeholder="Degree Title" />
-            <select name="degreeGrade" id="degreeGrade" class="selectBox">
-                <option default value="">Grade Attained</option>
-                <option value="1">First Class (1st)</option>
-                <option value="2.1">Upper Second Class(2.1)</option>
-                <option value="2.2">Lower Second Class(2.2)</option>
-                <option value="3">Third(3rd)</option>
-            </select>
-            <select name="universityAttended" id="universityAttended" class="selectBox">
-                <option default value="">Select University Attended</option>
-                <option value="University Of Warwick">University Of Warwick</option>
-            </select>
-        </div>
-        <!-- A levels -->
-        <div class="application-form-group">
-            <label>A-Levels</label>
-            <div id="a-levels">
-            </div>
-            <div class="threeColumnFields">
-                <select class="resetSelect" name="aLevelSubject" id="aLevelSubject">
-                    <option default value="">Subject</option>
-                    <option value="Art">Art</option>
-                    <option value="Accounting">Accounting</option>
-                    <option value="Business">Business</option>
-                    <option value="Biology">Biology</option>
-                    <option value="Chemistry">Chemistry</option>
-                    <option value="Computer Science">Computer Science</option>
-                    <option value="Economics">Economics</option>
-                    <option value="English Language">English Language</option>
-                    <option value="English Literature">English Literature</option>
-                    <option value="Further Maths">Further Maths</option>
-                    <option value="French">French</option>
-                    <option value="Geography">Geography</option>
-                    <option value="German">German</option>
-                    <option value="History">History</option>
-                    <option value="Italian">Italian</option>
-                    <option value="Law">Law</option>
-                    <option value="Music">Music</option>
-                    <option value="Maths">Maths</option>
-                    <option value="Politics">Politics</option>
-                    <option value="Spanish">Spanish</option>
+    <div class="application-form">
+        <div class="basicInfo">
+            <!-- Degree -->
+            <div class="application-form-group">
+                <label for="degreeType">Degree</label>
+                <select name="degreeType" id="degreeType" class="selectBox">
+                    <option default value="">Select Degree Type</option>
+                    <option value="associates">Associate's</option>
+                    <option value="bachelors">Bachelor's</option>
+                    <option value="masters">Master's</option>
+                    <option value="doctoral">Doctoral</option>
+                    <option value="diploma">Diploma</option>
                 </select>
-                <select class="resetSelect" name="aLevelGrade" id="aLevelGrade">
-                    <option default value="">Grade</option>
-                    <option value="A*">A*</option>
-                    <option value="A">A</option>
-                    <option value="B">B</option>
-                    <option value="C">C</option>
-                    <option value="D">D</option>
-                    <option value="E">E</option>
-                    <option value="F">F</option>
+                <input type="text" name="degreeTitle" id="degreeTitle" placeholder="Degree Title" />
+                <select name="degreeGrade" id="degreeGrade" class="selectBox">
+                    <option default value="">Grade Attained</option>
+                    <option value="1">First Class (1st)</option>
+                    <option value="2.1">Upper Second Class(2.1)</option>
+                    <option value="2.2">Lower Second Class(2.2)</option>
+                    <option value="3">Third(3rd)</option>
                 </select>
-                <a class="add-input button submitBtn">Add</a>
-            </div>
-        </div>
-        <!-- Previous Employment -->
-        <div class="application-form-group">
-            <label for="previousEmployment[]">Previous Employment</label>
-            <div class="prevEmploymentDetails">
-            </div>
-            <input type="text" name="previousEmployment[]" id="companyName" placeholder="Company Name" />
-            <input type="text" name="previousEmployment[]" id="postName" placeholder="Post Name" />
-            <div class="threeColumnFields employmentLength">
-                <select class="resetSelect" name="previousEmployment[]" id="years">
-                    <option default value="">Length(Years)</option>
+                <select name="universityAttended" id="universityAttended" class="selectBox">
+                    <option default value="">Select University Attended</option>
+                    <option value="University Of Warwick">University Of Warwick</option>
                 </select>
-                <select class="resetSelect" name="previousEmployment[]" id="months">
-                    <option default value="">Length(Months)</option>
-                    <option value="0">0 months</option>
-                    <option value="1">1 months</option>
-                    <option value="2">2 months</option>
-                    <option value="3">3 months</option>
-                    <option value="4">4 months</option>
-                    <option value="5">5 months</option>
-                    <option value="6">6 months</option>
-                    <option value="7">7 months</option>
-                    <option value="8">8 months</option>
-                    <option value="9">9 months</option>
-                    <option value="10">10 months</option>
-                    <option value="11">11 months</option>
-                </select>
-                <a class="add-prev-employment button submitBtn">Add</a>
             </div>
-        </div>
-        <!-- Programming Languages -->
-        <div class="application-form-group">
-            <label>Programming Languages</label>
-            <div id="progLanguages">
+            <!-- A levels -->
+            <div class="application-form-group">
+                <label>A-Levels</label>
+                <div id="a-levels">
+                </div>
+                <div class="threeColumnFields">
+                    <select class="resetSelect" name="aLevelSubject" id="aLevelSubject">
+                        <option default value="">Subject</option>
+                        <option value="Art">Art</option>
+                        <option value="Accounting">Accounting</option>
+                        <option value="Business">Business</option>
+                        <option value="Biology">Biology</option>
+                        <option value="Chemistry">Chemistry</option>
+                        <option value="Computer Science">Computer Science</option>
+                        <option value="Economics">Economics</option>
+                        <option value="English Language">English Language</option>
+                        <option value="English Literature">English Literature</option>
+                        <option value="Further Maths">Further Maths</option>
+                        <option value="French">French</option>
+                        <option value="Geography">Geography</option>
+                        <option value="German">German</option>
+                        <option value="History">History</option>
+                        <option value="Italian">Italian</option>
+                        <option value="Law">Law</option>
+                        <option value="Music">Music</option>
+                        <option value="Maths">Maths</option>
+                        <option value="Politics">Politics</option>
+                        <option value="Spanish">Spanish</option>
+                    </select>
+                    <select class="resetSelect" name="aLevelGrade" id="aLevelGrade">
+                        <option default value="">Grade</option>
+                        <option value="A*">A*</option>
+                        <option value="A">A</option>
+                        <option value="B">B</option>
+                        <option value="C">C</option>
+                        <option value="D">D</option>
+                        <option value="E">E</option>
+                        <option value="F">F</option>
+                    </select>
+                    <a class="add-input button submitBtn">Add</a>
+                </div>
             </div>
-            <div class="threeColumnFields">
-                <select class="resetSelect" name="progLangName" id="progLangName">
-                    <option default value="">Programming Language</option>
-                </select>
-                <select class="resetSelect" name="proficiency" class="progLangProficiency">
-                    <option default value="">Proficiency</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-                    <option value="7">7</option>
-                    <option value="8">8</option>
-                    <option value="9">9</option>
-                    <option value="10">10</option>
-                </select>
-                <a class="add-input button submitBtn">Add</a>
+            <!-- Previous Employment -->
+            <div class="application-form-group">
+                <label for="previousEmployment[]">Previous Employment</label>
+                <div class="prevEmploymentDetails">
+                </div>
+                <input type="text" name="previousEmployment[]" id="companyName" placeholder="Company Name" />
+                <input type="text" name="previousEmployment[]" id="postName" placeholder="Post Name" />
+                <div class="threeColumnFields employmentLength">
+                    <select class="resetSelect" name="previousEmployment[]" id="years">
+                        <option default value="">Length(Years)</option>
+                    </select>
+                    <select class="resetSelect" name="previousEmployment[]" id="months">
+                        <option default value="">Length(Months)</option>
+                        <option value="0">0 months</option>
+                        <option value="1">1 months</option>
+                        <option value="2">2 months</option>
+                        <option value="3">3 months</option>
+                        <option value="4">4 months</option>
+                        <option value="5">5 months</option>
+                        <option value="6">6 months</option>
+                        <option value="7">7 months</option>
+                        <option value="8">8 months</option>
+                        <option value="9">9 months</option>
+                        <option value="10">10 months</option>
+                        <option value="11">11 months</option>
+                    </select>
+                    <a class="add-prev-employment button submitBtn">Add</a>
+                </div>
             </div>
-        </div>
-        <!-- Skills -->
-        <div class="application-form-group">
-            <label for="skills[]">Skills</label>
-            <div id="skills">
+            <!-- Programming Languages -->
+            <div class="application-form-group">
+                <label>Programming Languages</label>
+                <div id="progLanguages">
+                </div>
+                <div class="threeColumnFields">
+                    <select class="resetSelect" name="progLangName" id="progLangName">
+                        <option default value="">Programming Language</option>
+                    </select>
+                    <select class="resetSelect" name="proficiency" class="progLangProficiency">
+                        <option default value="">Proficiency</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                    </select>
+                    <a class="add-input button submitBtn">Add</a>
+                </div>
+            </div>
+            <!-- Skills -->
+            <div class="application-form-group">
+                <label for="skills[]">Skills</label>
+                <div id="skills">
 
+                </div>
+                <div class="threeColumnFields">
+                    <input class="resetSelect" type="text" name="skills[]" id="skillName" placeholder="Skill" />
+                    <select class="resetSelect" name="skillProficiency" class="skillProficiency">
+                        <option default value="">Proficiency</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                    </select>
+                    <a class="add-input button submitBtn">Add</a>
+                </div>
             </div>
-            <div class="threeColumnFields">
-                <input class="resetSelect" type="text" name="skills[]" id="skillName" placeholder="Skill" />
-                <select class="resetSelect" name="skillProficiency" class="skillProficiency">
-                    <option default value="">Proficiency</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-                    <option value="7">7</option>
-                    <option value="8">8</option>
-                    <option value="9">9</option>
-                    <option value="10">10</option>
-                </select>
-                <a class="add-input button submitBtn">Add</a>
+            <!-- Hobbies -->
+            <div class="application-form-group">
+                <label for="hobbies[]">Hobbies</label>
+                <div id="hobbies">
+                </div>
+                <div class="threeColumnFields">
+                    <input type="text" name="hobbies[]" id="hobbyName" placeholder="Hobby" />
+                    <select class="resetSelect" name="hobbyProficiency" class="hobbyProficiency">
+                        <option default value="">Proficiency</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                    </select>
+                    <a class="add-input button submitBtn">Add</a>
+                </div>
             </div>
         </div>
-        <!-- Hobbies -->
-        <div class="application-form-group">
-            <label for="hobbies[]">Hobbies</label>
-            <div id="hobbies">
-            </div>
-            <div class="threeColumnFields">
-                <input type="text" name="hobbies[]" id="hobbyName" placeholder="Hobby" />
-                <select class="resetSelect" name="hobbyProficiency" class="hobbyProficiency">
-                    <option default value="">Proficiency</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-                    <option value="7">7</option>
-                    <option value="8">8</option>
-                    <option value="9">9</option>
-                    <option value="10">10</option>
-                </select>
-                <a class="add-input button submitBtn">Add</a>
-            </div>
-        </div>
-        <button type="submit" class="button submitBtn formSubmit">
-            Next
-        </button>
     </div>
-</form>
-{% endblock %}
+    <div class="application-testing">
+        <div id="quiz" class="header-applicant .test">
+            <h1 class="quiz-title">Testing Section</h1>
+            <ol>
+                <li>
+                    <h3>What replaces the question mark?</h3>
+                    {% load static %}
+                    <img src="{% static 'images/test.png' %}" alt="puzzle">
+                    <div class="in-line">
+                        <div style="padding-left: 300px">
+                            <input type="radio" name="question-1-answers" value="A" />
+                            <label for="question-1-answers-A"><img src="{% static 'images/a1.png' %}" alt="puzzle"
+                                    class="answer"></label>
+                        </div>
 
-{% block testing %}
-<form id="quiz" class="header-applicant .test">
-    <h1 class="quiz-title">Testing Section</h1>
-    <ol>
-        <li>
-            <h3>What replaces the question mark?</h3>
-            {% load static %}
-            <img src="{% static 'images/test.png' %}" alt="puzzle">
-            <div class="in-line">
-                <div style="padding-left: 300px">
-                    <input type="radio" name="question-1-answers" value="A" />
-                    <label for="question-1-answers-A"><img src="{% static 'images/a1.png' %}" alt="puzzle" class="answer"></label>
-                </div>
+                        <div style="padding-left: 300px">
+                            <input type="radio" name="question-1-answers" value="B" />
+                            <label for="question-1-answers-B"><img src="{% static 'images/a2.png' %}" alt="puzzle"
+                                    class="answer"></label>
+                        </div>
 
-                <div style="padding-left: 300px">
-                    <input type="radio" name="question-1-answers" value="B" />
-                    <label for="question-1-answers-B"><img src="{% static 'images/a2.png' %}" alt="puzzle" class="answer"></label>
-                </div>
+                        <div style="padding-left: 300px">
+                            <input type="radio" name="question-1-answers" value="C" />
+                            <label for="question-1-answers-C"><img src="{% static 'images/a3.png' %}" alt="puzzle"
+                                    class="answer"></label>
+                        </div>
 
-                <div style="padding-left: 300px">
-                    <input type="radio" name="question-1-answers" value="C" />
-                    <label for="question-1-answers-C"><img src="{% static 'images/a3.png' %}" alt="puzzle" class="answer"></label>
-                </div>
+                        <div style="padding-left: 300px">
+                            <input type="radio" name="question-1-answers" value="D" />
+                            <label for="question-1-answers-D"><img src="{% static 'images/a4.png' %}" alt="puzzle"
+                                    class="answer"></label>
+                        </div>
+                    </div>
 
-                <div style="padding-left: 300px">
-                    <input type="radio" name="question-1-answers" value="D" />
-                    <label for="question-1-answers-D"><img src="{% static 'images/a4.png' %}" alt="puzzle" class="answer"></label>
-                </div>
-            </div>
+                </li>
+                <li>
+                    <h3>What replaces the question mark?</h3>
 
-        </li>
-        <li>
-            <h3>What replaces the question mark?</h3>
+                    <img src="{% static 'images/test2.png' %}" alt="puzzle">
+                    <div class="in-line">
+                        <div style="padding-left: 300px">
+                            <input type="radio" name="question-1-answers" value="A" />
+                            <label for="question-1-answers-A"><img src="{% static 'images/b1.png' %}" alt="puzzle"
+                                    class="answer"></label>
+                        </div>
 
-            <img src="{% static 'images/test2.png' %}" alt="puzzle">
-            <div class="in-line">
-                <div style="padding-left: 300px">
-                    <input type="radio" name="question-1-answers" value="A" />
-                    <label for="question-1-answers-A"><img src="{% static 'images/b1.png' %}" alt="puzzle" class="answer"></label>
-                </div>
+                        <div style="padding-left: 300px">
+                            <input type="radio" name="question-1-answers" value="B" />
+                            <label for="question-1-answers-B"><img src="{% static 'images/b2.png' %}" alt="puzzle"
+                                    class="answer"></label>
+                        </div>
 
-                <div style="padding-left: 300px">
-                    <input type="radio" name="question-1-answers" value="B" />
-                    <label for="question-1-answers-B"><img src="{% static 'images/b2.png' %}" alt="puzzle" class="answer"></label>
-                </div>
+                        <div style="padding-left: 300px">
+                            <input type="radio" name="question-1-answers" value="C" />
+                            <label for="question-1-answers-C"><img src="{% static 'images/b3.png' %}" alt="puzzle"
+                                    class="answer"></label>
+                        </div>
 
-                <div style="padding-left: 300px">
-                    <input type="radio" name="question-1-answers" value="C" />
-                    <label for="question-1-answers-C"><img src="{% static 'images/b3.png' %}" alt="puzzle" class="answer"></label>
-                </div>
+                        <div style="padding-left: 300px">
+                            <input type="radio" name="question-1-answers" value="D" />
+                            <label for="question-1-answers-D"><img src="{% static 'images/b4.png' %}" alt="puzzle"
+                                    class="answer"></label>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <h3>Situation 1</h3>
 
-                <div style="padding-left: 300px">
-                    <input type="radio" name="question-1-answers" value="D" />
-                    <label for="question-1-answers-D"><img src="{% static 'images/b4.png' %}" alt="puzzle" class="answer"></label>
-                </div>
-            </div>
-        </li>
-        <li>
-            <h3>Situation 1</h3>
+                    <p> At the end of a busy day at work, you accidentally send an e-mail containing an attachment with
+                        some
+                        confidential client information to the wrong person. </p>
 
-            <p> At the end of a busy day at work, you accidentally send an e-mail containing an attachment with some
-                confidential client information to the wrong person. </p>
+                    <div>
+                        <input type="radio" name="question-1-answers" value="A" />
+                        <label for="question-1-answers-A">Decide to leave the office and deal with any problems
+                            tomorrow.</label>
+                    </div>
 
-            <div>
-                <input type="radio" name="question-1-answers" value="A" />
-                <label for="question-1-answers-A">Decide to leave the office and deal with any problems tomorrow.</label>
-            </div>
+                    <div>
+                        <input type="radio" name="question-1-answers" value="B" />
+                        <label for="question-1-answers-B">Decide to overlook your error, send the e-mail to the correct
+                            person
+                            and leave things like that.</label>
+                    </div>
 
-            <div>
-                <input type="radio" name="question-1-answers" value="B" />
-                <label for="question-1-answers-B">Decide to overlook your error, send the e-mail to the correct person
-                    and leave things like that.</label>
-            </div>
+                    <div>
+                        <input type="radio" name="question-1-answers" value="C" />
+                        <label for="question-1-answers-C">Immediately send a follow up email to the "wrong" person, or
+                            if
+                            possible telephone them explaining your mistake. Then send the email to the correct person.</label>
+                    </div>
 
-            <div>
-                <input type="radio" name="question-1-answers" value="C" />
-                <label for="question-1-answers-C">Immediately send a follow up email to the "wrong" person, or if
-                    possible telephone them explaining your mistake. Then send the email to the correct person.</label>
-            </div>
+                    <div>
+                        <input type="radio" name="question-1-answers" value="D" />
+                        <label for="question-1-answers-D">Find your manager, explain what has happened to them and let
+                            them
+                            deal with any problems.</label>
+                    </div>
+                </li>
+                <li>
+                    <h3>Situation 2</h3>
 
-            <div>
-                <input type="radio" name="question-1-answers" value="D" />
-                <label for="question-1-answers-D">Find your manager, explain what has happened to them and let them
-                    deal with any problems.</label>
-            </div>
-        </li>
-        <li>
-            <h3>Situation 2</h3>
+                    <p> At the end of a busy day at work, you accidentally send an e-mail containing an attachment with
+                        some
+                        confidential client information to the wrong person. </p>
 
-            <p> At the end of a busy day at work, you accidentally send an e-mail containing an attachment with some
-                confidential client information to the wrong person. </p>
+                    <div>
+                        <input type="radio" name="question-1-answers" value="A" />
+                        <label for="question-1-answers-A">A - Decide to leave the office and deal with any problems
+                            tomorrow.</label>
+                    </div>
 
-            <div>
-                <input type="radio" name="question-1-answers" value="A" />
-                <label for="question-1-answers-A">A - Decide to leave the office and deal with any problems tomorrow.</label>
-            </div>
+                    <div>
+                        <input type="radio" name="question-1-answers" value="B" />
+                        <label for="question-1-answers-B">B - Decide to overlook your error, send the e-mail to the
+                            correct
+                            person and leave things like that.</label>
+                    </div>
 
-            <div>
-                <input type="radio" name="question-1-answers" value="B" />
-                <label for="question-1-answers-B">B - Decide to overlook your error, send the e-mail to the correct
-                    person and leave things like that.</label>
-            </div>
+                    <div>
+                        <input type="radio" name="question-1-answers" value="C" />
+                        <label for="question-1-answers-C">C - Immediately send a follow up email to the "wrong" person,
+                            or if
+                            possible telephone them explaining your mistake. Then send the email to the correct person.</label>
+                    </div>
 
-            <div>
-                <input type="radio" name="question-1-answers" value="C" />
-                <label for="question-1-answers-C">C - Immediately send a follow up email to the "wrong" person, or if
-                    possible telephone them explaining your mistake. Then send the email to the correct person.</label>
-            </div>
+                    <div>
+                        <input type="radio" name="question-1-answers" value="D" />
+                        <label for="question-1-answers-D">D - Find your manager, explain what has happened to them and
+                            let them
+                            deal with any problems.</label>
+                    </div>
+                </li>
+                <li>
+                    <h3>Which Share had the largest difference between highest and lowest price over the last 12
+                        months?</h3>
 
-            <div>
-                <input type="radio" name="question-1-answers" value="D" />
-                <label for="question-1-answers-D">D - Find your manager, explain what has happened to them and let them
-                    deal with any problems.</label>
-            </div>
-        </li>
-        <li>
-            <h3>Which Share had the largest difference between highest and lowest price over the last 12 months?</h3>
+                    <img src="{% static 'images/test3.png' %}" alt="data">
 
-            <img src="{% static 'images/test3.png' %}" alt="data">
+                    <div>
+                        <input type="radio" name="question-1-answers" value="A" />
+                        <label for="question-1-answers-A">Huver Co.</label>
+                    </div>
 
-            <div>
-                <input type="radio" name="question-1-answers" value="A" />
-                <label for="question-1-answers-A">Huver Co.</label>
-            </div>
+                    <div>
+                        <input type="radio" name="question-1-answers" value="B" />
+                        <label for="question-1-answers-B">Drebs Ltd</label>
+                    </div>
 
-            <div>
-                <input type="radio" name="question-1-answers" value="B" />
-                <label for="question-1-answers-B">Drebs Ltd</label>
-            </div>
+                    <div>
+                        <input type="radio" name="question-1-answers" value="C" />
+                        <label for="question-1-answers-C">Fevs Plc</label>
+                    </div>
 
-            <div>
-                <input type="radio" name="question-1-answers" value="C" />
-                <label for="question-1-answers-C">Fevs Plc</label>
-            </div>
+                    <div>
+                        <input type="radio" name="question-1-answers" value="D" />
+                        <label for="question-1-answers-D">Fauvers</label>
+                    </div>
+                    <div>
+                        <input type="radio" name="question-1-answers" value="E" />
+                        <label for="question-1-answers-E">Steapars</label>
+                    </div>
+                </li>
+                <li>
+                    <h3>What was yesterday's cost difference between 50 shares in Fevs Plc and 100 shares in Steapars?</h3>
 
-            <div>
-                <input type="radio" name="question-1-answers" value="D" />
-                <label for="question-1-answers-D">Fauvers</label>
-            </div>
-            <div>
-                <input type="radio" name="question-1-answers" value="E" />
-                <label for="question-1-answers-E">Steapars</label>
-            </div>
-        </li>
-        <li>
-            <h3>What was yesterday's cost difference between 50 shares in Fevs Plc and 100 shares in Steapars?</h3>
+                    <img src="{% static 'images/test4.png' %}" alt="data">
 
-            <img src="{% static 'images/test4.png' %}" alt="data">
+                    <div>
+                        <input type="radio" name="question-1-answers" value="A" />
+                        <label for="question-1-answers-A">€164,724</label>
+                    </div>
 
-            <div>
-                <input type="radio" name="question-1-answers" value="A" />
-                <label for="question-1-answers-A">€164,724</label>
-            </div>
+                    <div>
+                        <input type="radio" name="question-1-answers" value="B" />
+                        <label for="question-1-answers-B">€251,163</label>
+                    </div>
 
-            <div>
-                <input type="radio" name="question-1-answers" value="B" />
-                <label for="question-1-answers-B">€251,163</label>
-            </div>
+                    <div>
+                        <input type="radio" name="question-1-answers" value="C" />
+                        <label for="question-1-answers-C">€172,577</label>
+                    </div>
 
-            <div>
-                <input type="radio" name="question-1-answers" value="C" />
-                <label for="question-1-answers-C">€172,577</label>
-            </div>
-
-            <div>
-                <input type="radio" name="question-1-answers" value="D" />
-                <label for="question-1-answers-D">€164,045</label>
-            </div>
-            <div>
-                <input type="radio" name="question-1-answers" value="E" />
-                <label for="question-1-answers-E">None of these</label>
-            </div>
-        </li>
-    </ol>
-    <div style="text-align: center; padding-top: 50px">
-        <input type="submit" value="Submit" class="button submitBtn formSubmit" />
+                    <div>
+                        <input type="radio" name="question-1-answers" value="D" />
+                        <label for="question-1-answers-D">€164,045</label>
+                    </div>
+                    <div>
+                        <input type="radio" name="question-1-answers" value="E" />
+                        <label for="question-1-answers-E">None of these</label>
+                    </div>
+                </li>
+            </ol>
+            <button type="submit" class="button submitBtn formSubmit">
+                Submit
+            </button>
+        </div>
     </div>
 </form>
 {% endblock %}

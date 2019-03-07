@@ -39,7 +39,7 @@
             </header>
             <div class="login-form-content">
                 <!-- Change Password Form -->
-                <form action="{% url 'changePassword'%}" method = "POST">
+                <form action="{% url 'changePassword'%}" method="POST">
                     {%csrf_token%}
                     <h2 class="login-form-header">Change Password</h2>
                     <div class="login-form-group">
@@ -63,17 +63,10 @@
     <div class="header">
         <h1>Welcome, {{ user.fName }} {{ user.lName }}</h1>
         <h4>Please Complete Your Applicaton</h4>
-        <div class="application-form">
-            {% block application %}
-            <!-- Body of the document -->
-            {% endblock %}
-        </div>
+        {% block application %}
+        <!-- Body of the document -->
+        {% endblock %}
 
-        <div class="application-testing">
-            {% block testing %}
-            <!-- Body of the document -->
-            {% endblock %}
-        </div>
     </div>
 
     {% load static %}
