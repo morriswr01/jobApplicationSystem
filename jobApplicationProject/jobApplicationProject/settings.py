@@ -77,20 +77,6 @@ WSGI_APPLICATION = 'jobApplicationProject.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
-# AWS MYSQL CONNECTION WILL BE PUT HERE.... -Will
-
-# UNCOMMENT WHEN YOU WANT TO CONNECT TO THE DATABASE
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.mysql',
-#         'NAME': 'jobApplicationProjectDB',
-#         'USER': 'morriswr01',
-#         'PASSWORD': 'cs261SoftwareEngineering',
-#         'HOST': 'jobapplicationprojectdb.cdsve33siynl.us-east-2.rds.amazonaws.com',
-#         'PORT': '3306'
-#     }
-# }
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
